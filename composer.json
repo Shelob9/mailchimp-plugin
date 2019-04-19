@@ -5,14 +5,14 @@
     "license": "GPL-2.0",
     "require": {
         "php": "^7.2",
-        "shelob9/mailchimp-functions": "*"
+        "shelob9/mailchimp-functions": "*",
+        "calderawp/rest-api": "*"
     },
     "minimum-stability" : "dev",
-
     "repositories": [
         {
             "type": "path",
-            "url": "../../mailchimp-functions"
+            "url": "../../../mailchimp-functions"
         }
     ],
     "require-dev": {

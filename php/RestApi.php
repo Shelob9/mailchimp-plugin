@@ -60,6 +60,16 @@ class RestApi
 	}
 
 	/**
+	 * Register an endpoint with WordPress
+	 *
+	 * @param Endpoint $endpoint
+	 */
+	public function registerRouteWithWordPress(Endpoint $endpoint)
+	{
+		register_rest_route( $this->getNamespace(), $endpoint->getUri(), $this->wpArgs($endpoint));
+	}
+
+	/**
 	 * Register endpoints
 	 */
 	public function initApi()

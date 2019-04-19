@@ -1,6 +1,7 @@
 <?php
 /**
- * Plugin Name: Caldera Boilerplate WordPress plugin
+ * Plugin Name: Caldera MailChimp
+ * Version: 2.0.0-a.1
  */
 
 
@@ -38,14 +39,23 @@ add_action( 'CalderaMailChimp', function(){
  * Load module with Caldera Framework
  */
 add_action('plugins_loaded', function () {
+
 	//include autoloader
 	include_once __DIR__ . '/vendor/autoload.php';
 
-	$api = new \calderawp\CalderaMailChimp\RestApi(
-		'register_rest_route',
-		Caldera_Forms_API_Util::api_namespace('v3')
-	);
-	$api->initApi();
+	add_action( 'rest_api_init', function(){
+		$apiKey ='';
+		$httpClient = new \GuzzleHttp\Client();
+		$mailChimpClient = new \something\Mailchimp\HttpClient();
+		$mailChimpClient->setGuzzle($httpClient);
+		$mailchimpApi = new \Mailchimp\MailchimpLists($apiKey, 'apiuser', [],$mailChimpClient);
+		$api = new \calderawp\CalderaMailChimp\RestApi(
+			'register_rest_route',
+			Caldera_Forms_API_Util::api_namespace('v3')
+		);
+		$api->setMailchimpApi($mailchimpApi);
+		$api->initApi();
+	});
 	return;
 	//Instantiate module instance using global caldera framework instance
 	$module = new \calderawp\CalderaMailChimp\CalderaMailChimp(
