@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component Matches snapshot 1`] = `
+<header
+  className="App-header"
+>
+  <img
+    alt="logo"
+    className="App-logo"
+    src="logo.svg"
+  />
+  <h1
+    className="App-title"
+  >
+    Welcome To An Exciting Web Application
+  </h1>
+</header>
+`;
+
+exports[`Header component Matches snapshot with title prop 1`] = `
+<header
+  className="App-header"
+>
+  <img
+    alt="logo"
+    className="App-logo"
+    src="logo.svg"
+  />
+  <h1
+    className="App-title"
+  >
+    Welcome To An Exciting Web Application
+  </h1>
+</header>
+`;
+
+exports[`Header component Uses default title 1`] = `
+<header
+  className="App-header"
+>
+  <img
+    alt="logo"
+    className="App-logo"
+    src="logo.svg"
+  />
+  <h1
+    className="App-title"
+  >
+    Welcome to Caldera WordPress Plugin
+  </h1>
+</header>
+`;

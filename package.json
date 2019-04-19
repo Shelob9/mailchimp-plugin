@@ -1,0 +1,19 @@
+{
+  "name": "wordpress-plugin-boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-test-renderer": "^16.7.0",
+    "react-wp-scripts": "0.2.0"
+  },
+  "scripts": {
+    "start": "react-wp-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

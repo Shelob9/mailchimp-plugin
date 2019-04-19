@@ -1,0 +1,11 @@
+
+/.php_cs.cache
+
+
+/build
+build/
+/vendor/
+vendor/
+
+/coverage/
+coverage/
