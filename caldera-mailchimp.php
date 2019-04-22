@@ -8,7 +8,25 @@
 /**
  * Setup admin page as a sub-menu item of Caldera Forms with a React app for the UI
  */
-add_action( 'CalderaMailChimp', function(){
+add_action( 'CalderaMailChimp', function(\calderawp\CalderaMailChimp\CalderaMailChimp $module){
+
+	add_action( 'rest_api_init', function() use ($module){
+		$apiKey = apply_filters( 'caldera/mailchimp/apiKey', '' );
+		$httpClient = new \GuzzleHttp\Client();
+		$mailChimpClient = new \something\Mailchimp\HttpClient();
+		$mailChimpClient->setGuzzle($httpClient);
+		$mailchimpApi = new \Mailchimp\MailchimpLists($apiKey, 'apiuser', [],$mailChimpClient);
+		$api = new \calderawp\CalderaMailChimp\RestApi(
+			'register_rest_route',
+			Caldera_Forms_API_Util::api_namespace('v3')
+		);
+		$api->setJwt($module->getJwt());
+		$api->setMailchimpApi($mailchimpApi);
+		$api->initApi($module);
+		$module->getTokenApi()->initTokenRoutes();
+	});
+
+
 	//Script handle and page post-fix
 	$handle = 'ModuleName';
 
@@ -43,24 +61,15 @@ add_action('plugins_loaded', function () {
 	//include autoloader
 	include_once __DIR__ . '/vendor/autoload.php';
 
-	add_action( 'rest_api_init', function(){
-		$apiKey ='';
-		$httpClient = new \GuzzleHttp\Client();
-		$mailChimpClient = new \something\Mailchimp\HttpClient();
-		$mailChimpClient->setGuzzle($httpClient);
-		$mailchimpApi = new \Mailchimp\MailchimpLists($apiKey, 'apiuser', [],$mailChimpClient);
-		$api = new \calderawp\CalderaMailChimp\RestApi(
-			'register_rest_route',
-			Caldera_Forms_API_Util::api_namespace('v3')
-		);
-		$api->setMailchimpApi($mailchimpApi);
-		$api->initApi();
-	});
-	return;
-	//Instantiate module instance using global caldera framework instance
+
+
+
+
+
 	$module = new \calderawp\CalderaMailChimp\CalderaMailChimp(
-		\caldera(),
-		new \calderawp\CalderaContainers\Service\Container()
+		site_url(),
+		'12345',
+		new \calderawp\caldera\restApi\Authentication\WordPressUserFactory()
 	);
 	/**
 	 * Action that fires after the CalderaMailChimp module is loaded in WordPress

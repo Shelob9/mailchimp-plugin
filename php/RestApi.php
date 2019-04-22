@@ -4,13 +4,16 @@
 namespace calderawp\CalderaMailChimp;
 
 
+use calderawp\caldera\restApi\Authentication\WordPressUserJwt;
 use calderawp\caldera\restApi\Traits\CreatesWordPressEndpoints;
+use calderawp\CalderaMailChimp\Endpoints\GetList;
+use calderawp\CalderaMailChimp\Endpoints\GetLists;
 use calderawp\interop\Contracts\Rest\Endpoint;
 use Mailchimp\MailchimpLists;
 use something\Mailchimp\Endpoints\AddSubscriber;
-use something\Mailchimp\Controllers\CreateSubscriber;
-use something\Mailchimp\Endpoints\GetList;
-use something\Mailchimp\Endpoints\GetLists;
+use something\Mailchimp\Controllers\CreateSubscriber as CreateSubscriptionController;
+use \something\Mailchimp\Controllers\GetList as GetListController;
+use \something\Mailchimp\Controllers\GetLists as GetListsController;
 
 class RestApi
 {
@@ -32,16 +35,42 @@ class RestApi
 	protected $endpoints;
 
 	/**
+	 * @var WordPressUserJwt
+	 */
+	protected $jwt;
+
+	/**
 	 * @var MailchimpLists
 	 */
 	protected $mailchimpApi;
-	public function __construct(callable $registerFunction,string $namespace)
+
+	public function __construct(callable $registerFunction, string $namespace)
 	{
 		$this->registerFunction = $registerFunction;
 		$this->namespace = $namespace;
 		$this->endpoints = [];
 
 	}
+
+	/**
+	 * @return WordPressUserJwt
+	 */
+	public function getJwt(): WordPressUserJwt
+	{
+		return $this->jwt;
+	}
+
+	/**
+	 * @param WordPressUserJwt $jwt
+	 *
+	 * @return RestApi
+	 */
+	public function setJwt(WordPressUserJwt $jwt): RestApi
+	{
+		$this->jwt = $jwt;
+		return $this;
+	}
+
 
 	/**
 	 * @return MailchimpLists
@@ -66,19 +95,37 @@ class RestApi
 	 */
 	public function registerRouteWithWordPress(Endpoint $endpoint)
 	{
-		register_rest_route( $this->getNamespace(), $endpoint->getUri(), $this->wpArgs($endpoint));
+		register_rest_route($this->getNamespace(), $endpoint->getUri(), $this->wpArgs($endpoint));
 	}
 
 	/**
 	 * Register endpoints
 	 */
-	public function initApi()
+	public function initApi(CalderaMailChimp$module)
 	{
-		$this->endpoints[AddSubscriber::class] = (new AddSubscriber())->setController(new CreateSubscriber($this->getMailchimpApi()));
-		$this->endpoints[GetList::class] = (new GetList())->setController(new \something\Mailchimp\Controllers\GetList($this->getMailchimpApi()));
-		$this->endpoints[GetLists::class] = (new AddSubscriber())->setController(new \something\Mailchimp\Controllers\GetLists($this->getMailchimpApi()));
+		$this->endpoints[ AddSubscriber::class ] = (new AddSubscriber())
+			->setController(
+				new CreateSubscriptionController(
+					$this->getMailchimpApi()
+				)
+			);
+		$this->endpoints[ GetList::class ] = (new GetList())
+			->setModule($module)
+			->setController(
+				new GetListController(
+					$this->getMailchimpApi()
+				)
+			);
+
+		$this->endpoints[ GetLists::class ] = (new GetLists())
+			->setModule($module)
+			->setController(
+				new GetListsController(
+					$this->getMailchimpApi()
+				)
+			);
 		/** @var Endpoint $endpoint */
-		foreach ($this->endpoints as $endpoint ){
+		foreach ($this->endpoints as $endpoint) {
 			$this->registerRouteWithWordPress($endpoint);
 		}
 	}
@@ -86,7 +133,7 @@ class RestApi
 	/**
 	 * @return array|Endpoint[]
 	 */
-	public function getEndpoints() : array
+	public function getEndpoints(): array
 	{
 		return $this->endpoints;
 	}
