@@ -116,10 +116,12 @@ class GetLists extends \something\Mailchimp\Endpoints\GetLists
 						foreach ($data['lists'] as $listId => $list ){
 							$list['list_id']= $listId;
 						}
-						$response = $this->respondForUiField(array_values($data['lists']['lists']));
-						if (200 === $response->getData()) {
-							$this->module->getDatabase()->getAccountsTable()
-								->update($saved[ 'id' ], [
+						$lists = array_values($data['lists']['lists']);
+						$lists = Lists::fromArray($lists);
+						$response = $this->respondForUiField($lists);
+						if (200 === $response->getStatus()) {
+							$updateId = $this->module->getDatabase()->getAccountsTable()
+								->update((int)$saved[ 'id' ], [
 									[
 										'api_key' => $apiKey,
 										'data' => [
