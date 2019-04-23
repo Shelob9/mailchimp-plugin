@@ -58,21 +58,22 @@ class GetForm extends GetList
 			return (new \calderawp\caldera\restApi\Response() )->setStatus(404);
 		}
 		$fields = $entity->toUiFieldConfig();
+
 		$formId = 'mc-' . $listId;
 		$form = [
 			'ID' => 'mc-' . $listId,
-			'fields' => $fields,
+			'fields' => [],
 			'rows' => [],
 			'conditionals' => []
 		];
 		$rowIndex = 1;
 		$columnIndex = 1;
 		foreach ($fields as $field ){
-			$form[ 'rows'][$rowIndex]['rowId' ] = "${formId}-${rowIndex}";
-			$form[ 'rows'][$rowIndex]['columns' ][$columnIndex] = [
+			$form[ 'rows'][$rowIndex]['rowId' ] = $this->rowId($formId, $rowIndex);
+			$form[ 'rows'][$rowIndex]['columns' ][] = [
 				'fields' => [$field['fieldId']],
 				'width' => '1/2',
-				'columnId' => "${formId}-${rowIndex}-${columnIndex}"
+				'columnId' => $this->columnId($formId, $rowIndex, $columnIndex)
 			];
 			if( 1 === $columnIndex ){
 				$columnIndex = 2;
@@ -82,6 +83,34 @@ class GetForm extends GetList
 			}
 		}
 
+		$form['rows'] = array_values($form['rows']);
+		$rowIndex++;
+		$form[ 'rows'][] = [
+			'rowId' => $this->rowId($formId, $rowIndex),
+			'columns' => [
+				[
+					'fields' => ['mc-submit'],
+					'width' => '1',
+					'columnId' => $this->columnId($formId, $rowIndex, $columnIndex)
+				]
+			]
+		];
+		$fields[] = [
+			'fieldId' => 'mc-submit',
+			'fieldType' => 'submit',
+			'value' => 'Subscribe'
+		];
+		$form['fields'] = $fields;
+		$form[ 'processors' ]= [
+			[
+				'type' => 'mc-subscribe',
+				'listId' => $listId,
+				'emailField' => 'mc-email',
+				'mergeFields' => $entity->getMergeFieldIds(),
+				'groupFields' => $entity->getGroupFieldIds(),
+				'submitUrl' => rest_url('/caldera-api/v1/messages/mailchimp/v1/lists/subscribe' )
+			]
+		];
 		return 	 (new \calderawp\caldera\restApi\Response() )->setData($form );
 
 	}
@@ -92,6 +121,29 @@ class GetForm extends GetList
 	public function getUri(): string
 	{
 		return parent::getUri() .'/form';
+	}
+
+	/**
+	 * @param $formId
+	 * @param $rowIndex
+	 * @param $columnIndex
+	 *
+	 * @return string
+	 */
+	protected function columnId($formId, $rowIndex, $columnIndex): string
+	{
+		return "${formId}-${rowIndex}-${columnIndex}";
+	}
+
+	/**
+	 * @param $formId
+	 * @param $rowIndex
+	 *
+	 * @return string
+	 */
+	protected function rowId($formId, $rowIndex): string
+	{
+		return "${formId}-${rowIndex}";
 	}
 
 
