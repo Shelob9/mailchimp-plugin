@@ -92,33 +92,9 @@ class GetList extends \something\Mailchimp\Endpoints\GetList
 	{
 		$apiKey = $request->getParam('apiKey');
 		$listId = $request->getParam('listId');
-		$saved = $this->module->getDatabase()->getListsTable()
-			->findWhere('list_id', $listId);
-		if (!empty($saved)) {
-			$data = unserialize($saved[ 0 ][ 'data' ]);
-			$groups = is_array($data[ 'groups' ]) && is_array($data[ 'groups' ][ 'groups' ])
-				? Groups::fromArray($data[ 'groups' ][ 'groups' ]) :
-				new Groups();
-			if (!empty($data[ 'groups' ][ 'categories' ])) {
-				foreach ($data[ 'groups' ][ 'categories' ] as $groupId => $category) {
-					$groups->addCategoriesForGroup($groupId, $category);
-				}
-			}
-			$groups->setListId($listId);
-			$mergeFields = is_array($data[ 'mergeFields' ]) && is_array($data[ 'mergeFields' ][ 'mergeVars' ])
-				? MergeVars::fromArray($data[ 'mergeFields' ][ 'mergeVars' ])
-				: new MergeVars();
-			$mergeFields->setListId($listId);
+		$entity = $this->getSavedList($listId);
+		if (!$entity) {
 
-			$entity = SingleList::fromArray([
-				'groups' => $groups,
-				'list_id' => $listId,
-				'mergeFields' => $mergeFields,
-			]);
-			$entity->setName( ! empty( $data['name']) ? $data['name'] : '');
-
-
-		} else {
 			$listName = '';
 			if (!$this->listAccountId) {
 				$savedAccounts = $this->module->getDatabase()->getAccountsTable()->findWhere('api_key', $apiKey);
@@ -185,6 +161,45 @@ class GetList extends \something\Mailchimp\Endpoints\GetList
 	{
 		$allowed = get_user_meta($user->ID, '_calderaMailChimpAccounts');
 		return is_array($allowed) && in_array((string)$accountId, $allowed);
+	}
+
+	/**
+	 * @param string $listId
+	 *
+	 * @return null|SingleList
+	 * @throws \calderawp\DB\Exceptions\InvalidColumnException
+	 */
+	protected function getSavedList(string $listId): ?SingleList
+	{
+		$saved = $this->module->getDatabase()->getListsTable()
+			->findWhere('list_id', $listId);
+		if (!empty($saved)) {
+			$data = unserialize($saved[ 0 ][ 'data' ]);
+			$groups = is_array($data[ 'groups' ]) && is_array($data[ 'groups' ][ 'groups' ])
+				? Groups::fromArray($data[ 'groups' ][ 'groups' ]) :
+				new Groups();
+			if (!empty($data[ 'groups' ][ 'categories' ])) {
+				foreach ($data[ 'groups' ][ 'categories' ] as $groupId => $category) {
+					$groups->addCategoriesForGroup($groupId, $category);
+				}
+			}
+			$groups->setListId($listId);
+			$mergeFields = is_array($data[ 'mergeFields' ]) && is_array($data[ 'mergeFields' ][ 'mergeVars' ])
+				? MergeVars::fromArray($data[ 'mergeFields' ][ 'mergeVars' ])
+				: new MergeVars();
+			$mergeFields->setListId($listId);
+
+			$entity = SingleList::fromArray([
+				'groups' => $groups,
+				'list_id' => $listId,
+				'mergeFields' => $mergeFields,
+			]);
+			$entity->setName( ! empty( $data['name']) ? $data['name'] : '');
+
+			return $entity;
+		}
+		return null;
+
 	}
 
 

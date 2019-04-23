@@ -1,11 +1,12 @@
 
 /.php_cs.cache
-
+.env
 
 /build
 build/
 /vendor/
 vendor/
-
+/node_modules/
+node_modules/
 /coverage/
 coverage/
