@@ -1,6 +1,7 @@
 
 /.php_cs.cache
 .env
+yarn-error.log
 
 /build
 build/
