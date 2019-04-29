@@ -16,8 +16,12 @@ function  MailChimpForm({form,onChange,onBlur}) {
 	const [completed,setIsCompleted] = useState(false);
 	const [message,setMessage] = useState('');
 
+	const Spinner = () => (
+		<div><PacmanLoader/></div>
+	);
+
 	if( ! form.hasOwnProperty('fields')){
-		return <div>Loading</div>
+		return <Spinner/>
 	}
 
 	const {processors} = form;
@@ -69,9 +73,7 @@ function  MailChimpForm({form,onChange,onBlur}) {
 		return <div className={'error'}>{message}</div>
 	}
 	if(  isSubmitting ) {
-		return (
-			<div><PacmanLoader/></div>
-		);
+		return <Spinner/>;
 	}
 
 	return (
