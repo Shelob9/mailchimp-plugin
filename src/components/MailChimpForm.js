@@ -1,6 +1,6 @@
 import {CalderaForm} from "@calderajs/forms";
 import React, {useState} from "react";
-import {PacmanLoader } from 'react-spinners';
+import {PacmanLoader} from 'react-spinners';
 
 /**
  * Component for stand-alone mailchimp forms served via Caldera API
@@ -8,71 +8,33 @@ import {PacmanLoader } from 'react-spinners';
  * @param form
  * @param onChange
  * @param onBlur
+ * @param onSubmit
  * @return {*}
  * @constructor
  */
-function  MailChimpForm({form,onChange,onBlur}) {
-	const [isSubmitting,setIsSubmitting] = useState(false);
-	const [completed,setIsCompleted] = useState(false);
-	const [message,setMessage] = useState('');
+function MailChimpForm({form, onChange, onBlur,onSubmit,hideOnSubmit}) {
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [completed, setIsCompleted] = useState(false);
+	const [message, setMessage] = useState('');
 
 	const Spinner = () => (
 		<div><PacmanLoader/></div>
 	);
 
-	if( ! form.hasOwnProperty('fields')){
+	if (!form.hasOwnProperty('fields')) {
 		return <Spinner/>
 	}
 
 	const {processors} = form;
-	const processor = processors.find( p => 'mc-subscribe' === p.type );
+	const processor = processors.find(p => 'mc-subscribe' === p.type);
 
-	/**
-	 * Submit handler
-	 *
-	 * @param values
-	 * @return {*}
-	 */
-	const onSubmit = (values) => {
-		const getValue = (key ) => {
-			if( values.hasOwnProperty(key)){
-				return values[key];
-			}
-			return null;
-		};
-		const {listId,submitUrl} = processor;
-		const mergeFields = {};
-		const groupFields = {};
-		processor.mergeFields.forEach(field => {
-			mergeFields[field] = getValue(field);
-		});
-		processor.groupFields.forEach(field => {
-			groupFields[field] = getValue(field);
-		});
-
-		const data = {
-			email: getValue(processor.emailField),
-			mergeFields,
-			groupFields,
-			listId
-		};
-		return fetch(submitUrl, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data)
-		});
-	};
-
-
-	if( completed ){
+	if (completed) {
 		return <div className={'success'}>{message}</div>
 	}
-	if( message ){
+	if (message) {
 		return <div className={'error'}>{message}</div>
 	}
-	if(  isSubmitting ) {
+	if (isSubmitting) {
 		return <Spinner/>;
 	}
 
@@ -86,11 +48,14 @@ function  MailChimpForm({form,onChange,onBlur}) {
 					actions
 				) => {
 					setIsSubmitting(true);
-					onSubmit(values).then(r => r.json() ).then(r => {
-							setMessage(r.message);
-							setIsCompleted(r)
+					onSubmit(values,processor).then(r => r.json()).then(r => {
+							if(hideOnSubmit){
+								setMessage(r.message);
+								setIsCompleted(r);
+							}
+
 						})
-						.catch( e => {
+						.catch(e => {
 							setIsSubmitting(false);
 							if (e.hasOwnProperty('message')) {
 								setMessage(e.message);
@@ -109,4 +74,46 @@ function  MailChimpForm({form,onChange,onBlur}) {
 	)
 }
 
+/**
+ * Default Submit handler
+ *
+ * @param values
+ * @return {*}
+ */
+const onSubmit = (values,processor) => {
+	const getValue = (key) => {
+		if (values.hasOwnProperty(key)) {
+			return values[key];
+		}
+		return null;
+	};
+	const {listId, submitUrl} = processor;
+	const mergeFields = {};
+	const groupFields = {};
+	processor.mergeFields.forEach(field => {
+		mergeFields[field] = getValue(field);
+	});
+	processor.groupFields.forEach(field => {
+		groupFields[field] = getValue(field);
+	});
+
+
+	const data = {
+		email: getValue(processor.emailField),
+		mergeFields,
+		groupFields,
+		listId
+	};
+	return fetch(submitUrl, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data)
+	});
+};
+MailChimpForm.defaultProps = {
+	onSubmit,
+	hideOnSubmit: true,
+};
 export default MailChimpForm;

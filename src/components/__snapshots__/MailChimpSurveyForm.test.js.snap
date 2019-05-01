@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Forms 1`] = `
+<div>
+  <div
+    className="caldera"
+  >
+    <form
+      className="undefined caldera-form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="sc-bdVaJa caldera-form-row caldera-row sc-bwzfXH pjOvZ"
+        id={undefined}
+      >
+        <div
+          className="caldera-column sc-bdVaJa iHZvIS"
+          id="r1-c1"
+          width={undefined}
+        >
+          <div
+            className="caldera-field-group caldera-field-area-checkbox"
+            data-field-type="checkbox"
+          >
+            <div
+              className="caldera-field-wrapper caldera-field-wrapper-checkbox"
+            >
+              <label
+                htmlFor="fakeGroup2"
+              >
+                Are you new to JavaScript
+                 
+              </label>
+              <input
+                aria-describedby={undefined}
+                checked={false}
+                className="caldera-field caldera-field-checkbox"
+                id="fakeGroup2"
+                onChange={[Function]}
+                type="checkbox"
+                value="1"
+              />
+              <label
+                htmlFor="fakeGroup2"
+              >
+                Are you new to JavaScript
+                 
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-bdVaJa caldera-form-row caldera-row sc-bwzfXH pjOvZ"
+        id={undefined}
+      >
+        <div
+          className="caldera-column sc-bdVaJa iHZvIS"
+          id="r2-c1"
+          width={undefined}
+        />
+        <div
+          className="caldera-column sc-bdVaJa iHZvIS"
+          id="r2-c2"
+          width={undefined}
+        >
+          <div
+            className="caldera-field-group caldera-field-area-submit"
+            data-field-type="submit"
+          >
+            <div
+              className="caldera-field-wrapper caldera-field-wrapper-submit"
+            >
+              <label
+                htmlFor="submitQuestion"
+              >
+                 
+              </label>
+              <input
+                className="caldera-field caldera-field-text"
+                disabled={false}
+                id="submitQuestion"
+                type="submit"
+                value={undefined}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

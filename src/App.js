@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MailChimpForm from './components/MailChimpForm'
+import MailChimpSurveyForm from './components/MailChimpSurveyForm'
 
 function App() {
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -22,13 +23,12 @@ function App() {
 				<h1 className="App-title">Welcome to Caldera WordPress Plugin</h1>
 			</header>
 			<div>
-				<p>{isLoaded.toString()}</p>
 
 				<MailChimpForm
 					form={form}
-
 				/>
 
+				<MailChimpSurveyForm/>
 
 			</div>
 		</div>
