@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import MailChimpForm from './MailChimpForm'
 import PropTypes from 'prop-types';
+import {CalderaNotice} from '@calderajs/components';
 
 function MailChimpSurveyForm(
 	{
@@ -9,15 +10,24 @@ function MailChimpSurveyForm(
 		questions,
 		onChange,
 		onBlur,
+		onSubmit,
 		findNextQuestion,
 		findCurrentQuestion,
+		findQuestionIndex,
 		listId,
 	}
 ) {
 
+	/**
+	 * Track if survey is completed
+	 */
+	const [completed,setCompleted] = useState(false);
 
+	/**
+	 * Track current question
+	 */
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
-		questions.findIndex(question => initialQuestionId === question.fieldId)
+		findQuestionIndex(initialQuestionId,questions)
 	);
 
 
@@ -35,6 +45,9 @@ function MailChimpSurveyForm(
 		"submitUrl": "https:\/\/formcalderas.lndo.site\/wp-json\/caldera-api\/v1\/messages\/mailchimp\/v1\/lists\/subscribe"
 	};
 
+	/**
+	 * Track processor changes
+	 */
 	const [processor, setProcessor] = useState(initialProcessor);
 
 	const initialForm = {
@@ -76,8 +89,11 @@ function MailChimpSurveyForm(
 	const [form, setForm] = useState(initialForm);
 
 
+	/**
+	 * Update form and form processor
+	 */
 	const updateForm = () => {
-		const nextQuestion = (currentQuestionId, questions);
+		const nextQuestion = findNextQuestion(currentQuestionIndex, questions);
 		if (nextQuestion) {
 			setProcessor({
 				...processor,
@@ -91,6 +107,7 @@ function MailChimpSurveyForm(
 				]
 			});
 		} else {
+			setCompleted(true);
 			setProcessor({
 				...processor,
 				groupFields: []
@@ -106,11 +123,18 @@ function MailChimpSurveyForm(
 
 
 	};
-	const onSubmit = (values) => {
+
+	/**
+	 * Handle submit
+	 *
+	 * @param values
+	 * @return {Promise<any>}
+	 */
+	const submitHandler = (values) => {
 		return new Promise((resolve, reject) => {
 			onSubmit(values, processor).then(r => r.json()).then(r => {
 					updateForm();
-					resolve(new Response(JSON.stringify({message: 'next step!'})));
+					resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
 
 				})
 				.catch(e => {
@@ -121,15 +145,21 @@ function MailChimpSurveyForm(
 		});
 	}
 
+	if( completed ){
+		return <div>Completed</div>
+	}
 
 	return (
-		<MailChimpForm
-			form={form}
-			onBlur={onBlur}
-			onChange={onChange}
-			onSubmit={onSubmit}
-			hideOnSubmit={false}
-		/>
+		<Fragment>
+			<MailChimpForm
+				form={form}
+				onBlur={onBlur}
+				onChange={onChange}
+				onSubmit={submitHandler}
+				hideOnSubmit={false}
+			/>
+		</Fragment>
+
 	)
 }
 
@@ -150,17 +180,20 @@ MailChimpSurveyForm.defaultProps = {
 		"label": "Email",
 		"default": ""
 	},
-	findNextFunction(currentQuestionIndex, questions) {
-		if (-1 !== currentQuestionIndex && currentQuestionIndex + 1 <= questions.length) {
-			return questions[currentQuestionIndex];
+	findNextQuestion(currentQuestionIndex, questions) {
+		if (-1 !== currentQuestionIndex && currentQuestionIndex + 2 <= questions.length ) {
+			return questions[currentQuestionIndex + 1 ];
 		}
 		return false;
 	},
 	findCurrentQuestion(findIndex, questions, currentQuestionIndex) {
-		if (-1 !== currentQuestionIndex) {
+		if (-1 !== currentQuestionIndex && findIndex <= questions.length) {
 			return questions[findIndex];
 		}
 		return false;
+	},
+	findQuestionIndex(questionId,questions){
+		return questions.findIndex(question => questionId === question.fieldId)
 	}
 };
 
