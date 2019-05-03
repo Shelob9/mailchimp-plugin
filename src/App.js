@@ -28,7 +28,6 @@ function App() {
 					form={form}
 				/>
 
-				<MailChimpSurveyForm/>
 
 			</div>
 		</div>

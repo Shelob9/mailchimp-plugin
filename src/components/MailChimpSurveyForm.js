@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import MailChimpForm from './MailChimpForm'
 import PropTypes from 'prop-types';
-import {CalderaNotice} from '@calderajs/components';
+//import {CalderaNotice} from '@calderajs/components';
 
 function MailChimpSurveyForm(
 	{
@@ -42,7 +42,7 @@ function MailChimpSurveyForm(
 		"emailField": emailFieldId,
 		"mergeFields": [],
 		"groupFields": [initialQuestion.fieldId],
-		"submitUrl": "https:\/\/formcalderas.lndo.site\/wp-json\/caldera-api\/v1\/messages\/mailchimp\/v1\/lists\/subscribe"
+		"submitUrl": "https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1/lists/subscribe"
 	};
 
 	/**
@@ -95,6 +95,7 @@ function MailChimpSurveyForm(
 	const updateForm = () => {
 		const nextQuestion = findNextQuestion(currentQuestionIndex, questions);
 		if (nextQuestion) {
+			setCurrentQuestionIndex( findQuestionIndex(nextQuestion.fieldId,questions));
 			setProcessor({
 				...processor,
 				groupFields: [initialQuestion.fieldId]

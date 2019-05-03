@@ -1,7 +1,7 @@
 import {CalderaForm} from "@calderajs/forms";
 import React, {useState} from "react";
 import {PacmanLoader} from 'react-spinners';
-
+import PropTypes from 'prop-types';
 /**
  * Component for stand-alone mailchimp forms served via Caldera API
  *
@@ -112,6 +112,14 @@ const onSubmit = (values,processor) => {
 		body: JSON.stringify(data)
 	});
 };
+
+MailChimpForm.propTypes = {
+	form: PropTypes.object,
+	onSubmit: PropTypes.func,
+	onChange: PropTypes.func,
+	onBlur: PropTypes.func,
+};
+
 MailChimpForm.defaultProps = {
 	onSubmit,
 	hideOnSubmit: true,

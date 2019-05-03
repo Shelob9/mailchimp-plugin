@@ -17,7 +17,7 @@ use something\Mailchimp\Entities\SingleList;
 
 class GetList extends \something\Mailchimp\Endpoints\GetList
 {
-	use GetsSavedList;
+	use GetsSavedList, GetsSavedAccounts;
 
 	/**
 	 * @var CalderaMailChimp
@@ -41,6 +41,7 @@ class GetList extends \something\Mailchimp\Endpoints\GetList
 	}
 
 
+	/** @inheritdoc */
 	public function setModule(CalderaMailChimp $module): GetList
 	{
 		$this->module = $module;
@@ -69,7 +70,7 @@ class GetList extends \something\Mailchimp\Endpoints\GetList
 		if (is_numeric($apiKey)) {
 			return $this->userCanAccess($this->user, $request->getParam('apiKey'));
 		}
-		$savedLists = $this->module->getDatabase()->getAccountsTable()->findWhere('api_key', $apiKey);
+		$savedLists = $this->module->getDatabase()->getListsTable()->findWhere('api_key', $apiKey);
 		if (!empty($savedLists)) {
 			foreach ($savedLists as $list) {
 				if ($this->userCanAccess($this->user, $list[ 'id' ])) {
@@ -98,7 +99,7 @@ class GetList extends \something\Mailchimp\Endpoints\GetList
 
 			$listName = '';
 			if (!$this->listAccountId) {
-				$savedAccounts = $this->module->getDatabase()->getAccountsTable()->findWhere('api_key', $apiKey);
+				$savedAccounts = $this->getSavedAccountsByApiKey($apiKey);
 				if (!empty($savedAccounts)) {
 					foreach ($savedAccounts as $list) {
 						if ($apiKey === $list[ 'api_key' ]) {
@@ -109,7 +110,7 @@ class GetList extends \something\Mailchimp\Endpoints\GetList
 			}
 			try {
 				$list = $this->getController()->__invoke($request->getParam('listId'));
-				$savedAccounts = $this->module->getDatabase()->getAccountsTable()->findWhere('api_key', $apiKey);
+				$savedAccounts = $this->getSavedAccountsByApiKey($apiKey);
 				if (!empty($savedAccounts)) {
 					$lists = unserialize($savedAccounts[ 0 ][ 'data' ]);
 					foreach ($lists as $_list) {
@@ -163,6 +164,7 @@ class GetList extends \something\Mailchimp\Endpoints\GetList
 		$allowed = get_user_meta($user->ID, '_calderaMailChimpAccounts');
 		return is_array($allowed) && in_array((string)$accountId, $allowed);
 	}
+
 
 
 

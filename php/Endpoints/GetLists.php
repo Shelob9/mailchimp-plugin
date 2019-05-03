@@ -14,7 +14,7 @@ use calderawp\interop\Contracts\Rest\RestResponseContract as Response;
 use something\Mailchimp\Entities\Lists;
 
 class GetLists extends \something\Mailchimp\Endpoints\GetLists
-{
+{	use GetsSavedAccounts;
 
 
 	/**
@@ -71,8 +71,7 @@ class GetLists extends \something\Mailchimp\Endpoints\GetLists
 	public function handleRequest(Request $request): Response
 	{
 		$apiKey = $request->getParam('apiKey');
-		$saved = $this->module->getDatabase()->getAccountsTable()
-			->findWhere('api_key',$apiKey);
+		$saved = $this->getSavedAccountsByApiKey($apiKey);
 
 		if (empty($saved)) {
 			$response =  parent::handleRequest($request);
