@@ -109,18 +109,24 @@ function MailChimpSurveyForm(
 	 * On submission, advance to next question or set as completed.
 	 */
 	const updateForm = () => {
-		if( currentQuestionIndex === questions.length ){
+		if( currentQuestionIndex === questions.length -1 ){
 			setCompleted(true);
 		}else{
 			const nextQuestion = questions[currentQuestionIndex + 1];
+
 			setForm(createForm(
+
 				{
 					formId,
 					currentQuestion: nextQuestion,
-					emailField,
+					emailField:{
+						...emailField,
+						type: 'input',
+						html5type:'hidden',
+					},
 					submitButton,
 					questionRowId,
-					submitUrl
+					submitUrl,
 				}
 			));
 			setCurrentQuestionIndex( currentQuestionIndex + 1 );
@@ -156,7 +162,6 @@ function MailChimpSurveyForm(
 
 	return (
 		<Fragment>
-			<div>{currentQuestionIndex}</div>
 			<MailChimpForm
 				form={form}
 				onBlur={onBlur}
