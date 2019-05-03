@@ -5,19 +5,17 @@ import PropTypes from 'prop-types';
 
 function MailChimpSurveyForm(
 	{
+		submitUrl,
 		emailField,
-		initialQuestionId,
 		questions,
 		onChange,
 		onBlur,
 		onSubmit,
-		findNextQuestion,
-		findCurrentQuestion,
-		findQuestionIndex,
 		listId,
 	}
 ) {
 
+	const formId = `mc-subscribe-${listId}`;
 	/**
 	 * Track if survey is completed
 	 */
@@ -26,102 +24,107 @@ function MailChimpSurveyForm(
 	/**
 	 * Track current question
 	 */
-	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
-		findQuestionIndex(initialQuestionId,questions)
-	);
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
 
-	const emailFieldId = emailField.fieldId;
 	const submitButtonId = 'submitQuestion';
 	const submitButton = {"fieldId": submitButtonId, "fieldType": "submit", "value": "Subscribe"};
-	const initialQuestion = findCurrentQuestion(currentQuestionIndex, questions, currentQuestionIndex);
+	const initialQuestion = questions[currentQuestionIndex];
 
-	const initialProcessor = {
-		"type": "mc-subscribe",
-		"listId": listId,
-		"emailField": emailFieldId,
-		"mergeFields": [],
-		"groupFields": [initialQuestion.fieldId],
-		"submitUrl": "https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1/lists/subscribe"
-	};
+	const questionRowId = 'r1';
+	function createQuestionFieldRow(questionFieldId,questionRowId){
+		return {
+			rowId: questionRowId,
+			columns: [
+				{
+					columnId: `${questionRowId}-c1`,
+					fields: [questionFieldId],
+					width: 1,
+				}
+			]
+		}
+	}
+
+
+	function createOtherRow(emailFieldId,submitButtonId){
+		return {
+			rowId: 'r2',
+			columns: [
+				{
+					columnId: 'r2-c1',
+					fields: [emailFieldId],
+					width: '1/2',
+				},
+				{
+					columnId: 'r2-c2',
+					fields: [submitButtonId],
+					width: '1/2',
+				}
+			]
+		}
+	}
+
+	function createForm({formId,currentQuestion,emailField,submitButton,questionRowId,submitUrl}){
+		const processor = {
+			type: "mc-subscribe",
+			listId: listId,
+			emailField: emailField.fieldId,
+			mergeFields: [],
+			groupFields: [currentQuestion.fieldId],
+			submitUrl
+		};
+
+		return {
+			ID: formId,
+			fields: [
+				currentQuestion,
+				emailField,
+				submitButton
+			],
+			rows: [
+				createQuestionFieldRow(currentQuestion.fieldId,questionRowId),
+				createOtherRow(emailField.fieldId,submitButton.fieldId)
+			],
+			processors: [processor]
+		};
+	}
 
 	/**
-	 * Track processor changes
+	 * Create initial form and track its state
 	 */
-	const [processor, setProcessor] = useState(initialProcessor);
-
-	const initialForm = {
-		fields: [
-			initialQuestion,
-			emailField,
-			submitButton
-		],
-		rows: [
+	const [form, setForm] = useState(
+		createForm(
 			{
-				rowId: 'r1',
-				columns: [
-					{
-						columnId: 'r1-c1',
-						fields: [initialQuestion.fieldId],
-						width: 1,
-					}
-				]
-			},
-			{
-				rowId: 'r2',
-				columns: [
-					{
-						columnId: 'r2-c1',
-						fields: [emailFieldId],
-						width: '1/2',
-					},
-					{
-						columnId: 'r2-c2',
-						fields: [submitButtonId],
-						width: '1/2',
-					}
-				]
+				formId,
+				currentQuestion: initialQuestion,
+				emailField,
+				submitButton,
+				questionRowId,
+				submitUrl
 			}
-		],
-		processors: [processor]
-	};
-
-	const [form, setForm] = useState(initialForm);
-
+		)
+	);
 
 	/**
-	 * Update form and form processor
+	 * On submission, advance to next question or set as completed.
 	 */
 	const updateForm = () => {
-		const nextQuestion = findNextQuestion(currentQuestionIndex, questions);
-		if (nextQuestion) {
-			setCurrentQuestionIndex( findQuestionIndex(nextQuestion.fieldId,questions));
-			setProcessor({
-				...processor,
-				groupFields: [initialQuestion.fieldId]
-			});
-			setForm({
-				...form,
-				processors: [
-					...form.processors,
-					processor
-				]
-			});
-		} else {
+		if( currentQuestionIndex === questions.length ){
 			setCompleted(true);
-			setProcessor({
-				...processor,
-				groupFields: []
-			});
-			setForm({
-				...form,
-				processors: [
-					...form.processors,
-					processor
-				]
-			});
+		}else{
+			const nextQuestion = questions[currentQuestionIndex + 1];
+			setForm(createForm(
+				{
+					formId,
+					currentQuestion: nextQuestion,
+					emailField,
+					submitButton,
+					questionRowId,
+					submitUrl
+				}
+			));
+			setCurrentQuestionIndex( currentQuestionIndex + 1 );
 		}
-
 
 	};
 
@@ -133,7 +136,7 @@ function MailChimpSurveyForm(
 	 */
 	const submitHandler = (values) => {
 		return new Promise((resolve, reject) => {
-			onSubmit(values, processor).then(r => r.json()).then(r => {
+			onSubmit(values, form.processors[0]).then(r => r.json()).then(r => {
 					updateForm();
 					resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
 
@@ -144,14 +147,16 @@ function MailChimpSurveyForm(
 
 
 		});
-	}
+	};
 
 	if( completed ){
 		return <div>Completed</div>
 	}
 
+
 	return (
 		<Fragment>
+			<div>{currentQuestionIndex}</div>
 			<MailChimpForm
 				form={form}
 				onBlur={onBlur}
@@ -172,6 +177,9 @@ MailChimpSurveyForm.defaultProps = {
 	onBlur: () => {
 	},
 	onSubmit: () => {
+		return new Promise((resolve, reject) => {
+			resolve(new Response(JSON.stringify({})));
+		});
 	},
 	emailField: {
 		"fieldId": "mc-email",
@@ -181,27 +189,15 @@ MailChimpSurveyForm.defaultProps = {
 		"label": "Email",
 		"default": ""
 	},
-	findNextQuestion(currentQuestionIndex, questions) {
-		if (-1 !== currentQuestionIndex && currentQuestionIndex + 2 <= questions.length ) {
-			return questions[currentQuestionIndex + 1 ];
-		}
-		return false;
-	},
-	findCurrentQuestion(findIndex, questions, currentQuestionIndex) {
-		if (-1 !== currentQuestionIndex && findIndex <= questions.length) {
-			return questions[findIndex];
-		}
-		return false;
-	},
-	findQuestionIndex(questionId,questions){
-		return questions.findIndex(question => questionId === question.fieldId)
-	}
+
+	submitUrl: 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1/lists/subscribe'
+
 };
 
 MailChimpSurveyForm.propTypes = {
 	emailField: PropTypes.object.isRequired,
 	listId: PropTypes.string.isRequired,
-	initialQuestionId: PropTypes.string.isRequired,
+	submitUrl: PropTypes.string,
 	questions: PropTypes.array.isRequired,
 	onChange: PropTypes.func,
 	onBlur: PropTypes.func,

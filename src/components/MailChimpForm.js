@@ -35,7 +35,7 @@ function MailChimpForm({form, onChange, onBlur,onSubmit,hideOnSubmit}) {
 		return <div className={'error'}>{message}</div>
 	}
 	if (isSubmitting) {
-		return <Spinner/>;
+		return<Spinner/>;
 	}
 
 	return (
@@ -49,6 +49,8 @@ function MailChimpForm({form, onChange, onBlur,onSubmit,hideOnSubmit}) {
 				) => {
 					setIsSubmitting(true);
 					onSubmit(values,processor).then(r => r.json()).then(r => {
+							setIsSubmitting(false);
+
 							if(hideOnSubmit){
 								setMessage(r.message);
 								setIsCompleted(r);
