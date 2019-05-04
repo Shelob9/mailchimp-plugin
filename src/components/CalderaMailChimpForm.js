@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import {createSubscriber} from "../http/publicClient";
 import MailChimpForm from './MailChimpForm';
 
+/**
+ * Load remote MailChimp sign up form via the WordPress REST API
+ *
+ * @param listId
+ * @param apiRoot
+ * @param token
+ * @param hideOnSubmit
+ * @return {*}
+ * @constructor
+ */
 function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit}){
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [form, setForm] = useState({});

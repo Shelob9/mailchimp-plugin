@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@calderajs/components": "^0.6.4",
-    "@calderajs/forms": "^0.6.4",
+    "@calderajs/components": "^0.7.1",
+    "@calderajs/forms": "^0.7.1",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
