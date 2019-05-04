@@ -145,25 +145,28 @@ function MailChimpSurveyForm(
 	 * @return {Promise<any>}
 	 */
 	const submitHandler = (values) => {
+		function afterSubmit(r, reject, resolve) {
+			if (400 === r.data.status) {
+				setMessage(r.message);
+				reject(new Error(r.hasOwnProperty('message') ? r.message : 'Invalid'));
+			} else {
+				updateForm();
+				resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
+			}
+		}
+
 		return new Promise((resolve, reject) => {
 			const processor = form.processors[0];
 			if( 0 === currentQuestionIndex){
 				createSubscriber(values,processor).then(r => r.json()).then(r => {
-						if( 400 === r.data.status ){
-							setMessage(r.message);
-							reject(new Error(r.hasOwnProperty('message') ? r.message : 'Invalid'));
-						}else{
-							updateForm();
-							resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
-						}
+					afterSubmit(r, reject, resolve);
 				})
-					.catch(e => {
-						reject(e);
-					});
+				.catch(e => {
+					reject(e);
+				});
 			}else{
 				updateSubscriber(values,processor).then(r => r.json()).then(r => {
-					updateForm();
-					resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
+					afterSubmit(r, reject, resolve);
 				})
 				.catch(e => {
 					reject(e);
