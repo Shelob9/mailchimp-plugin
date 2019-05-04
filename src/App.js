@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MailChimpForm from './components/MailChimpForm'
+import CalderaMailChimpForm from './components/CalderaMailChimpForm'
 import MailChimpSurveyForm from './components/MailChimpSurveyForm'
 
 
@@ -62,7 +62,7 @@ function App() {
 
 				<div>
 					<h2>Basic Form</h2>
-					<MailChimpForm form={form} />
+					<CalderaMailChimpForm listId={'45907f0c59'} token={'1'} apiRoot={'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1/lists'} />
 				</div>
 				<div>
 					<h2>Survey Form</h2>

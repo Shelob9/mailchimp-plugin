@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react';
 import MailChimpForm from './MailChimpForm'
 import PropTypes from 'prop-types';
 //import {CalderaNotice} from '@calderajs/components';
+import {updateSubscriber,createSubscriber} from "../http/publicClient";
 
 function MailChimpSurveyForm(
 	{
@@ -142,14 +143,24 @@ function MailChimpSurveyForm(
 	 */
 	const submitHandler = (values) => {
 		return new Promise((resolve, reject) => {
-			onSubmit(values, form.processors[0]).then(r => r.json()).then(r => {
+			const processor = form.processors[0];
+			if( 0 === currentQuestionIndex){
+				createSubscriber(values,processor).then(r => r.json()).then(r => {
 					updateForm();
 					resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
-
+				})
+					.catch(e => {
+						reject(e);
+					});
+			}else{
+				updateSubscriber(values,processor).then(r => r.json()).then(r => {
+					updateForm();
+					resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
 				})
 				.catch(e => {
 					reject(e);
 				});
+			}
 
 
 		});

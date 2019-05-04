@@ -70,7 +70,7 @@ function MailChimpForm({form, onChange, onBlur,onSubmit,hideOnSubmit}) {
 						});
 				}}
 				onChange={(values) => {
-					console.log(values) //all field values
+					onChange(values) //all field values
 				}}
 			/>
 		</div>
@@ -97,6 +97,7 @@ MailChimpForm.propTypes = {
 
 MailChimpForm.defaultProps = {
 	onSubmit,
+	onChange: () => {},
 	hideOnSubmit: true,
 };
 export default MailChimpForm;
