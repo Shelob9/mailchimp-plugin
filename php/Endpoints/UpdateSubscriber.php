@@ -2,14 +2,11 @@
 
 
 namespace calderawp\CalderaMailChimp\Endpoints;
-
-
 use calderawp\caldera\restApi\Exception;
 use calderawp\CalderaMailChimp\CalderaMailChimp;
 use calderawp\DB\Exceptions\InvalidColumnException;
-use something\Mailchimp\Entities\SingleList;
 
-class AddSubscriber extends \something\Mailchimp\Endpoints\AddSubscriber
+class UpdateSubscriber extends \something\Mailchimp\Endpoints\UpdateSubscriber
 {
 	use GetsSavedList;
 
@@ -29,7 +26,7 @@ class AddSubscriber extends \something\Mailchimp\Endpoints\AddSubscriber
 	/**
 	 * @param CalderaMailChimp $module
 	 */
-	public function setModule(CalderaMailChimp $module): AddSubscriber
+	public function setModule(CalderaMailChimp $module): UpdateSubscriber
 	{
 		$this->module = $module;
 		return $this;
@@ -52,8 +49,4 @@ class AddSubscriber extends \something\Mailchimp\Endpoints\AddSubscriber
 		}
 		throw new Exception( 404, 'not found');
 	}
-
-
-
-
 }

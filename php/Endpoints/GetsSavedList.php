@@ -7,7 +7,9 @@ namespace calderawp\CalderaMailChimp\Endpoints;
 use something\Mailchimp\Entities\Groups;
 use something\Mailchimp\Entities\MergeVars;
 use something\Mailchimp\Entities\SingleList;
-
+use calderawp\caldera\restApi\Exception;
+use calderawp\CalderaMailChimp\CalderaMailChimp;
+use calderawp\DB\Exceptions\InvalidColumnException;
 trait GetsSavedList
 {
 
@@ -52,5 +54,22 @@ trait GetsSavedList
 		}
 		return null;
 
+	}
+
+	/**
+	 * @param string $listId
+	 *
+	 * @throws Exception
+	 * @throws InvalidColumnException|\calderawp\caldera\restApi\Exception
+	 */
+	protected function setList(string $listId): void
+	{
+		try {
+			$this->list = $this->getSavedList($listId);
+			return;
+		} catch (InvalidColumnException $e) {
+			throw  $e;
+		}
+		throw new Exception( 404, 'not found');
 	}
 }

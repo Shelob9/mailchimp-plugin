@@ -10,12 +10,15 @@ use calderawp\CalderaMailChimp\Endpoints\AddSubscriber;
 use calderawp\CalderaMailChimp\Endpoints\GetForm;
 use calderawp\CalderaMailChimp\Endpoints\GetList;
 use calderawp\CalderaMailChimp\Endpoints\GetLists;
+use calderawp\CalderaMailChimp\Endpoints\UpdateSubscriber;
 use calderawp\interop\Contracts\Rest\Endpoint;
 use Mailchimp\MailchimpLists;
 
 use something\Mailchimp\Controllers\CreateSubscriber as CreateSubscriptionController;
 use \something\Mailchimp\Controllers\GetList as GetListController;
 use \something\Mailchimp\Controllers\GetLists as GetListsController;
+use \something\Mailchimp\Controllers\UpdateSubscriber as UpdateSubscriberController;
+
 
 class RestApi
 {
@@ -112,6 +115,15 @@ class RestApi
 					$this->getMailchimpApi()
 				)
 			);
+
+		$this->endpoints[ UpdateSubscriber::class ] = (new UpdateSubscriber())
+			->setModule($module)
+			->setController(
+				new UpdateSubscriberController(
+					$this->getMailchimpApi()
+				)
+			);
+
 		$this->endpoints[ GetList::class ] = (new GetList())
 			->setModule($module)
 			->setController(
@@ -135,6 +147,7 @@ class RestApi
 					$this->getMailchimpApi()
 				)
 			);
+
 		/** @var Endpoint $endpoint */
 		foreach ($this->endpoints as $endpoint) {
 			$this->registerRouteWithWordPress($endpoint);
