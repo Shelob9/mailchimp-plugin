@@ -2,6 +2,8 @@ import {CalderaForm} from "@calderajs/forms";
 import React, {useState} from "react";
 import {PacmanLoader} from 'react-spinners';
 import PropTypes from 'prop-types';
+import {createSubscriber} from "../http/publicClient";
+
 /**
  * Component for stand-alone mailchimp forms served via Caldera API
  *
@@ -83,36 +85,7 @@ function MailChimpForm({form, onChange, onBlur,onSubmit,hideOnSubmit}) {
  * @return {*}
  */
 const onSubmit = (values,processor) => {
-	const getValue = (key) => {
-		if (values.hasOwnProperty(key)) {
-			return values[key];
-		}
-		return null;
-	};
-	const {listId, submitUrl} = processor;
-	const mergeFields = {};
-	const groupFields = {};
-	processor.mergeFields.forEach(field => {
-		mergeFields[field] = getValue(field);
-	});
-	processor.groupFields.forEach(field => {
-		groupFields[field] = getValue(field);
-	});
-
-
-	const data = {
-		email: getValue(processor.emailField),
-		mergeFields,
-		groupFields,
-		listId
-	};
-	return fetch(submitUrl, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data)
-	});
+	return createSubscriber(values,processor);
 };
 
 MailChimpForm.propTypes = {

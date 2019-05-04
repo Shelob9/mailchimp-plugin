@@ -62,7 +62,7 @@ function App() {
 
 				<div>
 					<h2>Basic Form</h2>
-
+					<MailChimpForm form={form} />
 				</div>
 				<div>
 					<h2>Survey Form</h2>
