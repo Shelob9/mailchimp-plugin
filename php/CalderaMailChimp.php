@@ -32,6 +32,9 @@ final class CalderaMailChimp
 	 */
 	protected $tokenApi;
 
+	/**
+	 * @var WordPressUserFactory
+	 */
 	protected $userFactory;
 
 	/** @inheritdoc */
@@ -46,6 +49,12 @@ final class CalderaMailChimp
 
 	}
 
+	/**
+	 * Get current WordPress User
+	 *
+	 * @return \WP_User
+	 * @throws \calderawp\caldera\restApi\Authentication\UserNotFoundException
+	 */
 	public function getCurrentUser()
 	{
 		if( ! $this->user ){
@@ -56,6 +65,8 @@ final class CalderaMailChimp
 
 
 	/**
+	 * Get the database API
+	 *
 	 * @return Database
 	 */
 	public function getDatabase(): Database
@@ -64,6 +75,8 @@ final class CalderaMailChimp
 	}
 
 	/**
+	 * Update instance of database API
+	 *
 	 * @param Database $database
 	 *
 	 * @return CalderaMailChimp
@@ -75,6 +88,8 @@ final class CalderaMailChimp
 	}
 
 	/**
+	 * Get WordPress JWT Authentication
+	 *
 	 * @return WordPressUserJwt
 	 */
 	public function getJwt(): WordPressUserJwt
@@ -83,6 +98,8 @@ final class CalderaMailChimp
 	}
 
 	/**
+	 * Get API route for the token exchange
+	 *
 	 * @return WpRestApi
 	 */
 	public function getTokenApi(): WpRestApi
@@ -93,6 +110,8 @@ final class CalderaMailChimp
 
 
 	/**
+	 * Setup database connection
+	 *
 	 * @param Database $database
 	 *
 	 * @throws \WpDbTools\Exception\RuntimeException
