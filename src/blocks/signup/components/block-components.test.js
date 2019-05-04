@@ -25,7 +25,7 @@ describe('Display component', () => {
 		expect( component.toJSON()).toMatchSnapshot();
 	});
 
-	const listFieldUiConfig= [];
+	const listFieldUiConfig= [];//@todo find a mock for this.
 	it( 'shows edit form', () => {
 		const onChange = jest.fn();
 		const component = renderer.create(
@@ -33,11 +33,13 @@ describe('Display component', () => {
 				listId={'listId'}
 				onChangeListId={onChange}
 				listFields={listFieldUiConfig}
+				instanceId={'foo'}
 			/>
 		);
 		expect( component.toJSON()).toMatchSnapshot();
 	});
 });
+
 
 
 
