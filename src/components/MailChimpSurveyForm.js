@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import MailChimpForm from './MailChimpForm'
 import PropTypes from 'prop-types';
-//import {CalderaNotice} from '@calderajs/components';
+import {CalderaNotice} from '@calderajs/components';
 import {updateSubscriber,createSubscriber} from "../http/publicClient";
 
 function MailChimpSurveyForm(
@@ -21,6 +21,9 @@ function MailChimpSurveyForm(
 	 * Track if survey is completed
 	 */
 	const [completed,setCompleted] = useState(false);
+
+	const [message,setMessage] = useState('');
+
 
 	/**
 	 * Track current question
@@ -146,8 +149,13 @@ function MailChimpSurveyForm(
 			const processor = form.processors[0];
 			if( 0 === currentQuestionIndex){
 				createSubscriber(values,processor).then(r => r.json()).then(r => {
-					updateForm();
-					resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
+						if( 400 === r.data.status ){
+							setMessage(r.message);
+							reject(new Error(r.hasOwnProperty('message') ? r.message : 'Invalid'));
+						}else{
+							updateForm();
+							resolve(new Response(JSON.stringify({message: r.hasOwnProperty('message') ? r.message : 'Continue'})));
+						}
 				})
 					.catch(e => {
 						reject(e);
@@ -173,6 +181,16 @@ function MailChimpSurveyForm(
 
 	return (
 		<Fragment>
+			{message &&
+				<CalderaNotice
+					message={
+						{
+							message:message,
+							error: true,
+						}
+					}
+				/>
+			}
 			<MailChimpForm
 				form={form}
 				onBlur={onBlur}

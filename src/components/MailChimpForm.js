@@ -33,15 +33,17 @@ function MailChimpForm({form, onChange, onBlur,onSubmit,hideOnSubmit}) {
 	if (completed) {
 		return <div className={'success'}>{message}</div>
 	}
-	if (message) {
-		return <div className={'error'}>{message}</div>
-	}
+
 	if (isSubmitting) {
 		return<Spinner/>;
 	}
 
 	return (
 		<div>
+			{message &&
+				<div className={'error'}>{message}</div>
+			}
+
 			<CalderaForm
 				form={form}
 				onSubmit={(
