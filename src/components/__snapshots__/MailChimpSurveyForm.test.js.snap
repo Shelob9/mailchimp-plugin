@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Forms 1`] = `
+Array [
+  "",
+  <div>
+    
+    <div
+      className="caldera"
+    >
+      <form
+        className="mc-subscribe-a111 caldera-form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="sc-bdVaJa caldera-form-row caldera-row sc-bwzfXH pjOvZ"
+        >
+          <div
+            className="caldera-column width-1 sc-bdVaJa iHZvIS"
+            id="r1-c1"
+          >
+            <div
+              className="caldera-field-group caldera-field-area-checkbox caldera-field-wrapper caldera-field-wrapper-checkbox"
+            >
+              <input
+                checked={false}
+                className="caldera-field caldera-field-checkbox"
+                id="fakeGroup2"
+                onChange={[Function]}
+                type="checkbox"
+                value="1"
+              />
+              <label
+                className="caldera-field-label caldera-field-label-checkbox"
+                htmlFor="fakeGroup2"
+              >
+                Are you new to JavaScript
+                 
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-bdVaJa caldera-form-row caldera-row sc-bwzfXH pjOvZ"
+        >
+          <div
+            className="caldera-column width-1 sc-bdVaJa iHZvIS"
+            id="r2-c1"
+          />
+          <div
+            className="caldera-column width-1 sc-bdVaJa iHZvIS"
+            id="r2-c2"
+          >
+            <div
+              className="caldera-field-group caldera-field-area-submit caldera-field-wrapper caldera-field-wrapper-submit"
+            >
+              <label
+                className="caldera-field-label caldera-field-label-submit"
+                htmlFor="submitQuestion"
+              >
+                
+                 
+              </label>
+              <input
+                className="caldera-field caldera-field-text"
+                disabled={false}
+                id="submitQuestion"
+                type="submit"
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>,
+]
+`;
