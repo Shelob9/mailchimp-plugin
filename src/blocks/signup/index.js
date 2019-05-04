@@ -1,5 +1,14 @@
-export const name = 'caldera-mailchimp/signup';
+import {Display} from "./components/Display";
+import {Edit} from "./components/Edit";
 
+export const name = 'caldera-mailchimp/signup';
+const attributes = {
+	listId: {
+		type: 'string',
+		default: 'List Id'
+	},
+
+}
 export const options = {
 	title: 'Mailchimp Signup Form',
 
@@ -9,19 +18,29 @@ export const options = {
 
 	category: 'widgets',
 
-	edit() {
-		return (
-			<div>
-				<h2>Block B preview</h2>
-			</div>
-		);
+	edit({attributes,setAttributes,instanceId}) {
+		const {listId} = attributes;
+		const form = {};//@todo state
+		const listFields = {}; //@todo
+		const onChangeListId = (listId ) => setAttributes({listId});
+		return (<div>
+			<Display
+				listId={listId}
+				form={form}
+				Fallback={() => (<div>Choose</div>)}
+			/>
+			<Edit
+				listFields={listFields}
+				listId={listId}
+				onChangeListId={onChangeListId}
+				instanceId={instanceId}
+			/>
+		</div>)
+
+
 	},
 
-	save() {
-		return (
-			<div>
-				<h2>Block B!</h2>
-			</div>
-		);
+	save({attributes}) {
+		return null;
 	},
 };

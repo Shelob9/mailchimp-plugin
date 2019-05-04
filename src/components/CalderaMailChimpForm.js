@@ -4,7 +4,7 @@ import {createSubscriber} from "../http/publicClient";
 import MailChimpForm from './MailChimpForm';
 
 /**
- * Load remote MailChimp sign up form via the WordPress REST API
+ * Load remote MailChimp sign up mailChimpTestForm via the WordPress REST API
  *
  * @param listId
  * @param apiRoot

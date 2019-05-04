@@ -94,7 +94,7 @@ function MailChimpSurveyForm(
 	}
 
 	/**
-	 * Create initial form and track its state
+	 * Create initial mailChimpTestForm and track its state
 	 */
 	const [form, setForm] = useState(
 		createForm(

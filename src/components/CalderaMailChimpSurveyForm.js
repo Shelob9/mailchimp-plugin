@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MailChimpSurveyForm from './MailChimpSurveyForm';
 
 /**
- * Load remote MailChimp sign up form via the WordPress REST API
+ * Load remote MailChimp sign up mailChimpTestForm via the WordPress REST API
  *
  * @param listId
  * @param apiRoot

@@ -105,7 +105,7 @@ class GetForm extends GetList
 			[
 				'type' => 'mc-subscribe',
 				'listId' => $listId,
-				'emailField' => 'mc-email',
+				'surveyEmailField' => 'mc-email',
 				'mergeFields' => $entity->getMergeFieldIds(),
 				'groupFields' => $entity->getGroupFieldIds(),
 				'submitUrl' => rest_url('/caldera-api/v1/messages/mailchimp/v1/lists/subscribe' )
@@ -120,7 +120,7 @@ class GetForm extends GetList
 	 */
 	public function getUri(): string
 	{
-		return parent::getUri() .'/form';
+		return parent::getUri() .'/mailChimpTestForm';
 	}
 
 	/**

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MailChimp form Loads if it has proper form 1`] = `
+exports[`MailChimp mailChimpTestForm Loads if it has proper mailChimpTestForm 1`] = `
 <div>
   
   <div
@@ -214,7 +214,7 @@ exports[`MailChimp form Loads if it has proper form 1`] = `
 </div>
 `;
 
-exports[`MailChimp form Shows spinner if form does not have fields 1`] = `
+exports[`MailChimp mailChimpTestForm Shows spinner if mailChimpTestForm does not have fields 1`] = `
 <div>
   <div
     className="css-16tm1g7-wrapper-wrapper"

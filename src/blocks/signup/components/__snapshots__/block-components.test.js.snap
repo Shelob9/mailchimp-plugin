@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Display component Shows mailchimp form 1`] = `
+<div>
+  <div
+    className="css-16tm1g7-wrapper-wrapper"
+  >
+    <div
+      className="css-1anlcob-pacmanStyle"
+    />
+    <div
+      className="css-1oj2eaa-pacmanStyle"
+    />
+    <div
+      className="css-1y2ttxx-ballStyle"
+    />
+    <div
+      className="css-im5qma-ballStyle"
+    />
+    <div
+      className="css-10tjdos-ballStyle"
+    />
+    <div
+      className="css-x3nw5t-ballStyle"
+    />
+  </div>
+</div>
+`;
+
+exports[`Display component shows edit form 1`] = `
+<div>
+  <div
+    className="caldera"
+  >
+    <form
+      className="horizontal-form-undefined caldera-form"
+      onSubmit={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`Display component shows fallback if no list id 1`] = `
+<div>
+  Fallback
+</div>
+`;
+
+exports[`DisplayA component shows message 1`] = `
+<span>
+  The Words
+</span>
+`;
+
+exports[`DisplayA component shows message in bold 1`] = `
+<span>
+  <strong>
+    The Words
+  </strong>
+</span>
+`;
