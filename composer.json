@@ -35,7 +35,11 @@
     "autoload-dev": {
         "psr-4": {
             "calderawp\\CalderaMailChimp\\Tests\\": "tests"
-        }
+        },
+        "files" : [
+            "inc/asset-loader.php",
+            "inc/scripts.php"
+        ]
     },
     "scripts": {
         "test": "composer test:unit",

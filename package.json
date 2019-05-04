@@ -1,23 +1,73 @@
 {
-  "name": "wordpress-plugin-boilerplate",
+  "name": "@calderajs/caldera-mailchimp",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build": "webpack --config=.config/webpack.config.prod.js",
+    "start": "yarn build && webpack-dev-server --config .config/webpack.config.dev.js",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "test": "jest --watch"
+  },
   "dependencies": {
-    "@calderajs/components": "^0.7.1",
     "@calderajs/forms": "^0.7.1",
+    "@babel/preset-env": "^7.3.1",
+    "@wordpress/components": "^7.0.7",
+    "@wordpress/editor": "^9.0.9",
+    "@wordpress/element": "^2.1.9",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-spinners": "^0.5.4",
-    "react-test-renderer": "^16.8.6",
-    "react-wp-scripts": "0.2.0"
+    "react-test-renderer": "^16.8.6"
   },
-  "scripts": {
-    "start": "react-wp-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@babel/core": "7.0.0",
+    "@babel/plugin-proposal-async-generator-functions": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@storybook/react": "^4.1.11",
+    "@wordpress/babel-preset-default": "^3.0.1",
+    "add": "^2.0.6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "glob-loader": "^0.3.0",
+    "jest": "^24.0.0",
+    "react-test-renderer": "^16.7.0",
+    "signal-exit": "^3.0.2",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-manifest-plugin": "^2.0.4",
+    "yarn": "^1.13.0"
+  },
+  "jest": {
+    "automock": false,
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/config/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "setupFiles": [
+      "<rootDir>/.config/jest/test-setup.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "../src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
   },
   "proxy": "https://formcalderas.lndo.site/"
 }
