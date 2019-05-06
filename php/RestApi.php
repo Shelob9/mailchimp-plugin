@@ -7,6 +7,7 @@ namespace calderawp\CalderaMailChimp;
 use calderawp\caldera\restApi\Authentication\WordPressUserJwt;
 use calderawp\caldera\restApi\Traits\CreatesWordPressEndpoints;
 use calderawp\CalderaMailChimp\Endpoints\AddSubscriber;
+use calderawp\CalderaMailChimp\Endpoints\GetAccounts;
 use calderawp\CalderaMailChimp\Endpoints\GetForm;
 use calderawp\CalderaMailChimp\Endpoints\GetList;
 use calderawp\CalderaMailChimp\Endpoints\GetLists;
@@ -147,6 +148,9 @@ class RestApi
 					$this->getMailchimpApi()
 				)
 			);
+
+		$this->endpoints[ GetAccounts::class ] = (new GetAccounts())
+			->setModule($module);
 
 		/** @var Endpoint $endpoint */
 		foreach ($this->endpoints as $endpoint) {

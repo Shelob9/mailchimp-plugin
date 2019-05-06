@@ -42,26 +42,7 @@ class GetLists extends \something\Mailchimp\Endpoints\GetLists
 	}
 
 
-	/**
-	 * @param Request $request
-	 *
-	 * @return bool
-	 */
-	public function authorizeRequest(Request $request): bool
-	{
-		if(empty($this->getToken($request))){
-			return false;
-		}
-		try {
-			/** @var \WP_User $user */
-			$this->user = $this->getJwt()->userFromToken($this->getToken($request));
-		} catch (AuthenticationException $e) {
-			return false;
-		} catch (UserNotFoundException $e) {
-			return false;
-		}
-		return $this->user->has_cap( 'manage_options' );
-	}
+
 
 	/**
 	 * @param Request $request
