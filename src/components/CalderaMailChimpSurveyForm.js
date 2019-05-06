@@ -17,16 +17,30 @@ function CalderaMailChimpSurveyForm({listId, apiRoot, token}) {
 	const [form, setForm] = useState({});
 	const getFormUrl = `${apiRoot}/${listId}/form?token=${token}`;
 
+	/**
+	 * Find the MailChimp processor in form
+	 * @param form
+	 */
 	function findProcessor(form) {
 		return form.processors.find(processor => 'mc-subscribe' === processor.type);
 	}
 
+	/**
+	 * Get the email field from form
+	 *
+	 * @param form
+	 */
 	function getEmailField(form) {
 		const processor = findProcessor(form);
 		const emailFieldId = processor.emailField;
 		return form.fields.find(field => emailFieldId === field.fieldId);
 	}
 
+	/**
+	 * Get the group fields
+	 *
+	 * @param form
+	 */
 	function getGroupFields(form) {
 		const processor = findProcessor(form);
 		const groupFieldIds = processor.groupFields;
@@ -39,7 +53,6 @@ function CalderaMailChimpSurveyForm({listId, apiRoot, token}) {
 		fetch(getFormUrl)
 			.then(r => r.json())
 			.then(r => {
-				console.log(r);
 				setForm(r);
 				setIsLoaded(true);
 			});

@@ -27,12 +27,17 @@ const externals = [
 	'element',
 	'i18n',
 	'plugins',
+	'editor',
+	'block-editor',
 ].reduce( ( externals, name ) => ( {
 	...externals,
 	[ `@wordpress/${ name }` ]: `wp.${ camelCaseDash( name ) }`,
 } ), {
 	wp: 'wp',
 } );
+externals[ 'lodash']={
 
+	root: '_' // indicates global variable
+};
 module.exports = externals;
 

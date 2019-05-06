@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "build": "webpack --config=.config/webpack.config.prod.js",
-    "start": "yarn build && webpack-dev-server --config .config/webpack.config.dev.js",
+    "start": "webpack-dev-server --config .config/webpack.config.dev.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest --watch"
   },
   "dependencies": {
-    "@calderajs/forms": "^0.7.1",
     "@babel/preset-env": "^7.3.1",
+    "@calderajs/forms": "^0.7.1",
+    "@wordpress/block-editor": "^2.0.1",
     "@wordpress/components": "^7.0.7",
     "@wordpress/editor": "^9.0.9",
     "@wordpress/element": "^2.1.9",
@@ -18,8 +19,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-spinners": "^0.5.4",
-    "react-test-renderer": "^16.8.6"
+    "react-spinners": "^0.5.4"
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
@@ -38,7 +38,7 @@
     "enzyme-adapter-react-16": "^1.8.0",
     "glob-loader": "^0.3.0",
     "jest": "^24.0.0",
-    "react-test-renderer": "^16.7.0",
+    "react-test-renderer": "^16.8.6",
     "signal-exit": "^3.0.2",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",

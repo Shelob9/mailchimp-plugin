@@ -1,6 +1,6 @@
 import {Display} from "./components/Display";
 import {Edit} from "./components/Edit";
-import {InspectorControls} from '@wordpress/components';
+import {InspectorControls} from '@wordpress/editor';
 import {Fragment} from "react";
 export const name = 'caldera-mailchimp/signup';
 const attributes = {

@@ -91,6 +91,11 @@ function enqueue_assets( $manifest_path, $opts = [] ) {
 			continue;
 		}
 
+		//Upgrade to HTTPS
+		if( is_ssl() ){
+			$asset_uri = preg_replace("/^http:/i", "https:", $asset_uri);
+		}
+
 		if ( $is_js ) {
 			wp_enqueue_script(
 				$opts['handle'],

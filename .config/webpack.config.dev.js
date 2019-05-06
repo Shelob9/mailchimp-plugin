@@ -31,6 +31,7 @@ module.exports = {
 
 	// Allow config to override shared devServer properties.
 	devServer: {
+		https: true,
 		headers: {
 			'Access-Control-Allow-Origin': '*',
 		},
