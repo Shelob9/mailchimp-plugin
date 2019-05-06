@@ -65,6 +65,21 @@ final class CalderaMailChimp
 
 
 	/**
+	 * Get the JWT Token for current user
+	 *
+	 * @return string
+	 */
+	public function getCurrentUserToken()
+	{
+		return $this
+			->getJwt()
+			->tokenFromUser(
+				get_user_by('ID',get_current_user_id() )
+			);
+
+	}
+
+	/**
 	 * Get the database API
 	 *
 	 * @return Database

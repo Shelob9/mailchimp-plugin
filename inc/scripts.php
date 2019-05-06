@@ -12,14 +12,17 @@ function setup() {
 
 /**
  * Enqueue editor assets based on the generated `asset-manifest.json` file.
+ *
+ *
  */
-function enqueue_block_editor_assets() {
+function enqueue_block_editor_assets()
+{
 	$plugin_path  = trailingslashit( plugin_dir_path( dirname( __FILE__ ) ) );
 	$plugin_url   = trailingslashit( plugin_dir_url( dirname( __FILE__ ) ) );
 	$dev_manifest = $plugin_path . 'build/asset-manifest.json';
 
 	$opts = [
-		'handle' => 'hmr-demo',
+		'handle' => 'caldera-mailchimp',
 		'scripts' => [
 			'wp-blocks',
 			'wp-data',
@@ -54,4 +57,6 @@ function enqueue_block_editor_assets() {
 			);
 		}
 	}
+
+
 }

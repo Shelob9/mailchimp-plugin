@@ -38,7 +38,6 @@ add_action('plugins_loaded', function () {
 
 	//include autoloader
 	include_once __DIR__ . '/vendor/autoload.php';
-	\calderawp\CalderaMailChimp\Scripts\setup();
 
 
 	$module = new \calderawp\CalderaMailChimp\CalderaMailChimp(
@@ -51,6 +50,18 @@ add_action('plugins_loaded', function () {
 	 */
 	do_action( 'CalderaMailChimp', $module );
 });
+
+add_action( 'CalderaMailChimp', function( \calderawp\CalderaMailChimp\CalderaMailChimp $module){
+	\calderawp\CalderaMailChimp\Scripts\setup();
+
+	add_action( 'enqueue_block_editor_assets', function() use ($module){
+		wp_localize_script('caldera-mailchimp', 'CALDERA_MAILCHIMP', [
+			'token' => esc_attr($module->getCurrentUserToken()),
+			'apiRoot' => esc_url_raw(rest_url('/caldera-api/v1/messages/mailchimp'))
+		]);
+	},25 );
+
+},10);
 
 
 
