@@ -2,16 +2,21 @@ import {Display} from "./components/Display";
 import {Edit} from "./components/Edit";
 import {InspectorControls} from '@wordpress/editor';
 import {Fragment} from "react";
-import {select } from '@wordpress/data';
+import {select,dispatch } from '@wordpress/data';
 import {CALDERA_MAILCHIMP_STORE} from "../../store";
-
+import {Placeholder} from '@wordpress/components';
 export const name = 'caldera-mailchimp/signup';
 
 const attributes = {
 	listId: {
 		type: 'string',
-		default: 'List Id'
+		default: ''
 	},
+	accountId: {
+		type: 'integer',
+		default: 0
+	},
+
 
 };
 
@@ -23,25 +28,44 @@ const attributes = {
  * @return {*}
  * @constructor
  */
-export function SignupBlockEdit({attributes, setAttributes, instanceId}) {
-	const {listId} = attributes;
+export function SignupBlockEdit(
+	{
+		listId,
+		setListId,
+		accountId,
+		setAccountId,
+		instanceId,
+		listFields,
+		chooseAccountField,
+		adminApiClient
+	}
+) {
+
 	const form = {};//@todo state
-	const listFields = {}; //@todo
-	const onChangeListId = (listId) => setAttributes({listId});
-	console.log(select( CALDERA_MAILCHIMP_STORE).getAccounts());
-	console.log(select( CALDERA_MAILCHIMP_STORE).getAccounts());
+
+
+
 	return (
 		<Fragment>
 			<Display
 				listId={listId}
 				form={form}
-				Fallback={() => (<div>Choose</div>)}
+				Fallback={() => (
+					<Placeholder>
+						Use Block Settings For Form
+					</Placeholder>
+
+				)}
 			/>
 			<InspectorControls>
 				<Edit
-					listFields={listFields}
+					accountId={accountId}
+					listFieldConfig={listFields}
 					listId={listId}
-					onChangeListId={onChangeListId}
+					onChangeListId={setListId}
+					chooseAccountField={chooseAccountField}
+					onChangeAccountId={setAccountId}
+					adminApiClient={adminApiClient}
 					instanceId={instanceId}
 				/>
 			</InspectorControls>
@@ -58,9 +82,34 @@ export const options = {
 	category: 'widgets',
 
 	edit({attributes,setAttributes,instanceId}) {
-		return SignupBlockEdit({attributes,setAttributes,instanceId});
+		const {
+			listId,
+			accountId
+		} = attributes;
+		const setAccountId = (accountId) => {
+			setAttributes({accountId});
+		};
+		const setListId = (listId) => setAttributes({listId});
+		const listFields =  select(CALDERA_MAILCHIMP_STORE).getListsUi(accountId);
+		if( Array.isArray(listFields) && ! listId  && listFields.length){
+			if( listFields[0].options.length){
+				setListId(listFields[0].options[0].value);
+			}
+		}
+		const chooseAccountField =  select(CALDERA_MAILCHIMP_STORE).getAccountsUi();
+		const adminApiClient = 	select(CALDERA_MAILCHIMP_STORE).getClient();
+		return SignupBlockEdit({
+			listId,
+			setListId,
+			accountId,
+			setAccountId,
+			instanceId,
+			listFields,
+			chooseAccountField,
+			adminApiClient
+		});
 	},
-	save({attributes}) {
+	save({attributes,className}) {
 		return null;
 	},
 };

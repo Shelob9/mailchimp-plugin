@@ -8,7 +8,18 @@ use calderawp\CalderaMailChimp\Asset_Loader;
 
 function setup() {
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_editor_assets' );
+	add_action( 'wp_enqueue_scripts', function(){
+		$plugin_path  = trailingslashit( plugin_dir_path( dirname( __FILE__ ) ) );
+		$plugin_url   = trailingslashit( plugin_dir_url( dirname( __FILE__ ) ) );
+
+		wp_enqueue_script('caldera-mailchimp-front', $plugin_url . 'build/front.js',
+			[],
+			filemtime( $plugin_path . 'build/editor.js' ),
+			true);
+});
 }
+
+
 
 /**
  * Enqueue editor assets based on the generated `asset-manifest.json` file.

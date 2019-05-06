@@ -11,8 +11,14 @@ import { select, dispatch, registerStore} from '@wordpress/data';
  * Import and setup store
  */
 import {calderaMailChimpStore,CALDERA_MAILCHIMP_STORE} from "./store";
-registerStore( CALDERA_MAILCHIMP_STORE,calderaMailChimpStore);
+const {subscribe,getState} = registerStore( CALDERA_MAILCHIMP_STORE,calderaMailChimpStore);
+subscribe(() => {
+	console.log(getState());
 
+});
+
+window._lodash = window._;
+window.lodash = window._;
 /**
  * No-op function for use as a default argument value.
  *

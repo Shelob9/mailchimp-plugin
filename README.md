@@ -44,6 +44,15 @@ Tests uses phpunit as the test runner, as well as for assertions and [Mockery](h
 
 Install: `yarn install`
 
+## Development
+* Start webpack development server
+    - `yarn start`
+
+WordPress will automatically detect and load the script from the dev server based on the presence of the `asset-manifest.json` the dev server outputs into the build directory. Hot reloading is only provided while the dev server is running.
+
+You likely will see errors in the console caused by being unable to connect to webpack dev server. You need to visit the [dev server](https://localhost:3030/build/) in the browser and instruct it to trust the self-signed certificate.
+
+
 ### Tests
 * Start webpack development server
     - `yarn start`

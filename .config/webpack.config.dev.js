@@ -19,7 +19,7 @@ onExit( () => {
 } );
 
 const port = parseInt( process.env.PORT, 10 ) || 3030;
-const publicPath = `http://localhost:${ port }/build/`;
+const publicPath = `https://localhost:${ port }/build/`;
 
 /**
  * Theme development build configuration.
@@ -39,6 +39,7 @@ module.exports = {
 		watchOptions: {
 			aggregateTimeout: 300,
 		},
+		disableHostCheck: true,
 		stats: {
 			all: false,
 			assets: true,
@@ -57,6 +58,7 @@ module.exports = {
 	// Specify where the code comes from.
 	entry: {
 		editor: join( process.cwd(), 'src', 'index.js' ),
+		front: join( process.cwd(), 'src', 'front.js' ),
 	},
 	output: {
 		// Add /* filename */ comments to generated require()s in the output.
@@ -92,5 +94,8 @@ module.exports = {
 		} ),
 		// Enable HMR.
 		new webpack.HotModuleReplacementPlugin(),
+		new webpack.ProvidePlugin({
+			'lodash': '_',
+		})
 	],
 };

@@ -44,7 +44,7 @@ class GetAccounts implements EndpointContract
 	 */
 	public function getUri(): string
 	{
-		return '/messages/mailchimp/accounts';
+		return '/messages/mailchimp/v1/accounts';
 	}
 
 	/**
@@ -91,8 +91,14 @@ class GetAccounts implements EndpointContract
 				'options' => []
 			];
 			if( ! empty( $accounts ) ){
+				$usedValues = [];
 				foreach ( $accounts as $account ){
-					$field['options'] = [
+					if( in_array( $account['id'], $usedValues)){
+						continue;
+					}
+					$usedValues[] = $account['id'];
+
+					$field['options'][] = [
 						'value' => $account['id'],
 						'label' => $account['apiKey']
 					];

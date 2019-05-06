@@ -1,3 +1,5 @@
+import {prepareData} from "./publicClient";
+
 const getLists = (
 	{
 		apiRoot,
@@ -20,6 +22,23 @@ const getListsUi = (
 	return fetch(url);
 };
 
+const saveApiKey = ({
+	apiRoot,
+	token,
+	apiKey
+}) => {
+	const url =`${apiRoot}/accounts`
+	return fetch(url,{
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			apiKey,
+			token
+		})
+	});
+}
 
 const getAccounts = (
 	{
@@ -62,6 +81,13 @@ function AdminClient(apiRoot,token) {
 				token,
 				apiKey
 			});
+		},
+		saveApiKey(apiKey){
+			return  saveApiKey({
+				apiRoot,
+				token,
+				apiKey
+			});
 		}
 	};
 
@@ -72,6 +98,7 @@ export {
 	getAccounts,
 	getAccountsUi,
 	getListsUi,
-	getLists
+	getLists,
+	saveApiKey
 }
 

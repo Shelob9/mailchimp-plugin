@@ -17,7 +17,7 @@ const field = {
  * @return {*}
  * @constructor
  */
-export const AddApiKey = ({onChange,instanceId,apiKey}) => {
+export const AddApiKey = ({onChange,instanceId,apiKey,onSaveApiKey}) => {
 	const onSave = () => alert(1);
 	return(
 		<Fragment>
@@ -30,7 +30,7 @@ export const AddApiKey = ({onChange,instanceId,apiKey}) => {
 				instanceId={`caldera-mc-select-${instanceId}` }
 			/>
 			<button
-				onClick={onSave}
+				onClick={onSaveApiKey}
 				id={`${instanceId}-mc-add-api-key`}
 
 				title={'Save API Key'}

@@ -11,6 +11,7 @@ use calderawp\CalderaMailChimp\Endpoints\GetAccounts;
 use calderawp\CalderaMailChimp\Endpoints\GetForm;
 use calderawp\CalderaMailChimp\Endpoints\GetList;
 use calderawp\CalderaMailChimp\Endpoints\GetLists;
+use calderawp\CalderaMailChimp\Endpoints\SaveAccount;
 use calderawp\CalderaMailChimp\Endpoints\UpdateSubscriber;
 use calderawp\interop\Contracts\Rest\Endpoint;
 use Mailchimp\MailchimpLists;
@@ -142,6 +143,14 @@ class RestApi
 			);
 
 		$this->endpoints[ GetLists::class ] = (new GetLists())
+			->setModule($module)
+			->setController(
+				new GetListsController(
+					$this->getMailchimpApi()
+				)
+			);
+
+		$this->endpoints[ SaveAccount::class ] = (new SaveAccount())
 			->setModule($module)
 			->setController(
 				new GetListsController(

@@ -14,11 +14,14 @@ import {Field} from '@calderajs/components';
 export const SelectList = ({listFieldConfig,listId,setListId,instanceId}) => (
 	<Fragment>
 		<Field
-			field={listFieldConfig}
+			field={{
+				...listFieldConfig,
+				fieldId: `caldera-mc-select-list-${instanceId}`,
+				value: listId,
+			}}
 			onChange={(newValue)=>{
 				setListId(newValue);
 			}}
-			instanceId={`caldera-mc-select-${instanceId}` }
 		/>
 	</Fragment>
 );

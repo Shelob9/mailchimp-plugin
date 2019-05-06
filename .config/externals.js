@@ -20,15 +20,17 @@ const camelCaseDash = string => string.replace(
 /**
  * Define externals to load components through the wp global.
  */
-const externals = [
+let externals = [
 	'blocks',
 	'data',
 	'edit-post',
 	'element',
 	'i18n',
 	'plugins',
+	'components',
 	'editor',
 	'block-editor',
+	'keycodes'
 ].reduce( ( externals, name ) => ( {
 	...externals,
 	[ `@wordpress/${ name }` ]: `wp.${ camelCaseDash( name ) }`,
@@ -36,8 +38,35 @@ const externals = [
 	wp: 'wp',
 } );
 externals[ 'lodash']={
-
+		commonjs: 'lodash',
+		amd: 'lodash',
+		root: '_' // indicates global variable
+};
+externals[ '_lodash']={
+	commonjs: 'lodash',
+	amd: 'lodash',
 	root: '_' // indicates global variable
 };
+/**
+
+externals = {
+	...externals,
+	react: {
+		root: 'React',
+		commonjs2: 'react',
+		commonjs: 'react',
+		amd: 'react',
+		umd: 'react',
+	},
+	'react-dom': {
+		root: 'ReactDOM',
+		commonjs2: 'react-dom',
+		commonjs: 'react-dom',
+		amd: 'react-dom',
+		umd: 'react-dom',
+	},
+}
+ **/
+
 module.exports = externals;
 

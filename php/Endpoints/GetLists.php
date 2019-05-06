@@ -52,6 +52,14 @@ class GetLists extends \something\Mailchimp\Endpoints\GetLists
 	public function handleRequest(Request $request): Response
 	{
 		$apiKey = $request->getParam('apiKey');
+		if( is_numeric( $apiKey ) ){
+			$_saved = $this->module->getDatabase()
+				->getAccountDbApi()
+				->getByAccountId($apiKey);
+			if( ! empty( $_saved) ){
+				$apiKey = $_saved[0]['apiKey'];
+			}
+		}
 		$saved = $this->getSavedAccountsByApiKey($apiKey);
 
 		if (empty($saved)) {
