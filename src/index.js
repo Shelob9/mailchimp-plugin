@@ -1,9 +1,17 @@
+
+
 /**
  * Dynamically locate, load & register all Editor Blocks & Plugins.
  */
 import { registerBlockType, unregisterBlockType } from '@wordpress/blocks';
 import { registerPlugin, unregisterPlugin } from '@wordpress/plugins';
-import { select, dispatch } from '@wordpress/data';
+import { select, dispatch, registerStore} from '@wordpress/data';
+
+/**
+ * Import and setup store
+ */
+import {calderaMailChimpStore,CALDERA_MAILCHIMP_STORE} from "./store";
+registerStore( CALDERA_MAILCHIMP_STORE,calderaMailChimpStore);
 
 /**
  * No-op function for use as a default argument value.

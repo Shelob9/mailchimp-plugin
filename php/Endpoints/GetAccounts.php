@@ -56,6 +56,10 @@ class GetAccounts implements EndpointContract
 			'token'=>[
 				'type' => 'string',
 				'required' => true,
+			],
+			'asUiConfig' => [
+				'type' => 'boolean',
+				'default' => false,
 			]
 		];
 	}
@@ -78,10 +82,31 @@ class GetAccounts implements EndpointContract
 		$accounts = $this->module->getDatabase()
 			->getAccountDbApi()
 			->getAll();
+		$status = ! empty($accounts) ? 200 : 404;
+		if( $request->getParam('asUiConfig')){
+			$field = [
+				'fieldId' => 'caldera-mc-select-account',
+				'fieldType' => 'select',
+				'label' => 'Select Account',
+				'options' => []
+			];
+			if( ! empty( $accounts ) ){
+				foreach ( $accounts as $account ){
+					$field['options'] = [
+						'value' => $account['id'],
+						'label' => $account['apiKey']
+					];
+				}
+			}
 
+			return (new \calderawp\caldera\Http\Response() )->setData($field)
+				->setStatus( $status );
+
+
+		}
 
 		return (new \calderawp\caldera\Http\Response() )->setData($accounts)
-			->setStatus( ! empty($accounts) ? 200 : 404 );
+			->setStatus( $status );
 
 	}
 
