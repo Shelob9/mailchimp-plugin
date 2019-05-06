@@ -2,7 +2,11 @@ import {Display} from "./components/Display";
 import {Edit} from "./components/Edit";
 import {InspectorControls} from '@wordpress/editor';
 import {Fragment} from "react";
+import {select } from '@wordpress/data';
+import {CALDERA_MAILCHIMP_STORE} from "../../store";
+
 export const name = 'caldera-mailchimp/signup';
+
 const attributes = {
 	listId: {
 		type: 'string',
@@ -24,6 +28,8 @@ export function SignupBlockEdit({attributes, setAttributes, instanceId}) {
 	const form = {};//@todo state
 	const listFields = {}; //@todo
 	const onChangeListId = (listId) => setAttributes({listId});
+	console.log(select( CALDERA_MAILCHIMP_STORE).getAccounts());
+	console.log(select( CALDERA_MAILCHIMP_STORE).getAccounts());
 	return (
 		<Fragment>
 			<Display

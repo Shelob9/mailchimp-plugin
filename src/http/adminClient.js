@@ -1,11 +1,22 @@
+const getLists = (
+	{
+		apiRoot,
+		token,
+		apiKey
+	}
+) => {
+	const url = `${apiRoot}/lists?apiKey=${apiKey}&token=${token}&asUiConfig=0`
+	return fetch(url);
+};
 
 const getListsUi = (
 	{
 		apiRoot,
-		token
+		token,
+		apiKey
 	}
 ) => {
-	const url = `${apiRoot}/lists?token=${token}&asUiConfig=1`
+	const url = `${apiRoot}/lists?apiKey=${apiKey}&token=${token}&asUiConfig=1`
 	return fetch(url);
 };
 
@@ -30,4 +41,37 @@ const getAccountsUi = (
 	return fetch(url);
 };
 
+function AdminClient(apiRoot,token) {
+	return {
+		getAccounts() {
+			return getAccounts({apiRoot,token})
+		},
+		getAccountsUi(){
+			return getAccountsUi({apiRoot,token})
+		},
+		getLists(apiKey){
+			return getLists({
+				apiRoot,
+				token,
+				apiKey
+			});
+		},
+		getListsUi(apiKey){
+			return getListsUi({
+				apiRoot,
+				token,
+				apiKey
+			});
+		}
+	};
+
+}
+
+export {
+	AdminClient,
+	getAccounts,
+	getAccountsUi,
+	getListsUi,
+	getLists
+}
 

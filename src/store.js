@@ -1,4 +1,7 @@
-import {registerStore} from '@wordpress/data'
+import {
+	AdminClient
+} from "./http/adminClient";
+
 let CALDERA_MAILCHIMP = window.CALDERA_MAILCHIMP || {
 	apiRoot: '',
 	token: ''
@@ -9,7 +12,7 @@ const DEFAULT_STATE = {
 	apiRoot: CALDERA_MAILCHIMP.apiRoot,
 	token: CALDERA_MAILCHIMP.token
 };
-
+const client = new AdminClient(CALDERA_MAILCHIMP.apiRoot,CALDERA_MAILCHIMP.token);
 
 const SET_ACCOUNTS = 'calderaMailChimp/setAccounts';
 const SET_LISTS = 'calderaMailChimp/setLists';
@@ -83,10 +86,29 @@ export const calderaMailChimpStore = {
 			return state.apiRoot;
 		}
 	},
-
+	/**
+	 * getAccounts,
+	 getAccountsUi,
+	 getListsUi,
+	 getLists
+	 */
 	resolvers: {
-		getAccounts(){
+		async getAccounts(){
+			const accounts = await client.getAccounts().then( r => r.json());
+			return accounts;
+		},
+		async getAccountsUi(){
+			const accounts = await client.getAccountsUi().then( r => r.json());
+			return accounts;
+		},
+		async getLists(apiKey){
+			const lists = await client.getLists(apiKey).then( r => r.json());
+			return lists;
+		},
+		async getListsUi(apiKey){
+			const lists = await client.getListsUi(apiKey).then( r => r.json());
+			return lists;
+		},
 
-		}
 	},
 };
