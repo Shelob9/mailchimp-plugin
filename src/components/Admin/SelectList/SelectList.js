@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import {HorizontalForm} from '@calderajs/forms';
+import {Field} from '@calderajs/components';
 
 /**
  * Select a MailChimp List
@@ -11,17 +11,12 @@ import {HorizontalForm} from '@calderajs/forms';
  * @return {*}
  * @constructor
  */
-export const SelectList = ({listFieldConfig,listId,setList,instanceId}) => (
+export const SelectList = ({listFieldConfig,listId,setListId,instanceId}) => (
 	<Fragment>
-		<HorizontalForm
-			fields={[listFieldConfig]}
-			initialValues={
-				{
-					[listFieldConfig.fieldId]:listId
-				}
-			}
-			onChange={(values)=>{
-				setList(values[listFieldConfig.fieldId]);
+		<Field
+			field={listFieldConfig}
+			onChange={(newValue)=>{
+				setListId(newValue);
 			}}
 			instanceId={`caldera-mc-select-${instanceId}` }
 		/>

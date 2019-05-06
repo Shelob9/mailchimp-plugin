@@ -1,12 +1,12 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import renderer from 'react-test-renderer';
-import {SelectList} from "./SelectList";
+import {AddApiKey} from "./AddApiKey";
 
 const field = [{"fieldType":"select","required":true,"fieldId":"mc-select-field","options":[{"value":"45907f0c59","label":"Future Capable"}]}];
 it( 'Shows list', () => {
 	expect( renderer.create(
-		<SelectList
+		<AddApiKey
 			listFieldConfig={field}
 			listId={'45907f0c59'}
 			setList={()=>{}}
@@ -18,7 +18,7 @@ it( 'Shows list', () => {
 it( 'Changes list', () => {
 	const onChange = jest.fn();
 	const component =  mount(
-		<SelectList
+		<AddApiKey
 			listFieldConfig={field[0]}
 			listId={''}
 			setListId={onChange}

@@ -1,24 +1,33 @@
-import React from 'react';
+import React, {Fragment, useState} from 'react';
 import {HorizontalForm} from '@calderajs/forms';
+import {SelectList} from "../../../components/Admin/SelectList/SelectList";
+import {AddApiKey} from "../../../components/Admin/AddApiKey/AddApiKey";
 
-export const Edit = ({onChangeListId, listId, listFields, instanceId}) => {
+export const Edit = ({setListId, listId, listFieldConfig, instanceId}) => {
 	const initialValues = {};
 	function getListIdFromValues(values){
 		return '';
 	}
+
+	const showListSelect = false;
 	return (
-		<div>
-			<HorizontalForm
-				fields={listFields}
-				initialValues={initialValues}
-				onClose={() => alert('close')}
-				onChange={(values) => {
-					console.log(values);
-					onChangeListId(getListIdFromValues(values))
-				}}
-				instanceId={instanceId}
+		<Fragment>
+			<AddApiKey
+				apiKey={''}
+				onChange={(newValue) => console.log(newValue)}
 			/>
-		</div>
+			{ showListSelect &&
+				<SelectList
+					listFieldConfig={listFieldConfig}
+					listId={listId}
+					instanceId={instanceId}
+					setListId={setListId}
+				/>
+
+			}
+
+
+		</Fragment>
 	);
 }
 
