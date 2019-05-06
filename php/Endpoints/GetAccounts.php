@@ -78,6 +78,8 @@ class GetAccounts implements EndpointContract
 		$accounts = $this->module->getDatabase()
 			->getAccountDbApi()
 			->getAll();
+
+
 		return (new \calderawp\caldera\Http\Response() )->setData($accounts)
 			->setStatus( ! empty($accounts) ? 200 : 404 );
 
