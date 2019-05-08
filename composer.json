@@ -5,8 +5,9 @@
     "license": "GPL-2.0",
     "require": {
         "php": "^7.2",
+        "calderawp/rest-api": "*",
         "shelob9/mailchimp-functions": "*",
-        "calderawp/rest-api": "*"
+        "symfony/yaml": "^4.3@dev"
     },
     "minimum-stability" : "dev",
     "repositories": [

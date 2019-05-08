@@ -6,20 +6,21 @@ namespace calderawp\CalderaMailChimp;
 
 use calderawp\caldera\restApi\Authentication\WordPressUserJwt;
 use calderawp\caldera\restApi\Traits\CreatesWordPressEndpoints;
-use calderawp\CalderaMailChimp\Endpoints\AddSubscriber;
-use calderawp\CalderaMailChimp\Endpoints\GetAccounts;
-use calderawp\CalderaMailChimp\Endpoints\GetForm;
-use calderawp\CalderaMailChimp\Endpoints\GetList;
-use calderawp\CalderaMailChimp\Endpoints\GetLists;
-use calderawp\CalderaMailChimp\Endpoints\SaveAccount;
-use calderawp\CalderaMailChimp\Endpoints\UpdateSubscriber;
+use calderawp\CalderaMailChimp\Controllers\CreateAccount;
+use calderawp\CalderaMailChimp\Controllers\CreateSubscriber;
+use calderawp\CalderaMailChimp\Controllers\GetList;
+use calderawp\CalderaMailChimp\Controllers\GetLists;
+use calderawp\CalderaMailChimp\Controllers\UpdateAccount;
 use calderawp\interop\Contracts\Rest\Endpoint;
 use Mailchimp\MailchimpLists;
 
-use something\Mailchimp\Controllers\CreateSubscriber as CreateSubscriptionController;
-use \something\Mailchimp\Controllers\GetList as GetListController;
-use \something\Mailchimp\Controllers\GetLists as GetListsController;
-use \something\Mailchimp\Controllers\UpdateSubscriber as UpdateSubscriberController;
+use something\Mailchimp\Controllers\UpdateSubscriber;
+use something\Mailchimp\Endpoints\AddAccount as CreateAccountEndpoint;
+use something\Mailchimp\Endpoints\GetList as GetListEndpoint;
+use something\Mailchimp\Endpoints\GetLists as GetListsEndpoint;
+use something\Mailchimp\Endpoints\UpdateAccount as UpdateAccountEndpoint;
+use calderawp\CalderaMailChimp\Endpoints\UpdateSubscriber as UpdateSubscriberEndpoint;
+use calderawp\CalderaMailChimp\Endpoints\AddSubscriber as AddSubscriberEndpoint;
 
 
 class RestApi
@@ -108,10 +109,51 @@ class RestApi
 	/**
 	 * Register endpoints
 	 */
-	public function initApi(CalderaMailChimp$module)
+	public function initApi(CalderaMailChimp $module)
 	{
-		$this->endpoints = [];
-		return;
+		$this->endpoints[ CreateAccountEndpoint::class ] = (new CreateAccountEndpoint())
+			->setController(
+				(
+				new CreateAccount($this->getMailchimpApi())
+				)->setModule($module)
+			);
+
+		$this->endpoints[ UpdateAccountEndpoint::class ] = (new UpdateAccountEndpoint())
+			->setController(
+				(
+				new UpdateAccount($this->getMailchimpApi())
+				)->setModule($module)
+			);
+
+		$this->endpoints[ GetListEndpoint::class ] = (new GetListEndpoint())
+			->setController(
+				(
+				new GetList($this->getMailchimpApi())
+				)->setModule($module)
+			);
+
+		$this->endpoints[ GetListsEndpoint::class ] = (new GetListsEndpoint())
+			->setController(
+				(
+				new GetLists($this->getMailchimpApi())
+				)->setModule($module)
+			);
+
+
+		$this->endpoints[ AddSubscriberEndpoint::class ] = (new AddSubscriberEndpoint())
+			->setController(
+				(
+				new CreateSubscriber($this->getMailchimpApi())
+				)->setModule($module)
+			);
+
+		$this->endpoints[ UpdateSubscriberEndpoint::class ] = (new UpdateSubscriberEndpoint())
+			->setController(
+				(
+				new UpdateSubscriber($this->getMailchimpApi())
+				)
+			);
+
 
 		/** @var Endpoint $endpoint */
 		foreach ($this->endpoints as $endpoint) {
