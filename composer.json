@@ -12,7 +12,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../../../mailchimp-functions"
+            "url": "../../packages/mailchimp-functions"
         }
     ],
     "require-dev": {

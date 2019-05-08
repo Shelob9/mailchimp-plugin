@@ -1,6 +1,7 @@
 {
 	"presets": [ "@wordpress/babel-preset-default" ],
 	"plugins": [
+		"@babel/plugin-syntax-dynamic-import",
 		[ "transform-react-jsx", {
 			"pragma": "wp.element.createElement"
 		} ]

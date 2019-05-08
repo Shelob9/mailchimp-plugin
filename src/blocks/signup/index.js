@@ -74,13 +74,9 @@ export function SignupBlockEdit(
 
 export const options = {
 	title: 'Mailchimp Signup Form',
-
 	description: 'Render another sample block.',
-
 	icon: 'images-alt',
-
 	category: 'widgets',
-
 	edit({attributes,setAttributes,instanceId}) {
 		const {
 			listId,
@@ -113,3 +109,5 @@ export const options = {
 		return null;
 	},
 };
+
+

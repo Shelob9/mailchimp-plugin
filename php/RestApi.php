@@ -110,56 +110,8 @@ class RestApi
 	 */
 	public function initApi(CalderaMailChimp$module)
 	{
-		$this->endpoints[ AddSubscriber::class ] = (new AddSubscriber())
-			->setModule($module)
-			->setController(
-				new CreateSubscriptionController(
-					$this->getMailchimpApi()
-				)
-			);
-
-		$this->endpoints[ UpdateSubscriber::class ] = (new UpdateSubscriber())
-			->setModule($module)
-			->setController(
-				new UpdateSubscriberController(
-					$this->getMailchimpApi()
-				)
-			);
-
-		$this->endpoints[ GetList::class ] = (new GetList())
-			->setModule($module)
-			->setController(
-				new GetListController(
-					$this->getMailchimpApi()
-				)
-			);
-
-		$this->endpoints[GetForm::class] = (new GetForm() )
-			->setModule($module)
-			->setController(
-				new GetListController(
-					$this->getMailchimpApi()
-				)
-			);
-
-		$this->endpoints[ GetLists::class ] = (new GetLists())
-			->setModule($module)
-			->setController(
-				new GetListsController(
-					$this->getMailchimpApi()
-				)
-			);
-
-		$this->endpoints[ SaveAccount::class ] = (new SaveAccount())
-			->setModule($module)
-			->setController(
-				new GetListsController(
-					$this->getMailchimpApi()
-				)
-			);
-
-		$this->endpoints[ GetAccounts::class ] = (new GetAccounts())
-			->setModule($module);
+		$this->endpoints = [];
+		return;
 
 		/** @var Endpoint $endpoint */
 		foreach ($this->endpoints as $endpoint) {

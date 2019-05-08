@@ -11,7 +11,6 @@
  * Setup admin page as a sub-menu item of Caldera Forms with a React app for the UI
  */
 add_action( 'CalderaMailChimp', function(\calderawp\CalderaMailChimp\CalderaMailChimp $module){
-
 	add_action( 'rest_api_init', function() use ($module){
 		$apiKey = apply_filters( 'caldera/mailchimp/apiKey', '' );
 		$httpClient = new \GuzzleHttp\Client();
@@ -62,11 +61,17 @@ add_action( 'CalderaMailChimp', function( \calderawp\CalderaMailChimp\CalderaMai
 		]);
 	},25 );
 
+
+
 	register_block_type('caldera-mailchimp/signup',
 		[
-			'render_callback' => function($atts){
 
-				return sprintf('<div class="%" data-list-id="%s"></div>', 'calderaMailchimp', esc_attr($atts['listId']));
+			'render_callback' => function($atts){
+			if( ! isset($atts['listId'] )){
+				$atts['listId' ] = '45907f0c59';
+				//return;
+			}
+			return sprintf('<div class="%" data-list-id="%s"></div>', 'calderaMailchimp', esc_attr($atts['listId']));
 			}
 		]);
 },10);
