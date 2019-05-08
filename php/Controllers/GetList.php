@@ -4,6 +4,8 @@
 namespace calderawp\CalderaMailChimp\Controllers;
 
 
+use something\Mailchimp\Controllers\FindGroups;
+use something\Mailchimp\Controllers\FindMergeFields;
 use something\Mailchimp\Entities\SingleList;
 
 class GetList extends \something\Mailchimp\Controllers\GetList
@@ -13,7 +15,16 @@ class GetList extends \something\Mailchimp\Controllers\GetList
 
 	protected function findById(int $accountId): SingleList
 	{
-		return $this->getModule()->getDatabase()->getListsDbApi()->findById($accountId);
+		$list = $this->getModule()->getDatabase()->getListsDbApi()->findById($accountId);
+		if( ! $list->hasMergeFields() ){
+			$mergeFields = (new FindMergeFields($this->getMailchimp()))
+				->__invoke($list->getListId());
+			$x= 1;
+			$groupFields = (new FindGroups($this->getMailchimp()))
+				->__invoke($list->getListId() );
+				$x=1;
+		}
+		return $list;
 	}
 
 

@@ -52,6 +52,8 @@ add_action('plugins_loaded', function () {
 });
 
 add_action( 'CalderaMailChimp', function( \calderawp\CalderaMailChimp\CalderaMailChimp $module){
+
+
 	\calderawp\CalderaMailChimp\Scripts\setup();
 
 	add_action( 'enqueue_block_editor_assets', function() use ($module){
@@ -62,7 +64,7 @@ add_action( 'CalderaMailChimp', function( \calderawp\CalderaMailChimp\CalderaMai
 	},25 );
 
 
-
+return;
 	register_block_type('caldera-mailchimp/signup',
 		[
 

@@ -7,6 +7,7 @@ namespace calderawp\CalderaMailChimp\Scripts;
 use calderawp\CalderaMailChimp\Asset_Loader;
 
 function setup() {
+
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_editor_assets' );
 	add_action( 'wp_enqueue_scripts', function(){
 		$plugin_path  = trailingslashit( plugin_dir_path( dirname( __FILE__ ) ) );
@@ -44,8 +45,9 @@ function enqueue_block_editor_assets()
 		],
 	];
 
-	$loaded_dev_assets = Asset_Loader\enqueue_assets( $dev_manifest, $opts );
 
+	$loaded_dev_assets = Asset_Loader\enqueue_assets( $dev_manifest, $opts );
+	//$loaded_dev_assets = false;
 	if ( ! $loaded_dev_assets ) {
 		// Production mode. Manually enqueue script bundles.
 		if ( file_exists( $plugin_path . 'build/editor.js' ) ) {

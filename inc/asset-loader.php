@@ -96,7 +96,9 @@ function enqueue_assets( $manifest_path, $opts = [] ) {
 			$asset_uri = preg_replace("/^http:/i", "https:", $asset_uri);
 		}
 
-		if ( $is_js ) {
+		$split = explode( '/', $asset_uri);
+		$name = end($split);
+		if ( $is_js && 'editor.js' === $name) {
 			wp_enqueue_script(
 				$opts['handle'],
 				$asset_uri,

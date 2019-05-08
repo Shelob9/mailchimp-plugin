@@ -11,7 +11,12 @@ class GetLists extends \something\Mailchimp\Controllers\GetLists
 	/** @inheritdoc */
 	protected function getSavedLists(int $accountId): array
 	{
-		return $this->getModule()->getDatabase()->getListsDbApi()->findByAccountId($accountId);
+		try {
+			$lists = $this->getModule()->getDatabase()->getListsDbApi()->findByAccountId($accountId);
+			return $lists;
+		} catch (\Exception $e) {
+			throw $e;
+		}
 	}
 
 

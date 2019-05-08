@@ -104,7 +104,7 @@ const refreshAllBlocks = ( changedNames = [] ) => {
 	}
 	selectedBlockId = null;
 };
-
+console.log(112);
 // Load all block index files.
 autoload( {
 	getContext: () => require.context( './blocks', true, /index\.js$/ ),
