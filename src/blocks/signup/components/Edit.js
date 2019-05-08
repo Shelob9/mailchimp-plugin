@@ -76,11 +76,14 @@ export const Edit = (
 	if (!chooseAccountField.hasOwnProperty('options')) {
 		chooseAccountField.options = [];
 	}
+	let hasOptions =false;
 	if (!chooseAccountField.options.length) {
 		chooseAccountField.options.push({
 			value: null,
 			label: '--'
 		})
+	}else{
+		hasOptions = true;
 	}
 	return (
 		<Fragment>
@@ -88,17 +91,18 @@ export const Edit = (
 				adminApiClient={adminApiClient}
 				instanceId={instanceId}
 			/>
-			<div>{accountId}</div>
-			<Field
-				field={{
-					...chooseAccountField,
-					value: accountId,
-					fieldId: `${chooseAccountField.fieldId}-${instanceId}`
-				}}
-				onChange={(newValue) => {
-					onChangeAccountId(newValue);
-				}}
-			/>
+			{hasOptions &&
+				<Field
+					field={{
+						...chooseAccountField,
+						value: accountId,
+						fieldId: `${chooseAccountField.fieldId}-${instanceId}`
+					}}
+					onChange={(newValue) => {
+						onChangeAccountId(newValue);
+					}}
+				/>
+			}
 
 			{accountId &&
 				<SelectList

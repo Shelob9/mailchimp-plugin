@@ -94,6 +94,7 @@ export const options = {
 		}
 		const chooseAccountField =  select(CALDERA_MAILCHIMP_STORE).getAccountsUi();
 		const adminApiClient = 	select(CALDERA_MAILCHIMP_STORE).getClient();
+		console.log(attributes);
 		return SignupBlockEdit({
 			listId,
 			setListId,

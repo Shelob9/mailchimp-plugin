@@ -4,10 +4,10 @@ const getLists = (
 	{
 		apiRoot,
 		token,
-		apiKey
+		accountId
 	}
 ) => {
-	const url = `${apiRoot}/lists?apiKey=${apiKey}&token=${token}&asUiConfig=0`
+	const url = `${apiRoot}/lists?accountId=${accountId}&token=${token}&asUiConfig=0`
 	return fetch(url);
 };
 
@@ -15,10 +15,10 @@ const getListsUi = (
 	{
 		apiRoot,
 		token,
-		apiKey
+		accountId
 	}
 ) => {
-	const url = `${apiRoot}/lists?apiKey=${apiKey}&token=${token}&asUiConfig=1`
+	const url = `${apiRoot}/lists?accountId=${accountId}&token=${token}&asUiConfig=1`
 	return fetch(url);
 };
 
@@ -29,7 +29,7 @@ const saveApiKey = ({
 }) => {
 	const url =`${apiRoot}/accounts`
 	return fetch(url,{
-		method: 'POST',
+		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',
 		},
@@ -68,18 +68,18 @@ function AdminClient(apiRoot,token) {
 		getAccountsUi(){
 			return getAccountsUi({apiRoot,token})
 		},
-		getLists(apiKey){
+		getLists(accountId){
 			return getLists({
 				apiRoot,
 				token,
-				apiKey
+				accountId
 			});
 		},
-		getListsUi(apiKey){
+		getListsUi(accountId){
 			return getListsUi({
 				apiRoot,
 				token,
-				apiKey
+				accountId
 			});
 		},
 		saveApiKey(apiKey){

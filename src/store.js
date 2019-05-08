@@ -12,7 +12,8 @@ const DEFAULT_STATE = {
 	apiRoot: CALDERA_MAILCHIMP.apiRoot,
 	token: CALDERA_MAILCHIMP.token,
 	accountsUi: {},
-	listsUi: {},
+	listsUi: {},//UI Config for choosing a list
+	listUi: {},//Ui config for fields of a list
 	pendingKey:''
 };
 const client = new AdminClient(CALDERA_MAILCHIMP.apiRoot,CALDERA_MAILCHIMP.token);
@@ -21,6 +22,7 @@ const SET_ACCOUNTS = 'calderaMailChimp/setAccounts';
 const SET_ACCOUNTS_UI = 'calderaMailChimp/setAccountsUi';
 const SET_LISTS = 'calderaMailChimp/setLists';
 const SET_LISTS_UI = 'calderaMailChimp/setListsUi';
+const SET_LIST_UI = 'calderaMailChimp/setListUi';
 const SAVE_API_KEY = 'calderaMailChimp/saveApiKey';
 const actions = {
 	setAccounts(accounts) {
@@ -47,6 +49,13 @@ const actions = {
 			type: SET_LISTS_UI,
 			fields,
 			accountId,
+		}
+	},
+	setListUi(listId,fields){
+		return {
+			type: SET_LIST_UI,
+			fields,
+			listId,
 		}
 	},
 	saveApiKey(apiKey){
@@ -93,6 +102,14 @@ export const calderaMailChimpStore = {
 						[action.accountId]:action.fields,
 					}
 				}
+			case SET_LIST_UI:
+				return {
+					...state,
+					listUi: {
+						...state.listUi,
+						[action.listId]:action.fields,
+					}
+				};
 			case SAVE_API_KEY:{
 				return {
 					...state,
@@ -159,6 +176,10 @@ export const calderaMailChimpStore = {
 		async getListsUi(accountId){
 			const fields = await client.getListsUi(accountId).then( r => r.json());
 			return actions.setListsUi(accountId,fields);
+		},
+		async getListUi(listId){
+			const fields = await client.getListUi(listId).then( r => r.json());
+			return actions.setListUi(accountId,fields);
 		},
 
 	},
