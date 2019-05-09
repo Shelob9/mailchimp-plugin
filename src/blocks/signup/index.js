@@ -62,7 +62,7 @@ export function SignupBlockEdit(
 					accountId={accountId}
 					listFieldConfig={listFields}
 					listId={listId}
-					onChangeListId={setListId}
+					setListId={setListId}
 					chooseAccountField={chooseAccountField}
 					onChangeAccountId={setAccountId}
 					adminApiClient={adminApiClient}
@@ -85,15 +85,23 @@ export const options = {
 		const setAccountId = (accountId) => {
 			setAttributes({accountId});
 		};
-		const setListId = (listId) => setAttributes({listId});
+		const setListId = (listId) =>{
+			setAttributes({listId});
+		};
+
 		let listFields = [];
 		if (accountId) {
-			select(CALDERA_MAILCHIMP_STORE).getClient().getAccountsUi(accountId).then(r => console.log(r));
-			 listFields = select(CALDERA_MAILCHIMP_STORE).getListsUi(accountId);
+			select(CALDERA_MAILCHIMP_STORE).getClient().getAccountsUi(accountId)
+				.then(r => r.json() )
+				.then(r => {
+					dispatch(CALDERA_MAILCHIMP_STORE).setListsUi(r);
+				}
+			);
+		 	listFields = select(CALDERA_MAILCHIMP_STORE).getListsUi(accountId);
 		}
 		if( Array.isArray(listFields) && ! listId  && listFields.length){
 			if( listFields[0].options.length){
-				setListId(listFields[0].options[0].value);
+				setListId(listFields[0].options[1].value);
 			}
 		}
 		const chooseAccountField =  select(CALDERA_MAILCHIMP_STORE).getAccountsUi();

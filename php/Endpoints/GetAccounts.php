@@ -60,7 +60,10 @@ class GetAccounts extends \something\Mailchimp\Endpoints\GetAccounts
 		$accountUi = [
 			'fieldType' => 'select',
 			'fieldId' => 'mc-choose-account',
-			'options' => [],
+            'options' => [[
+                'value' => null,
+                'label' => ' --- '
+            ]],
             'label' => 'Select Account'
 		];
 		if (! empty($accounts) ) {
@@ -71,6 +74,7 @@ class GetAccounts extends \something\Mailchimp\Endpoints\GetAccounts
 					'label' => $account->getNameOrId()
 				];
 			}
+
 		}
 		return (new \calderawp\caldera\restApi\Response() )->setData($accountUi);
 
