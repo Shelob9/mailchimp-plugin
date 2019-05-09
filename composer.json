@@ -4,7 +4,7 @@
     "description": "A boilerplate for WordPress plugins by Caldera",
     "license": "GPL-2.0",
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "calderawp/rest-api": "*",
         "symfony/yaml": "^4.3@dev"
     },
