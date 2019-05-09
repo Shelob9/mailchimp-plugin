@@ -15,6 +15,7 @@
     "@wordpress/block-editor": "^2.0.1",
     "@wordpress/components": "^7.0.7",
     "@wordpress/compose": "^3.2.0",
+    "@wordpress/dom-ready": "^2.2.0",
     "@wordpress/editor": "^9.0.9",
     "@wordpress/element": "^2.1.9",
     "classnames": "^2.2.6",

@@ -13,10 +13,16 @@ function setup() {
 		$plugin_path  = trailingslashit( plugin_dir_path( dirname( __FILE__ ) ) );
 		$plugin_url   = trailingslashit( plugin_dir_url( dirname( __FILE__ ) ) );
 
-		wp_enqueue_script('caldera-mailchimp-front', $plugin_url . 'build/front.js',
-			[],
-			filemtime( $plugin_path . 'build/editor.js' ),
-			true);
+        $src = $plugin_url . 'build/front.js';
+        $src = 'https://localhost:3030/build/front.js';
+        wp_enqueue_script('caldera-mailchimp-front',
+            $src,
+            [],
+            filemtime( $plugin_path . 'build/editor.js' ),
+            true
+        );
+
+
 });
 }
 

@@ -10,11 +10,14 @@ export const name = 'caldera-mailchimp/signup';
 const attributes = {
 	listId: {
 		type: 'string',
-		default: ''
+		default: '',
+		source: 'attribute',
+		selector: 'span.calderaMailchimp',
+		attribute: 'data-list',
 	},
 	accountId: {
-		type: 'integer',
-		default: 0
+		type: 'number',
+		default: 0,
 	},
 
 
@@ -77,6 +80,7 @@ export const options = {
 	description: 'Render another sample block.',
 	icon: 'images-alt',
 	category: 'widgets',
+	attributes,
 	edit({attributes,setAttributes,instanceId}) {
 		const {
 			listId,
@@ -118,7 +122,11 @@ export const options = {
 		});
 	},
 	save({attributes,className}) {
-		return null;
+		return (
+			<div className={className} >
+				<span className={'calderaMailchimp'}  data-list={attributes.listId}></span>
+			</div>
+		)
 	},
 };
 

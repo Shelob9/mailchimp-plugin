@@ -1,7 +1,19 @@
-const elements = document.querySelectorAll('.calderaMailChimp');
-if( elements.length ){
-	elemt
+import domReady from '@wordpress/dom-ready';
+
+domReady( function() {
+	const elements = document.querySelectorAll('.calderaMailchimp');
+	if( elements.length ){
+		console.log(elements);
+		elements.forEach(element => {
+			console.log(element.dataset.list);
+		})
+	}
+} );
+
+function calderaMailChimpForms(){
+
 }
+
 
 
 function init(){
