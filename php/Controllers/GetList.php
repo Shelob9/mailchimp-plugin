@@ -19,10 +19,10 @@ class GetList extends \something\Mailchimp\Controllers\GetList
 		if( ! $list->hasMergeFields() ){
 			$mergeFields = (new FindMergeFields($this->getMailchimp()))
 				->__invoke($list->getListId());
-			$x= 1;
+
 			$groupFields = (new FindGroups($this->getMailchimp()))
 				->__invoke($list->getListId() );
-				$x=1;
+
 		}
 		return $list;
 	}

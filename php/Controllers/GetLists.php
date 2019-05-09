@@ -39,6 +39,7 @@ class GetLists extends \something\Mailchimp\Controllers\GetLists
                             try{
                                 $groupFields = $groupFieldsClient->getGroupFieldsFromApi($list->getListId());
                                 $list->setGroupFields($groupFields);
+
                             }catch (\Exception $e){
                                 throw $e;
                             }
