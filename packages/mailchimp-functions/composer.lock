@@ -1772,12 +1772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a2075e51644566ce59517a9dcd679bc1ce049ce3"
+                "reference": "ba3417f33157f1765459f7dfc064789704e292c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a2075e51644566ce59517a9dcd679bc1ce049ce3",
-                "reference": "a2075e51644566ce59517a9dcd679bc1ce049ce3",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ba3417f33157f1765459f7dfc064789704e292c7",
+                "reference": "ba3417f33157f1765459f7dfc064789704e292c7",
                 "shasum": ""
             },
             "require": {
@@ -1846,7 +1846,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-05-08T06:54:49+00:00"
+            "time": "2019-05-09T05:15:42+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
