@@ -6,7 +6,6 @@
     "require": {
         "php": "^7.1",
         "calderawp/rest-api": "*",
-        "shelob9/mailchimp-functions": "*",
         "symfony/yaml": "^4.3@dev"
     },
     "minimum-stability" : "dev",
