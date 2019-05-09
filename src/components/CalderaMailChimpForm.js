@@ -17,14 +17,14 @@ function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit}){
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [form, setForm] = useState({});
 	useEffect(() => {
-		fetch(`${apiRoot}/${listId}/form?token=${token}`)
+		fetch(`${apiRoot}/forms/${listId}?token=${token}&asUiConfig=1`)
 			.then(r => r.json())
 			.then(r => {
 				setForm(r);
 				setIsLoaded(true);
 			});
 
-	}, [form,isLoaded, setIsLoaded]);
+	}, [isLoaded, setIsLoaded]);
 	return <MailChimpForm  form={form} onSubmit={createSubscriber} hideOnSubmit={hideOnSubmit}/>
 
 

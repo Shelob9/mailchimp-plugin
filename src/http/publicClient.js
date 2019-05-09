@@ -22,7 +22,7 @@
 		groupFields[field] = getValue(field);
 	});
 
-
+	console.log(values,processor.emailField,getValue(processor.emailField))
 	return {
 		email: getValue(processor.emailField),
 		mergeFields,

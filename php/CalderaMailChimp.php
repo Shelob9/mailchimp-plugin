@@ -71,11 +71,16 @@ final class CalderaMailChimp
 	 */
 	public function getCurrentUserToken()
 	{
-		return $this
-			->getJwt()
-			->tokenFromUser(
-				get_user_by('ID',get_current_user_id() )
-			);
+	    $user = get_user_by('ID',get_current_user_id() );
+	    if( !$user ) {
+            $user = new \WP_User();
+        }
+        return $this
+            ->getJwt()
+            ->tokenFromUser(
+                $user
+            );
+
 
 	}
 

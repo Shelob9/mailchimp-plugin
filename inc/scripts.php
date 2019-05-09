@@ -17,7 +17,10 @@ function setup() {
         $src = 'https://localhost:3030/build/front.js';
         wp_enqueue_script('caldera-mailchimp-front',
             $src,
-            [],
+            [
+                'wp-element',
+
+            ],
             filemtime( $plugin_path . 'build/editor.js' ),
             true
         );
