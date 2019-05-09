@@ -4,207 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1140493acb2c2131d6fdafc2e3a0dcd3",
+    "content-hash": "1312ea602ca7c5016db8fb69acdf0636",
     "packages": [
-        {
-            "name": "calderawp/caldera-containers",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CalderaWP/caldera-containers.git",
-                "reference": "32ba0d0e851cbdaaf733f78902bfcba17de7e4b2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CalderaWP/caldera-containers/zipball/32ba0d0e851cbdaaf733f78902bfcba17de7e4b2",
-                "reference": "32ba0d0e851cbdaaf733f78902bfcba17de7e4b2",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6|^7.0",
-                "pimple/pimple": "^3.2",
-                "psr/container": "^1.0@dev"
-            },
-            "require-dev": {
-                "jakub-onderka/php-parallel-lint": "^1.0",
-                "phpunit/phpunit": "5.0.*",
-                "squizlabs/php_codesniffer": "^3.2"
-            },
-            "type": "libary",
-            "autoload": {
-                "psr-4": {
-                    "calderawp\\CalderaContainers\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "josh",
-                    "email": "josh@calderawp.com"
-                }
-            ],
-            "time": "2018-05-05T22:43:14+00:00"
-        },
-        {
-            "name": "calderawp/caldera-db",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CalderaWP/caldera-db.git",
-                "reference": "1b7317bfb2445563a3278938d4145354bfe5e413"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CalderaWP/caldera-db/zipball/1b7317bfb2445563a3278938d4145354bfe5e413",
-                "reference": "1b7317bfb2445563a3278938d4145354bfe5e413",
-                "shasum": ""
-            },
-            "require": {
-                "calderawp/caldera-containers": "^0.2",
-                "inpsyde/wp-db-tools": "^0.2",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "brain/monkey": "^2.2",
-                "mockery/mockery": "^1.2",
-                "php": "^7.2",
-                "phpunit/phpunit": "^7.3",
-                "squizlabs/php_codesniffer": "3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "calderawp\\DB\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Josh Pollock",
-                    "email": "josh@calderawp.com"
-                }
-            ],
-            "description": "WordPress custom table abstractions",
-            "time": "2019-04-22T17:38:53+00:00"
-        },
-        {
-            "name": "calderawp/caldera-interop",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CalderaWP/caldera-interop.git",
-                "reference": "d25c4bc930200b314fbd42d084080b5d85261c94"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CalderaWP/caldera-interop/zipball/d25c4bc930200b314fbd42d084080b5d85261c94",
-                "reference": "d25c4bc930200b314fbd42d084080b5d85261c94",
-                "shasum": ""
-            },
-            "require": {
-                "mockery/mockery": "^1.2",
-                "php": "^7.2",
-                "psr/container": "^1.0"
-            },
-            "require-dev": {
-                "calderawp/caldera-containers": "^0.2",
-                "guzzlehttp/guzzle": "^6.3",
-                "php": "^7.2",
-                "phpunit/phpunit": "^7.3",
-                "squizlabs/php_codesniffer": "3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "calderawp\\interop\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-04-22T17:38:53+00:00"
-        },
-        {
-            "name": "calderawp/data-source",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CalderaWP/data-source.git",
-                "reference": "fbebd7830dff1f526f2e8194bcb550ae3984474b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CalderaWP/data-source/zipball/fbebd7830dff1f526f2e8194bcb550ae3984474b",
-                "reference": "fbebd7830dff1f526f2e8194bcb550ae3984474b",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "antecedent/patchwork": "^2.0",
-                "brain/monkey": "^2.2",
-                "mockery/mockery": "^1.2",
-                "php": "^7.2",
-                "phpunit/phpunit": "^7.3",
-                "squizlabs/php_codesniffer": "3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "calderawp\\caldera\\DataSource\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "description": "Caldera data sourcing",
-            "time": "2019-04-22T17:38:53+00:00"
-        },
-        {
-            "name": "calderawp/http",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CalderaWP/http.git",
-                "reference": "90864b9417208d516e8c45b755f7b67aadc6c9a1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CalderaWP/http/zipball/90864b9417208d516e8c45b755f7b67aadc6c9a1",
-                "reference": "90864b9417208d516e8c45b755f7b67aadc6c9a1",
-                "shasum": ""
-            },
-            "require": {
-                "inpsyde/wpsr7": "^1.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "^6.3",
-                "inpsyde/wpsr7": "^1.0",
-                "mockery/mockery": "^1.2",
-                "php": "^7.2",
-                "phpunit/phpunit": "^7.3",
-                "squizlabs/php_codesniffer": "3.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "calderawp\\caldera\\Http\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "description": "A boilerplate for new composer based PHP projects.",
-            "time": "2019-01-09T22:31:30+00:00"
-        },
         {
             "name": "calderawp/rest-api",
             "version": "dev-master",
@@ -480,381 +281,6 @@
             "time": "2019-04-01T06:40:32+00:00"
         },
         {
-            "name": "hamcrest/hamcrest-php",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hamcrest/hamcrest-php.git",
-                "reference": "c0436bf63689fc334f67ccaa5e17458af9700b42"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/c0436bf63689fc334f67ccaa5e17458af9700b42",
-                "reference": "c0436bf63689fc334f67ccaa5e17458af9700b42",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3|^7.0"
-            },
-            "replace": {
-                "cordoval/hamcrest-php": "*",
-                "davedevelopment/hamcrest-php": "*",
-                "kodova/hamcrest-php": "*"
-            },
-            "require-dev": {
-                "phpunit/php-file-iterator": "^1.4",
-                "phpunit/phpunit": "^4.8.36 || ^5.7 || ^6.5 || ^7.0",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "hamcrest"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "This is the PHP port of Hamcrest Matchers",
-            "keywords": [
-                "test"
-            ],
-            "time": "2019-04-18T04:49:30+00:00"
-        },
-        {
-            "name": "inpsyde/wp-db-tools",
-            "version": "0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/inpsyde/wp-db-tools.git",
-                "reference": "7334aa675f9379852d246098f1f802cf625941ab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/wp-db-tools/zipball/7334aa675f9379852d246098f1f802cf625941ab",
-                "reference": "7334aa675f9379852d246098f1f802cf625941ab",
-                "shasum": ""
-            },
-            "require-dev": {
-                "inpsyde/monkery-test-case": "^3.0",
-                "inpsyde/wordpress-dev": "^4.4",
-                "inpsyde/wp-tests-starter": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "WpDbTools\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "David Naber",
-                    "email": "kontakt@dnaber.de",
-                    "homepage": "https://dnaber.de/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Inpsyde GmbH",
-                    "homepage": "http://inpsyde.com",
-                    "role": "Company"
-                }
-            ],
-            "description": "Provides an engine-independent, simplified interface to MySQL databases.",
-            "time": "2017-05-03T16:22:27+00:00"
-        },
-        {
-            "name": "inpsyde/wpsr7",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/inpsyde/WPSR7.git",
-                "reference": "8331171a6662ec43c75cadf83e56ff9d473f09d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/inpsyde/WPSR7/zipball/8331171a6662ec43c75cadf83e56ff9d473f09d4",
-                "reference": "8331171a6662ec43c75cadf83e56ff9d473f09d4",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/psr7": "~1.0",
-                "php": "^7.0",
-                "psr/http-message": "~1.0"
-            },
-            "require-dev": {
-                "brain/monkey": "^2.0.0",
-                "johnpbloch/wordpress-core": "^4.7.0",
-                "mockery/mockery": "~0.9.0",
-                "phpunit/phpunit": "^6.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Inpsyde\\WPSR7\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Thorsten Frommen",
-                    "email": "t.frommen@inpsyde.com",
-                    "homepage": "https://twitter.com/thorstenfrommen",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Inpsyde GmbH",
-                    "email": "hello@inpsyde.com",
-                    "homepage": "https://inpsyde.com",
-                    "role": "Company"
-                }
-            ],
-            "description": "PSR-7-compliant HTTP messages for WordPress.",
-            "keywords": [
-                "http",
-                "interop",
-                "middleware",
-                "psr",
-                "psr7",
-                "rest",
-                "standard",
-                "wordpress",
-                "wp"
-            ],
-            "time": "2018-09-21T09:46:38+00:00"
-        },
-        {
-            "name": "mockery/mockery",
-            "version": "1.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mockery/mockery.git",
-                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
-                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
-                "shasum": ""
-            },
-            "require": {
-                "hamcrest/hamcrest-php": "~2.0",
-                "lib-pcre": ">=7.0",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Mockery": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Pádraic Brady",
-                    "email": "padraic.brady@gmail.com",
-                    "homepage": "http://blog.astrumfutura.com"
-                },
-                {
-                    "name": "Dave Marshall",
-                    "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "http://davedevelopment.co.uk"
-                }
-            ],
-            "description": "Mockery is a simple yet flexible PHP mock object framework",
-            "homepage": "https://github.com/mockery/mockery",
-            "keywords": [
-                "BDD",
-                "TDD",
-                "library",
-                "mock",
-                "mock objects",
-                "mockery",
-                "stub",
-                "test",
-                "test double",
-                "testing"
-            ],
-            "time": "2019-02-13T09:37:52+00:00"
-        },
-        {
-            "name": "phpoption/phpoption",
-            "version": "1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "94e644f7d2051a5f0fcf77d81605f152eecff0ed"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/94e644f7d2051a5f0fcf77d81605f152eecff0ed",
-                "reference": "94e644f7d2051a5f0fcf77d81605f152eecff0ed",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "PhpOption\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache2"
-            ],
-            "authors": [
-                {
-                    "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "Option Type for PHP",
-            "keywords": [
-                "language",
-                "option",
-                "php",
-                "type"
-            ],
-            "time": "2015-07-25T16:39:46+00:00"
-        },
-        {
-            "name": "pimple/pimple",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "21e3e0dc89183c96fad7f12e09e1d345558e9a56"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/21e3e0dc89183c96fad7f12e09e1d345558e9a56",
-                "reference": "21e3e0dc89183c96fad7f12e09e1d345558e9a56",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "psr/container": "^1.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^3.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Pimple": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Pimple, a simple Dependency Injection Container",
-            "homepage": "https://pimple.symfony.com",
-            "keywords": [
-                "container",
-                "dependency injection"
-            ],
-            "time": "2018-04-20T06:17:25+00:00"
-        },
-        {
-            "name": "psr/container",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/container.git",
-                "reference": "014d250daebff39eba15ba990eeb2a140798e77c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/014d250daebff39eba15ba990eeb2a140798e77c",
-                "reference": "014d250daebff39eba15ba990eeb2a140798e77c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Container\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common Container Interface (PHP FIG PSR-11)",
-            "homepage": "https://github.com/php-fig/container",
-            "keywords": [
-                "PSR-11",
-                "container",
-                "container-interface",
-                "container-interop",
-                "psr"
-            ],
-            "time": "2018-12-29T15:36:03+00:00"
-        },
-        {
             "name": "psr/http-message",
             "version": "dev-master",
             "source": {
@@ -945,53 +371,6 @@
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
-            "name": "shelob9/mailchimp-functions",
-            "version": "dev-refactor/db",
-            "dist": {
-                "type": "path",
-                "url": "../../packages/mailchimp-functions",
-                "reference": "268dde3e4f06761cabc8b17f3734e24e1c7bc4cf",
-                "shasum": null
-            },
-            "require": {
-                "calderawp/caldera-db": "dev-master",
-                "calderawp/caldera-interop": "dev-master",
-                "calderawp/data-source": "dev-master",
-                "calderawp/http": "dev-master",
-                "calderawp/rest-api": "dev-master",
-                "guzzlehttp/guzzle": "^6.2",
-                "php": "^7.2",
-                "thinkshout/mailchimp-api-php": "dev-master",
-                "vlucas/phpdotenv": "^3.3"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.2",
-                "phpunit/phpunit": "^8.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "something\\Mailchimp\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "something\\Tests\\Mailchimp\\": "tests/Mailchimp"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "authors": [
-                {
-                    "name": "Josh Pollock",
-                    "email": "josh@calderawp.com"
-                }
-            ]
-        },
-        {
             "name": "symfony/polyfill-ctype",
             "version": "dev-master",
             "source": {
@@ -1055,12 +434,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "c60ecf5ba842324433b46f58dc7afc4487dbab99"
+                "reference": "4e85fcc15b6579c7d01a65b947cfe88657293899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/c60ecf5ba842324433b46f58dc7afc4487dbab99",
-                "reference": "c60ecf5ba842324433b46f58dc7afc4487dbab99",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/4e85fcc15b6579c7d01a65b947cfe88657293899",
+                "reference": "4e85fcc15b6579c7d01a65b947cfe88657293899",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +458,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -1106,7 +485,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-04-06T14:04:46+00:00"
+            "time": "2019-05-09T07:23:25+00:00"
         },
         {
             "name": "thinkshout/mailchimp-api-php",
@@ -1144,58 +523,6 @@
                 "mailchimp"
             ],
             "time": "2018-11-01T20:02:15+00:00"
-        },
-        {
-            "name": "vlucas/phpdotenv",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "ffcaf1dfee56c8830d83d9812efad2a98c08f02e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/ffcaf1dfee56c8830d83d9812efad2a98c08f02e",
-                "reference": "ffcaf1dfee56c8830d83d9812efad2a98c08f02e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.4 || ^7.0",
-                "phpoption/phpoption": "^1.5",
-                "symfony/polyfill-ctype": "^1.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.0 || ^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dotenv\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Vance Lucas",
-                    "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com"
-                }
-            ],
-            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "keywords": [
-                "dotenv",
-                "env",
-                "environment"
-            ],
-            "time": "2019-03-23T10:56:16+00:00"
         }
     ],
     "packages-dev": [
@@ -1254,6 +581,119 @@
                 "instantiate"
             ],
             "time": "2019-03-17T17:37:11+00:00"
+        },
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "c0436bf63689fc334f67ccaa5e17458af9700b42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/c0436bf63689fc334f67ccaa5e17458af9700b42",
+                "reference": "c0436bf63689fc334f67ccaa5e17458af9700b42",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3|^7.0"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "^1.4",
+                "phpunit/phpunit": "^4.8.36 || ^5.7 || ^6.5 || ^7.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2019-04-18T04:49:30+00:00"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~2.0",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework",
+            "homepage": "https://github.com/mockery/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2019-02-13T09:37:52+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1878,12 +1318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e19a9c83ca5af3efb41019e4770585a7f8984a2b"
+                "reference": "d7d9cee051d03ed98df6023aad93f7902731a780"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e19a9c83ca5af3efb41019e4770585a7f8984a2b",
-                "reference": "e19a9c83ca5af3efb41019e4770585a7f8984a2b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d7d9cee051d03ed98df6023aad93f7902731a780",
+                "reference": "d7d9cee051d03ed98df6023aad93f7902731a780",
                 "shasum": ""
             },
             "require": {
@@ -1954,7 +1394,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-05-06T07:54:54+00:00"
+            "time": "2019-05-09T05:06:47+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -2668,7 +2108,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "symfony/yaml": 20
+        "symfony/yaml": 20,
+        "thinkshout/mailchimp-api-php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -12,6 +12,7 @@ import { select, dispatch, registerStore} from '@wordpress/data';
  */
 import {calderaMailChimpStore,CALDERA_MAILCHIMP_STORE} from "./store";
 const {subscribe,getState} = registerStore( CALDERA_MAILCHIMP_STORE,calderaMailChimpStore);
+
 subscribe(() => {
 	console.log(getState());
 

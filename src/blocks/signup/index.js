@@ -86,7 +86,11 @@ export const options = {
 			setAttributes({accountId});
 		};
 		const setListId = (listId) => setAttributes({listId});
-		const listFields =  select(CALDERA_MAILCHIMP_STORE).getListsUi(accountId);
+		let listFields = [];
+		if (accountId) {
+			select(CALDERA_MAILCHIMP_STORE).getClient().getAccountsUi(accountId).then(r => console.log(r));
+			 listFields = select(CALDERA_MAILCHIMP_STORE).getListsUi(accountId);
+		}
 		if( Array.isArray(listFields) && ! listId  && listFields.length){
 			if( listFields[0].options.length){
 				setListId(listFields[0].options[0].value);
@@ -94,7 +98,6 @@ export const options = {
 		}
 		const chooseAccountField =  select(CALDERA_MAILCHIMP_STORE).getAccountsUi();
 		const adminApiClient = 	select(CALDERA_MAILCHIMP_STORE).getClient();
-		console.log(attributes);
 		return SignupBlockEdit({
 			listId,
 			setListId,

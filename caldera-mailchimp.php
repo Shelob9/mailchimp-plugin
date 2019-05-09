@@ -37,10 +37,11 @@ add_action( 'CalderaMailChimp', function(\calderawp\CalderaMailChimp\CalderaMail
  */
 add_action('plugins_loaded', function () {
 
-	//include autoloader
-	include_once __DIR__ . '/vendor/autoload.php';
+    //include autoloader
+    include_once __DIR__ . '/vendor/autoload.php';
 
-	$module = new \calderawp\CalderaMailChimp\CalderaMailChimp(
+
+    $module = new \calderawp\CalderaMailChimp\CalderaMailChimp(
 		site_url(),
 		'12345',
 		new \calderawp\caldera\restApi\Authentication\WordPressUserFactory()

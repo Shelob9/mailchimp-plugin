@@ -5,32 +5,63 @@ namespace calderawp\CalderaMailChimp\Endpoints;
 
 
 use calderawp\caldera\restApi\Authentication\WordPressUserJwt;
+use calderawp\CalderaMailChimp\CalderaMailChimp;
 use calderawp\CalderaMailChimp\Controllers\HasModule;
 use calderawp\interop\Contracts\Rest\RestRequestContract as Request;
 use calderawp\interop\Contracts\Rest\RestResponseContract as Response;
+use something\Mailchimp\Controllers\MailchimpProxy;
 use something\Mailchimp\Entities\Account;
 
 class GetAccounts extends \something\Mailchimp\Endpoints\GetAccounts
 {
-	use HasModule,AuthorizesRequestByWpCap;
+	use AuthorizesRequestByWpCap;
 
 	/**
 	 * @var WordPressUserJwt
 	 */
 	private $jwt;
-	/** @inheritdoc */
+
+
+    /**
+     * @var CalderaMailChimp
+     */
+    private $module;
+
+    /**
+     * @return CalderaMailChimp
+     */
+    public function getModule(): CalderaMailChimp
+    {
+        return $this->module;
+    }
+
+    /**
+     * @param CalderaMailChimp $module
+     *
+     * @return GetAccounts
+     */
+    public function setModule(CalderaMailChimp $module): GetAccounts
+    {
+        $this->module = $module;
+        return $this;
+    }
+
+
+    /** @inheritdoc */
 	public function handleRequest(Request $request): Response
 	{
 
 		$accounts = $this->getModule()->getDatabase()->getAccountDbApi()->getAll();
-		if (! $request->getParam('asUiConfig')) {
-			return new \calderawp\caldera\restApi\Response($accounts);
+		if (!$request->getParam('asUiConfig')) {
+
+            return new \calderawp\caldera\restApi\Response($accounts);
 		}
 
 		$accountUi = [
 			'fieldType' => 'select',
 			'fieldId' => 'mc-choose-account',
-			'options' => []
+			'options' => [],
+            'label' => 'Select Account'
 		];
 		if (! empty($accounts) ) {
 			/** @var Account $account */
@@ -41,7 +72,7 @@ class GetAccounts extends \something\Mailchimp\Endpoints\GetAccounts
 				];
 			}
 		}
-		return new \calderawp\caldera\restApi\Response($accountUi);
+		return (new \calderawp\caldera\restApi\Response() )->setData($accountUi);
 
 	}
 

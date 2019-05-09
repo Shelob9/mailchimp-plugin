@@ -76,14 +76,12 @@ export const Edit = (
 	if (!chooseAccountField.hasOwnProperty('options')) {
 		chooseAccountField.options = [];
 	}
-	let hasOptions =false;
+	const hasOptions =chooseAccountField.options.length;
 	if (!chooseAccountField.options.length) {
 		chooseAccountField.options.push({
 			value: null,
 			label: '--'
 		})
-	}else{
-		hasOptions = true;
 	}
 	return (
 		<Fragment>

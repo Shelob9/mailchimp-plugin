@@ -114,6 +114,7 @@ class RestApi
 	{
 
 		$this->endpoints[ GetAccounts::class ] = (new GetAccounts())
+            ->setModule($module)
 			->setJwt($module->getJwt() );
 
 		$this->endpoints[ CreateAccountEndpoint::class ] = (new CreateAccountEndpoint())
