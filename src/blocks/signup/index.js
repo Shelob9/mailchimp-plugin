@@ -113,7 +113,7 @@ export const options = {
             accountId
         } = attributes;
         const setAccountId = (accountId) => {
-            setAttributes({accountId});
+            setAttributes({accountId,listId:null});
         };
         const setListId = (listId) => {
             setAttributes({listId});
