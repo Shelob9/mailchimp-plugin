@@ -5,6 +5,7 @@ import {Fragment} from "react";
 import {select, dispatch, withDispatch, withSelect} from '@wordpress/data';
 import {CALDERA_MAILCHIMP_STORE} from "../../store";
 import {Placeholder} from '@wordpress/components';
+import {Save} from "./components/Save";
 
 export const name = 'caldera-mailchimp/signup';
 
@@ -129,13 +130,7 @@ export const options = {
 
         });
     },
-    save({attributes, className}) {
-        return (
-            <div className={className}>
-                <span className={'calderaMailchimp'} data-list={attributes.listId}></span>
-            </div>
-        )
-    },
+    save: Save
 };
 
 
