@@ -91,6 +91,7 @@ const onSubmit = (values,processor) => {
 };
 
 MailChimpForm.propTypes = {
+	listId: PropTypes.string,
 	form: PropTypes.object,
 	onSubmit: PropTypes.func,
 	onChange: PropTypes.func,

@@ -67,11 +67,6 @@ export const Edit = (
 		setListId, listId, listFieldConfig, instanceId
 	}
 ) => {
-	const initialValues = {};
-
-	function getListIdFromValues(values) {
-		return '';
-	}
 
 	if (!chooseAccountField.hasOwnProperty('options')) {
 		chooseAccountField.options = [];

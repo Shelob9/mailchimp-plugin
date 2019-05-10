@@ -157,6 +157,9 @@ export const calderaMailChimpStore = {
 		},
 		getClient(state){
 			return client;
+		},
+		getListUi(state,listId){
+			return state.listUi[listId];
 		}
 	},
 	resolvers: {

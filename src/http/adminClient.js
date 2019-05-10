@@ -82,6 +82,13 @@ function AdminClient(apiRoot,token) {
 				accountId
 			});
 		},
+		getListUi(accountId){
+			return getListsUi({
+				apiRoot,
+				token,
+				accountId
+			});
+		},
 		saveApiKey(apiKey){
 			return  saveApiKey({
 				apiRoot,

@@ -5,8 +5,8 @@ import {CALDERA_MAILCHIMP_STORE} from "../../../store";
 
 
 
-export const Display = ({listId, apiRoot,token,Fallback}) => {
-	if( listId ){
+export const Display = ({listId, apiRoot,token,listUi,Fallback}) => {
+	if( listId && '---' !== listId ){
 		return <CalderaMailChimpForm
 			apiRoot={apiRoot}
 			token={token}
@@ -18,9 +18,11 @@ export const Display = ({listId, apiRoot,token,Fallback}) => {
 	return <Fallback/>
 };
 
-export const DisplayWithState = withSelect( ( select ) => {
-	const { getApiRoot,getToken } = select( CALDERA_MAILCHIMP_STORE );
+export const DisplayWithState = withSelect( ( select,ownProps ) => {
+	const { getApiRoot,getToken,getListUi } = select( CALDERA_MAILCHIMP_STORE );
+	const {listId} = ownProps;
 	return {
+		listUi: getListUi(listId),
 		apiRoot: getApiRoot(),
 		token: getToken()
 	};

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState,useRef} from "@wordpress/element";
 import PropTypes from 'prop-types';
 import {createSubscriber} from "../http/publicClient";
 import MailChimpForm from './MailChimpForm';
@@ -14,18 +14,25 @@ import MailChimpForm from './MailChimpForm';
  * @constructor
  */
 function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit}){
+	const lastListId = useRef(listId);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [form, setForm] = useState({});
+
 	useEffect(() => {
 		fetch(`${apiRoot}/forms/${listId}?token=${token}&asUiConfig=1`)
 			.then(r => r.json())
 			.then(r => {
+				lastListId.current = listId;
 				setForm(r);
 				setIsLoaded(true);
 			});
 
-	}, [isLoaded, setIsLoaded]);
-	return <MailChimpForm  form={form} onSubmit={createSubscriber} hideOnSubmit={hideOnSubmit}/>
+	}, [isLoaded, setIsLoaded,listId, apiRoot,token,setForm]);
+	if (isLoaded && lastListId.current === listId) {
+		return <MailChimpForm form={form} onSubmit={createSubscriber} hideOnSubmit={hideOnSubmit} listId={lastListId.current}/>
+	} else {
+		return  <div>Loading</div>
+	}
 
 
 }

@@ -78,11 +78,7 @@ export function SignupBlockAdminUi(
 
 const SignupBlockAdminUiWithState = withSelect((select, ownProps) => {
     const {
-        listId,
-        setListId,
         accountId,
-        setAccountId,
-        instanceId
     } = ownProps;
     const {
         getListsUi,
@@ -95,13 +91,8 @@ const SignupBlockAdminUiWithState = withSelect((select, ownProps) => {
         listFields: getListsUi(accountId),
         chooseAccountField: getAccountsUi(),
         adminApiClient: getClient(),
-        listId,
-        setListId,
-        accountId,
-        setAccountId,
-        instanceId
     };
-})(withDispatch((dispatch, ownProps) => {
+})(withDispatch((dispatch) => {
     const {
         setListsUi
     } = dispatch(CALDERA_MAILCHIMP_STORE);
