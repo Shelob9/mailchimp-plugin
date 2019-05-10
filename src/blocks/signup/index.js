@@ -1,4 +1,4 @@
-import {Display} from "./components/Display";
+import {DisplayWithState} from "./components/Display";
 import {Edit} from "./components/Edit";
 import {InspectorControls} from '@wordpress/editor';
 import {Fragment} from "react";
@@ -45,14 +45,11 @@ export function SignupBlockAdminUi(
     }
 ) {
 
-    const form = {};//@todo state
-
 
     return (
         <Fragment>
-            <Display
+            <DisplayWithState
                 listId={listId}
-                form={form}
                 Fallback={() => (
                     <Placeholder>
                         Use Block Settings For Form

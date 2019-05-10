@@ -5,8 +5,6 @@
  */
 
 
-
-
 /**
  * Setup admin page as a sub-menu item of Caldera Forms with a React app for the UI
  */

@@ -1,20 +1,27 @@
-import React from 'react';
-import {mailChimpTestForm} from "../../../components/mailChimpTestForm.fixture";
-import MailChimpForm from "../../../components/MailChimpForm";
+import {createElement} from '@wordpress/element';
+import {withSelect} from '@wordpress/data';
+import CalderaMailChimpForm from "../../../components/CalderaMailChimpForm";
+import {CALDERA_MAILCHIMP_STORE} from "../../../store";
 
-export const Display = ({listId,form,Fallback}) => {
+
+
+export const Display = ({listId, apiRoot,token,Fallback}) => {
 	if( listId ){
-
-		if( 1 === 8 ){
-			return <MailChimpForm
-				form={form}
-				onSubmit={(values) => alert(JSON.stringify(values))}
-			/>
-		}
-		return <div>{listId}</div>
+		return <CalderaMailChimpForm
+			apiRoot={apiRoot}
+			token={token}
+			listId={listId}
+			onSubmit={(values) => alert(JSON.stringify(values))}
+		/>
 
 	}
-
 	return <Fallback/>
 };
 
+export const DisplayWithState = withSelect( ( select ) => {
+	const { getApiRoot,getToken } = select( CALDERA_MAILCHIMP_STORE );
+	return {
+		apiRoot: getApiRoot(),
+		token: getToken()
+	};
+} )( Display );
