@@ -2,7 +2,28 @@
 
 exports[`Display component Shows mailchimp form 1`] = `
 <div>
-  Loading
+  <div
+    className="css-16tm1g7-wrapper-wrapper"
+  >
+    <div
+      className="css-1anlcob-pacmanStyle"
+    />
+    <div
+      className="css-1oj2eaa-pacmanStyle"
+    />
+    <div
+      className="css-1y2ttxx-ballStyle"
+    />
+    <div
+      className="css-im5qma-ballStyle"
+    />
+    <div
+      className="css-10tjdos-ballStyle"
+    />
+    <div
+      className="css-x3nw5t-ballStyle"
+    />
+  </div>
 </div>
 `;
 

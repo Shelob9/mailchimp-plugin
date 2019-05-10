@@ -2,6 +2,8 @@ import {useEffect, useState,useRef} from "@wordpress/element";
 import PropTypes from 'prop-types';
 import {createSubscriber} from "../http/publicClient";
 import MailChimpForm from './MailChimpForm';
+import {PacmanLoader} from "react-spinners";
+import React from "react";
 
 /**
  * Load remote MailChimp sign up mailChimpTestForm via the WordPress REST API
@@ -17,7 +19,9 @@ function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit}){
 	const lastListId = useRef(listId);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [form, setForm] = useState({});
-
+	const Spinner = () => (
+		<div><PacmanLoader/></div>
+	);
 	useEffect(() => {
 		fetch(`${apiRoot}/forms/${listId}?token=${token}&asUiConfig=1`)
 			.then(r => r.json())
@@ -31,7 +35,7 @@ function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit}){
 	if (isLoaded && lastListId.current === listId) {
 		return <MailChimpForm form={form} onSubmit={createSubscriber} hideOnSubmit={hideOnSubmit} listId={lastListId.current}/>
 	} else {
-		return  <div>Loading</div>
+		return  <Spinner />
 	}
 
 

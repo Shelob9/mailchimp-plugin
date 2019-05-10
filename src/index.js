@@ -11,13 +11,9 @@ import { select, dispatch, registerStore} from '@wordpress/data';
  * Import and setup store
  */
 import {calderaMailChimpStore,CALDERA_MAILCHIMP_STORE} from "./store";
-const {subscribe,getState} = registerStore( CALDERA_MAILCHIMP_STORE,calderaMailChimpStore);
+registerStore( CALDERA_MAILCHIMP_STORE,calderaMailChimpStore);
 
-subscribe(() => {
-	console.log(getState());
-
-});
-
+//Fuck with lodash
 window._lodash = window._;
 window.lodash = window._;
 /**
@@ -105,7 +101,7 @@ const refreshAllBlocks = ( changedNames = [] ) => {
 	}
 	selectedBlockId = null;
 };
-console.log(112);
+
 // Load all block index files.
 autoload( {
 	getContext: () => require.context( './blocks', true, /index\.js$/ ),

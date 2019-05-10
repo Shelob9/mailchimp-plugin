@@ -62,9 +62,12 @@ export const Edit = (
 	{
 		accountId,
 		chooseAccountField,
-		onChangeAccountId,
 		adminApiClient,
-		setListId, listId, listFieldConfig, instanceId
+		onChangeAccountId,
+		setListId,
+		listId,
+		listFieldConfig,
+		instanceId
 	}
 ) => {
 

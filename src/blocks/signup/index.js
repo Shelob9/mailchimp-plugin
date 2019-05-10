@@ -6,24 +6,11 @@ import {select, dispatch, withDispatch, withSelect} from '@wordpress/data';
 import {CALDERA_MAILCHIMP_STORE} from "../../store";
 import {Placeholder} from '@wordpress/components';
 import {Save} from "./components/Save";
+import {attributes} from "../attributes";
 
 export const name = 'caldera-mailchimp/signup';
 
-const attributes = {
-    listId: {
-        type: 'string',
-        default: '',
-        source: 'attribute',
-        selector: 'span.calderaMailchimp',
-        attribute: 'data-list',
-    },
-    accountId: {
-        type: 'number',
-        default: 0,
-    },
 
-
-};
 
 /**
  *

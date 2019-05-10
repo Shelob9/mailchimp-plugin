@@ -15,7 +15,6 @@ import MailChimpSurveyForm from './MailChimpSurveyForm';
 function CalderaMailChimpSurveyForm({listId, apiRoot, token}) {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [form, setForm] = useState({});
-	const getFormUrl = `${apiRoot}/${listId}/form?token=${token}`;
 
 	/**
 	 * Find the MailChimp processor in form
@@ -50,14 +49,14 @@ function CalderaMailChimpSurveyForm({listId, apiRoot, token}) {
 
 	const submitUrl = `${apiRoot}/subscribe`;
 	useEffect(() => {
-		fetch(getFormUrl)
+		fetch(`${apiRoot}/forms/${listId}?token=${token}&asUiConfig=1`)
 			.then(r => r.json())
 			.then(r => {
 				setForm(r);
 				setIsLoaded(true);
 			});
 
-	}, [form, isLoaded, setIsLoaded]);
+	}, [isLoaded, setIsLoaded,listId,token,apiRoot]);
 	if (isLoaded) {
 		return <MailChimpSurveyForm
 			submitUrl={submitUrl}
