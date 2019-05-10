@@ -4,7 +4,7 @@ import {Button} from '@storybook/react/demo';
 import {Display} from "./Display";
 import {Edit} from "./Edit";
 import {mailChimpTestForm} from "../../../components/mailChimpTestForm.fixture";
-import {SignupBlockEdit} from "../index";
+import {SignupBlockAdminUi} from "../index";
 
 const listId = 'ff';
 const attributes = {
@@ -14,7 +14,7 @@ const setAttributes = (newValues) => console.log(newValues);
 const instanceId = 'instanceIdIsThis';
 storiesOf('The signup block', module)
 	.add('Signup Block Edit UI', () => (
-		<SignupBlockEdit
+		<SignupBlockAdminUi
 			attributes={attributes} setAttributes={setAttributes} instanceId={instanceId}
 		/>
 	))
