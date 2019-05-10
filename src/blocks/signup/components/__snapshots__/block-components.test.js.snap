@@ -2,60 +2,62 @@
 
 exports[`Display component Shows mailchimp form 1`] = `
 <div>
-  <div
-    className="css-16tm1g7-wrapper-wrapper"
-  >
-    <div
-      className="css-1anlcob-pacmanStyle"
-    />
-    <div
-      className="css-1oj2eaa-pacmanStyle"
-    />
-    <div
-      className="css-1y2ttxx-ballStyle"
-    />
-    <div
-      className="css-im5qma-ballStyle"
-    />
-    <div
-      className="css-10tjdos-ballStyle"
-    />
-    <div
-      className="css-x3nw5t-ballStyle"
-    />
-  </div>
+  Loading
 </div>
 `;
 
 exports[`Display component shows edit form 1`] = `
-<div>
+Array [
   <div
-    className="caldera"
+    className="caldera-field-wrapper caldera-field-wrapper-text"
   >
-    <form
-      className="horizontal-form-undefined caldera-form"
-      onSubmit={[Function]}
+    <label
+      className="caldera-field-label caldera-field-label-text"
+      htmlFor="caldera-mc-api-key"
+    >
+      New API Key
+       
+    </label>
+    <input
+      className="caldera-field caldera-field-text"
+      id="caldera-mc-api-key"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="text"
+      value=""
     />
-  </div>
-</div>
+  </div>,
+  <button
+    id="akldsajk-fsd-mc-add-api-key"
+    onClick={[Function]}
+    title="Save API Key"
+  >
+    Save API Key
+  </button>,
+  "0",
+  <div
+    className="caldera-field-wrapper caldera-field-wrapper-text"
+  >
+    <label
+      className="caldera-field-label caldera-field-label-text"
+      htmlFor="caldera-mc-select-list-akldsajk-fsd"
+    >
+       
+    </label>
+    <input
+      className="caldera-field caldera-field-text"
+      id="caldera-mc-select-list-akldsajk-fsd"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="text"
+      value="111"
+    />
+  </div>,
+]
 `;
 
 exports[`Display component shows fallback if no list id 1`] = `
 <div>
   Fallback
 </div>
-`;
-
-exports[`DisplayA component shows message 1`] = `
-<span>
-  The Words
-</span>
-`;
-
-exports[`DisplayA component shows message in bold 1`] = `
-<span>
-  <strong>
-    The Words
-  </strong>
-</span>
 `;

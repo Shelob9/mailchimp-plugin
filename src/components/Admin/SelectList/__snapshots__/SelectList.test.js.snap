@@ -2,20 +2,21 @@
 
 exports[`Shows list 1`] = `
 <div
-  className="caldera"
+  className="caldera-field-wrapper caldera-field-wrapper-text"
 >
-  <form
-    className="horizontal-form-caldera-mc-select-a caldera-form"
-    onSubmit={[Function]}
+  <label
+    className="caldera-field-label caldera-field-label-text"
+    htmlFor="caldera-mc-select-list-a"
   >
-    <div
-      className="sc-bdVaJa caldera-form-row caldera-row sc-bwzfXH pjOvZ"
-    >
-      <div
-        className="caldera-column width-1 sc-bdVaJa iHZvIS"
-        id="c-caldera-mc-select-a-0"
-      />
-    </div>
-  </form>
+     
+  </label>
+  <input
+    className="caldera-field caldera-field-text"
+    id="caldera-mc-select-list-a"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="text"
+    value="45907f0c59"
+  />
 </div>
 `;

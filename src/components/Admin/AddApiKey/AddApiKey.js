@@ -18,7 +18,6 @@ const field = {
  * @constructor
  */
 export const AddApiKey = ({onChange,instanceId,apiKey,onSaveApiKey}) => {
-	const onSave = () => alert(1);
 	return(
 		<Fragment>
 			<Field

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shows list 1`] = `
+Array [
+  <div
+    className="caldera-field-wrapper caldera-field-wrapper-text"
+  >
+    <label
+      className="caldera-field-label caldera-field-label-text"
+      htmlFor="caldera-mc-api-key"
+    >
+      New API Key
+       
+    </label>
+    <input
+      className="caldera-field caldera-field-text"
+      id="caldera-mc-api-key"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>,
+  <button
+    id="a-mc-add-api-key"
+    title="Save API Key"
+  >
+    Save API Key
+  </button>,
+]
+`;

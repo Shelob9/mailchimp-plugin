@@ -21,12 +21,12 @@ it( 'Changes list', () => {
 		<AddApiKey
 			listFieldConfig={field[0]}
 			listId={''}
-			setListId={onChange}
+			onChange={onChange}
 			instanceId={'1'}
 		/>
 	);
 
-	component.find( 'select' ).first().simulate(
+	component.find( 'input' ).first().simulate(
 		'change',
 		{target: {value:'45907f0c59'}}
 	);
