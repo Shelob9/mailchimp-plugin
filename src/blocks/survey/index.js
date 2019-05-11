@@ -14,7 +14,7 @@ import {withSelect, withDispatch} from "@wordpress/data";
 const DisplayWithState = createFormPreviewWithState(Display);
 
 const EditSurvey = (props) => {
-    console.log(props.listUi);
+
     return (
         <Fragment>
             <Edit {...props} />
@@ -53,9 +53,7 @@ const EditWithState = withSelect((select, ownProps) => {
 
 export const options = {
     title: 'MailChimp Survey Form',
-
-    description: 'Render a sample block.',
-
+    description: 'Segment your list with a 1 question at a time survey',
     icon: 'image-filter',
     category: 'widgets',
     attributes,

@@ -4,9 +4,10 @@ import {createFormPreviewWithState} from "../../createFormPreviewWithState";
 
 
 
-export const Display = ({listId, apiRoot,token,listUi,Fallback}) => {
+export const Display = ({listId, apiRoot,token,form,Fallback}) => {
 	if( listId && '---' !== listId ){
 		return <CalderaMailChimpForm
+			initialForm={form}
 			apiRoot={apiRoot}
 			token={token}
 			listId={listId}

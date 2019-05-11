@@ -3,9 +3,10 @@ import CalderaMailChimpSurveyForm from "../../../components/CalderaMailChimpSurv
 
 
 
-export const Display = ({listId, apiRoot,token,Fallback}) => {
+export const Display = ({listId, apiRoot,token,Fallback,form}) => {
 	if( listId && '---' !== listId ){
 		return <CalderaMailChimpSurveyForm
+			initialForm={form}
 			apiRoot={apiRoot}
 			token={token}
 			listId={listId}

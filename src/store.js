@@ -181,8 +181,9 @@ export const calderaMailChimpStore = {
 			return actions.setListsUi(accountId,fields);
 		},
 		async getListUi(listId){
-			const fields = await client.getListUi(listId).then( r => r.json());
-			return actions.setListUi(accountId,fields);
+			const form = await client.getListUi(listId).then( r => r.json());
+			console.log(form);
+			return actions.setListUi(listId,form);
 		},
 
 	},

@@ -5,6 +5,7 @@ export function createFormPreviewWithState(Component) {
         const { getApiRoot,getToken,getListUi } = select( CALDERA_MAILCHIMP_STORE );
         const {listId,accountId} = ownProps;
         return {
+            form: listId  ? getListUi(listId) : () => {},
             listUi: listId && accountId ? getListUi(listId) : () => {},
             apiRoot: getApiRoot(),
             token: getToken()
