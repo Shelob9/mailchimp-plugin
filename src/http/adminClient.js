@@ -1,5 +1,12 @@
 import {prepareData} from "./publicClient";
 
+/**
+ * Get all lists for an account
+ *
+ * @param apiRoot
+ * @param token
+ * @param accountId
+ */
 const getLists = (
 	{
 		apiRoot,
@@ -7,10 +14,17 @@ const getLists = (
 		accountId
 	}
 ) => {
-	const url = `${apiRoot}/lists?accountId=${accountId}&token=${token}&asUiConfig=0`
+	const url = `${apiRoot}/lists?accountId=${accountId}&asUiConfig=0&token=${token}`;
 	return fetch(url);
 };
 
+/**
+ * Get the form field config for selecting lists of an account
+ *
+ * @param apiRoot
+ * @param token
+ * @param accountId
+ */
 const getListsUi = (
 	{
 		apiRoot,
@@ -22,6 +36,31 @@ const getListsUi = (
 	return fetch(url);
 };
 
+/**
+ * Get the form field configs for a list
+ *
+ * @param apiRoot
+ * @param token
+ * @param listId
+ */
+const getListUi = (
+	{
+		apiRoot,
+		token,
+		listId
+	}
+) => {
+	const url = `${apiRoot}/forms/${listId}?asUiConfig=1&token=${token}`;
+	return fetch(url);
+};
+
+/**
+ * Save an API key
+ *
+ * @param apiRoot
+ * @param token
+ * @param apiKey
+ */
 const saveApiKey = ({
 	apiRoot,
 	token,
@@ -38,18 +77,30 @@ const saveApiKey = ({
 			token
 		})
 	});
-}
+};
 
+/**
+ * Get all accounts
+ *
+ * @param apiRoot
+ * @param token
+ */
 const getAccounts = (
 	{
 		apiRoot,
 		token
 	}
 ) =>{
-	const url = `${apiRoot}/accounts?token=${token}&asUiConfig=0`;
+	const url = `${apiRoot}/accounts?asUiConfig=0&token=${token}`;
 	return fetch(url);
 };
 
+/**
+ * Get the field config for selecting accounts
+ *
+ * @param apiRoot
+ * @param token
+ */
 const getAccountsUi = (
 	{
 		apiRoot,
@@ -82,11 +133,11 @@ function AdminClient(apiRoot,token) {
 				accountId
 			});
 		},
-		getListUi(accountId){
-			return getListsUi({
+		getListUi(listId){
+			return getListUi({
 				apiRoot,
 				token,
-				accountId
+				listId
 			});
 		},
 		saveApiKey(apiKey){

@@ -13,19 +13,32 @@ import {withSelect, withDispatch} from "@wordpress/data";
 
 const DisplayWithState = createFormPreviewWithState(Display);
 
+const EditSurvey = (props) => {
+    console.log(props.listUi);
+    return (
+        <Fragment>
+            <Edit {...props} />
+        </Fragment>
+    )
+};
 const EditWithState = withSelect((select, ownProps) => {
     const {
         accountId,
+        listId,
     } = ownProps;
     const {
+        getListUi,
         getListsUi,
+        getLists,
         getAccountsUi,
         getClient
     } = select(CALDERA_MAILCHIMP_STORE);
 
-
+    const noop = () => {};
     return {
-        listFieldConfig: getListsUi(accountId),
+        lists: accountId ? getLists(accountId) : noop(),
+        getListUi: listId ? getListUi(listId): noop(),
+        listFieldConfig: accountId ? getListsUi(accountId) : noop(),
         chooseAccountField: getAccountsUi(),
         adminApiClient: getClient(),
     };
@@ -36,7 +49,7 @@ const EditWithState = withSelect((select, ownProps) => {
     return {
         setListsUi
     };
-})(Edit));
+})(EditSurvey));
 
 export const options = {
     title: 'MailChimp Survey Form',

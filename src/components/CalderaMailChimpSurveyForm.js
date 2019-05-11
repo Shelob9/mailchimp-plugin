@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import MailChimpSurveyForm from './MailChimpSurveyForm';
+import {getForm} from "../http/publicClient";
 
 /**
  * Load remote MailChimp sign up mailChimpTestForm via the WordPress REST API
@@ -49,7 +50,7 @@ function CalderaMailChimpSurveyForm({listId, apiRoot, token}) {
 
 	const submitUrl = `${apiRoot}/subscribe`;
 	useEffect(() => {
-		fetch(`${apiRoot}/forms/${listId}?token=${token}&asUiConfig=1`)
+		getForm({listId,apiRoot,token})
 			.then(r => r.json())
 			.then(r => {
 				setForm(r);

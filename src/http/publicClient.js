@@ -68,7 +68,26 @@ const createSubscriber = (values,processor) => {
 	 });
  };
 
+/**
+ * Get the Mailchimp survey form
+ *
+ * @param apiRoot
+ * @param token
+ * @param listId
+ */
+const getForm = (
+	{
+		apiRoot,
+		token,
+		listId
+	}
+) => {
+	const url = `${apiRoot}/forms/${listId}?asUiConfig=1&token=${token}`;
+	return fetch(url);
+};
+
 export {
+	getForm,
 	prepareData,
 	createSubscriber,
 	updateSubscriber

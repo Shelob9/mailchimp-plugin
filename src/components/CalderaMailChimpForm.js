@@ -1,6 +1,6 @@
 import {useEffect, useState,useRef} from "@wordpress/element";
 import PropTypes from 'prop-types';
-import {createSubscriber} from "../http/publicClient";
+import {createSubscriber, getForm} from "../http/publicClient";
 import MailChimpForm from './MailChimpForm';
 import {PacmanLoader} from "react-spinners";
 import React from "react";
@@ -23,7 +23,7 @@ function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit}){
 		<div><PacmanLoader/></div>
 	);
 	useEffect(() => {
-		fetch(`${apiRoot}/forms/${listId}?token=${token}&asUiConfig=1`)
+		getForm({listId,token,apiRoot})
 			.then(r => r.json())
 			.then(r => {
 				lastListId.current = listId;
