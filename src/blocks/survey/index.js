@@ -13,14 +13,7 @@ import {withSelect, withDispatch} from "@wordpress/data";
 
 const DisplayWithState = createFormPreviewWithState(Display);
 
-const EditSurvey = (props) => {
 
-    return (
-        <Fragment>
-            <Edit {...props} />
-        </Fragment>
-    )
-};
 const EditWithState = withSelect((select, ownProps) => {
     const {
         accountId,
@@ -49,7 +42,7 @@ const EditWithState = withSelect((select, ownProps) => {
     return {
         setListsUi
     };
-})(EditSurvey));
+})(Edit));
 
 export const options = {
     title: 'MailChimp Survey Form',
@@ -58,13 +51,19 @@ export const options = {
     category: 'widgets',
     attributes,
     edit({attributes, setAttributes}) {
-        const {accountId, listId} = attributes;
+        const {accountId, listId,fieldsToHide} = attributes;
         const setListId = (listId) => setAttributes({listId});
-        const setAccountId = (accountId) => setAttributes({accountId,listId:null});
+        const setAccountId = (accountId) => {
+            setAttributes({accountId,listId:null});
+        };
+        const setFieldsToHide = (fieldsToHide) => {
+            setAttributes({fieldsToHide});
+        };
         return (
             <Fragment>
                 <DisplayWithState
                     listId={listId}
+                    fieldsToHide={fieldsToHide}
                     Fallback={() => (
                         <Placeholder>
                             Use Block Settings For Form
@@ -73,8 +72,10 @@ export const options = {
                 />
                 <InspectorControls>
                     <EditWithState
+                        fieldsToHide={fieldsToHide}
+                        setFieldsToHide={setFieldsToHide}
                         listId={listId}
-                        accountId={accountId}
+                        accountId={parseInt(accountId,10)}
                         onChangeAccountId={setAccountId}
                         setListId={setListId}
                     />

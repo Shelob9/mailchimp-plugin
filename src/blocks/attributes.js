@@ -8,8 +8,10 @@ export const attributes = {
     },
     accountId: {
         type: 'number',
-        default: 0,
+        default: null,
     },
-
-
+    fieldsToHide: {
+        type: 'array',
+        default: []
+    }
 };

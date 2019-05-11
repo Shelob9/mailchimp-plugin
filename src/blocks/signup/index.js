@@ -29,7 +29,7 @@ export function SignupBlockAdminUi(
         instanceId,
         listFields,
         chooseAccountField,
-        adminApiClient
+        adminApiClient,
     }
 ) {
 
@@ -47,6 +47,8 @@ export function SignupBlockAdminUi(
             />
             <InspectorControls>
                 <Edit
+                    fieldsToHide={{}}
+                    setFieldsToHide={()=> {}}
                     accountId={accountId}
                     listFieldConfig={listFields}
                     listId={listId}
@@ -71,11 +73,13 @@ const SignupBlockAdminUiWithState = withSelect((select, ownProps) => {
     const {
         getListsUi,
         getAccountsUi,
-        getClient
+        getClient,
+        getLists,
     } = select(CALDERA_MAILCHIMP_STORE);
 
 
     return {
+        lists: undefined !== accountId ? getLists(accountId) : () => {return {};},
         listFields: getListsUi(accountId),
         chooseAccountField: getAccountsUi(),
         adminApiClient: getClient(),
@@ -114,6 +118,7 @@ export const options = {
             accountId,
             setAccountId,
             instanceId,
+
 
         });
     },
