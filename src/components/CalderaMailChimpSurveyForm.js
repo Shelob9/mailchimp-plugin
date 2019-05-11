@@ -13,7 +13,7 @@ import {getForm} from "../http/publicClient";
  * @return {*}
  * @constructor
  */
-function CalderaMailChimpSurveyForm({listId, apiRoot, token}) {
+function CalderaMailChimpSurveyForm({listId, apiRoot, token,getForm}) {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [form, setForm] = useState({});
 
@@ -80,6 +80,7 @@ CalderaMailChimpSurveyForm.propTypes = {
 };
 
 CalderaMailChimpSurveyForm.defaultProps = {
+	getForm,
 	hideOnSubmit: true,
 	apiRoot: 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1/lists'
 };

@@ -15,7 +15,7 @@ import React from "react";
  * @return {*}
  * @constructor
  */
-function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit}){
+function CalderaMailChimpForm({listId, apiRoot,token,hideOnSubmit,getForm}){
 	const lastListId = useRef(listId);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [form, setForm] = useState({});
@@ -50,6 +50,7 @@ CalderaMailChimpForm.propTypes = {
 };
 
 CalderaMailChimpForm.defaultProps = {
+	getForm,
 	hideOnSubmit: true,
 	apiRoot: 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1/lists'
 };
