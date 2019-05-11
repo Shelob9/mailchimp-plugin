@@ -85,6 +85,14 @@ function CalderaMailChimpSurveyForms(elements,token,apiRoot){
 
 	return {
 		...CalderaMailChimpForms,
+		mountAll(){
+			if( elements.length ){
+				elements.forEach(element => {
+					const listId = element.dataset.list;
+					this.mount(element,listId);
+				})
+			}
+		},
 		mount:  (element,listId) =>{
 			setElementId(element,listId);
 			function createComponent() {
