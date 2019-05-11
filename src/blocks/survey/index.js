@@ -1,7 +1,7 @@
 import {Edit} from "../signup/components/Edit";
 import {Save} from "../survey/components/Save/Save";
 
-export const name = 'caldera-mailchimp/sample';
+export const name = 'caldera-mailchimp/survey';
 import {attributes} from "../attributes";
 import {Fragment, createElement} from "@wordpress/element";
 import {Placeholder} from "@wordpress/components";

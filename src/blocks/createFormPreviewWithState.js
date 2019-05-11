@@ -3,9 +3,9 @@ import {withSelect} from '@wordpress/data';
 export function createFormPreviewWithState(Component) {
     return withSelect( ( select,ownProps ) => {
         const { getApiRoot,getToken,getListUi } = select( CALDERA_MAILCHIMP_STORE );
-        const {listId} = ownProps;
+        const {listId,accountId} = ownProps;
         return {
-            listUi: getListUi(listId),
+            listUi: listId && accountId ? getListUi(listId) : () => {},
             apiRoot: getApiRoot(),
             token: getToken()
         };
