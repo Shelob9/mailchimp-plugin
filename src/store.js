@@ -14,7 +14,8 @@ const DEFAULT_STATE = {
 	accountsUi: {},
 	listsUi: {},//UI Config for choosing a list
 	listUi: {},//Ui config for fields of a list
-	pendingKey:''
+	pendingKey:'',
+	wpApiRoot: CALDERA_MAILCHIMP.wpApiRoot
 };
 const client = new AdminClient(CALDERA_MAILCHIMP.apiRoot,CALDERA_MAILCHIMP.token);
 
@@ -151,6 +152,9 @@ export const calderaMailChimpStore = {
 		},
 		getApiRoot(state){
 			return state.apiRoot;
+		},
+		getWpApiRoot(state){
+			return state.wpApiRoot;
 		},
 		getApiKey(state,apiKey){
 			return state.saveApiKey = apiKey;

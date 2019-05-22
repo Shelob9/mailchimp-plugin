@@ -60,14 +60,17 @@ add_action( 'CalderaMailChimp', function( \calderawp\CalderaMailChimp\CalderaMai
 		wp_localize_script('caldera-mailchimp', 'CALDERA_MAILCHIMP',
             [
                 'token' => esc_attr($module->getCurrentUserToken()),
-                'apiRoot' => esc_url_raw(rest_url('/caldera-api/v1/messages/mailchimp/v1'))
+                'apiRoot' => esc_url_raw(rest_url('/caldera-api/v1/messages/mailchimp/v1')),
+                'wpApiRoot' => esc_url_raw( rest_url() ),
             ]);
 	},25 );
 	add_action( 'wp_enqueue_scripts', function() use ($module){
 		wp_localize_script('caldera-mailchimp-front', 'CALDERA_MAILCHIMP',
             [
                 'token' => esc_attr($module->getCurrentUserToken()),
-                'apiRoot' => esc_url_raw(rest_url('/caldera-api/v1/messages/mailchimp/v1'))
+                'apiRoot' => esc_url_raw(rest_url('/caldera-api/v1/messages/mailchimp/v1')),
+                'wpApiRoot' => esc_url_raw( rest_url() ),
+
             ] );
 	},25 );
 

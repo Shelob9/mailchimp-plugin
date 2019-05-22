@@ -1,7 +1,7 @@
 import { Fragment } from '@wordpress/element';
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 
-export const name = 'hmr-demo-plugin-b';
+export const name = 'calderamailchimp-plugin-b';
 
 export const options = {
 	icon: 'star-filled',

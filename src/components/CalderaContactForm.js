@@ -102,6 +102,7 @@ formConfig.rows.forEach( row => {
  */
 export const CalderaContactForm = ({apiRootUrl}) => (
     <CF2Form
+        formId={formId}
         formConfig={formConfig}
         axios={axios}
         apiRootUri={apiRootUrl}
