@@ -63,6 +63,9 @@ You likely will see errors in the console caused by being unable to connect to w
     - `yarn test`
 * Start storybook
     - `yarn storybook` 
+    
+### Build For Release
+* `yarn zip`
 
 ## License
 

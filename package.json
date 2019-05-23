@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --config .config/webpack.config.dev.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest --watch",
-    "test:ci": "jest -ci"
+    "test:ci": "jest -ci",
+    "zip": "node zip.js"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -19,14 +20,18 @@
     "@wordpress/dom-ready": "^2.2.0",
     "@wordpress/editor": "^9.0.9",
     "@wordpress/element": "^2.1.9",
+    "archiver": "^3.0.0",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "core-js": "^3.1.2",
+    "fs-extra": "^8.0.1",
     "is-email-valid": "^1.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-spinners": "^0.5.4",
-    "yup": "^0.26.10"
+    "yup": "^0.26.10",
+    "zip": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
