@@ -86,12 +86,12 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
         $fields =  [
             "FNAME" => false,
             "LNAME" => true,
-            "ADDRESS" => false,
-            "BIRTHDAY" => false,
+            "ADDRESS" => true,
+            "BIRTHDAY" => true,
             "WEBSITE" => false,
-            "TIER" => false,
-//            "a9c6b55e31" => false,
-            "0bba7d9ced" => false,
+            "TIER" => true,
+            "a9c6b55e31" => true,
+            "0bba7d9ced" => true,
             "17d4a7a745" => false,
             "5891abdae4" => false
         ];
