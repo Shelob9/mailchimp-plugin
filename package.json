@@ -11,7 +11,7 @@
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
-    "@calderajs/forms": "^0.7.2",
+    "@calderajs/forms": "^0.8.2",
     "@wordpress/block-editor": "^2.0.1",
     "@wordpress/components": "^7.0.7",
     "@wordpress/compose": "^3.2.0",

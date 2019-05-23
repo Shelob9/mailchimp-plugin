@@ -10,10 +10,17 @@ import {Display} from "./components/Display";
 import {createFormPreviewWithState} from "../createFormPreviewWithState";
 import {CALDERA_MAILCHIMP_STORE} from "../../store";
 import {withSelect, withDispatch} from "@wordpress/data";
+import {blockClassNameIdentifiers} from "../blockClassNameIdentifiers";
 
 const DisplayWithState = createFormPreviewWithState(Display);
 
-
+console.log({
+    ...attributes,
+    listId: {
+        ...attributes.listId,
+        selector: `span.${blockClassNameIdentifiers.survey}`
+    }
+});
 const EditWithState = withSelect((select, ownProps) => {
     const {
         accountId,
@@ -49,7 +56,13 @@ export const options = {
     description: 'Segment your list with a 1 question at a time survey',
     icon: 'image-filter',
     category: 'widgets',
-    attributes,
+    attributes : {
+        ...attributes,
+        listId: {
+            ...attributes.listId,
+            selector: `span.${blockClassNameIdentifiers.survey}`
+        }
+    },
     edit({attributes, setAttributes}) {
         const {accountId, listId,fieldsToHide} = attributes;
         const setListId = (listId) => setAttributes({listId});
@@ -81,9 +94,6 @@ export const options = {
                     />
                 </InspectorControls>
             </Fragment>)
-
-
     },
-
     save: Save,
 };

@@ -1,9 +1,8 @@
 import React, {Fragment, useState} from 'react';
 import MailChimpForm from './MailChimpForm'
 import PropTypes from 'prop-types';
-import {CalderaNotice} from '@calderajs/components';
+import {CalderaNotice,fieldFactory} from '@calderajs/components';
 import {updateSubscriber,createSubscriber} from "../http/publicClient";
-
 function MailChimpSurveyForm(
 	{
 		submitUrl,
@@ -117,7 +116,6 @@ function MailChimpSurveyForm(
 			setCompleted(true);
 		}else{
 			const nextQuestion = questions[currentQuestionIndex + 1];
-
 			setForm(createForm(
 
 				{
@@ -126,13 +124,15 @@ function MailChimpSurveyForm(
 					emailField:{
 						...emailField,
 						type: 'input',
-						html5type:'hidden',
+						html5Type:'hidden',
 					},
 					submitButton,
 					questionRowId,
 					submitUrl,
 				}
 			));
+
+
 			setCurrentQuestionIndex( currentQuestionIndex + 1 );
 		}
 
@@ -194,6 +194,17 @@ function MailChimpSurveyForm(
 					}
 				/>
 			}
+			<div>{fieldFactory({
+				default: "",
+				fieldId: "mc-email",
+				fieldType: "hidden",
+				html5Type: "hidden",
+				html5type: "hidden",
+				isRequired: true,
+				label: "Email",
+				type: "input",
+				value: "josh@calderawp.com"
+			})}</div>
 			<MailChimpForm
 				form={form}
 				onBlur={onBlur}
