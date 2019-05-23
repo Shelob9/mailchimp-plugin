@@ -98,12 +98,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "bf595424e4d442a190582e088985dc835a789071"
+                "reference": "ca2892a8c2778c1821899fd2c79932e3b895f2ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/bf595424e4d442a190582e088985dc835a789071",
-                "reference": "bf595424e4d442a190582e088985dc835a789071",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ca2892a8c2778c1821899fd2c79932e3b895f2ad",
+                "reference": "ca2892a8c2778c1821899fd2c79932e3b895f2ad",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-04-15T08:22:37+00:00"
+            "time": "2019-05-12T12:35:22+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1318,12 +1318,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d7d9cee051d03ed98df6023aad93f7902731a780"
+                "reference": "1d4dfbf6cd3a50aaceb7af96ba5dbb5b518f7434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d7d9cee051d03ed98df6023aad93f7902731a780",
-                "reference": "d7d9cee051d03ed98df6023aad93f7902731a780",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1d4dfbf6cd3a50aaceb7af96ba5dbb5b518f7434",
+                "reference": "1d4dfbf6cd3a50aaceb7af96ba5dbb5b518f7434",
                 "shasum": ""
             },
             "require": {
@@ -1394,7 +1394,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-05-09T05:06:47+00:00"
+            "time": "2019-05-20T18:38:43+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -1968,12 +1968,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "1d7c6576a578fb57723c8c0fbc716cb88dae4f13"
+                "reference": "8b713e14f230c238580a2b669b76460c3a611017"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1d7c6576a578fb57723c8c0fbc716cb88dae4f13",
-                "reference": "1d7c6576a578fb57723c8c0fbc716cb88dae4f13",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/8b713e14f230c238580a2b669b76460c3a611017",
+                "reference": "8b713e14f230c238580a2b669b76460c3a611017",
                 "shasum": ""
             },
             "require": {
@@ -2011,7 +2011,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-16T03:35:30+00:00"
+            "time": "2019-05-23T04:50:52+00:00"
         },
         {
             "name": "theseer/tokenizer",

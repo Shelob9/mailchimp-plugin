@@ -6,7 +6,8 @@
     "build": "webpack --config=.config/webpack.config.prod.js",
     "start": "webpack-dev-server --config .config/webpack.config.dev.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:ci": "jest -ci"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",

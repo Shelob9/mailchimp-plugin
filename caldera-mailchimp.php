@@ -49,7 +49,7 @@ add_action('plugins_loaded', function () {
 });
 
 add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMailChimp $module) {
-
+    new \calderawp\P1\Something();
     //Register asssets with WordPress
     \calderawp\CalderaMailChimp\Scripts\setup();
     /**

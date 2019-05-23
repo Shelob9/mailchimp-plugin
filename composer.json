@@ -3,20 +3,21 @@
     "type": "wordpress-plugin",
     "description": "A boilerplate for WordPress plugins by Caldera",
     "license": "GPL-2.0",
-    "require": {
-        "php": "^7.2",
-        "calderawp/rest-api": "*",
-        "symfony/yaml": "^4.3@dev",
-        "thinkshout/mailchimp-api-php": "dev-master",
-        "guzzlehttp/guzzle": "^6.2"
-    },
-    "minimum-stability" : "dev",
     "repositories": [
         {
-            "type": "path",
-            "url": "./packages/mailchimp-functions"
+            "type": "git",
+            "url": "git@github.com:Shelob9/mailchimp-functions.git"
         }
     ],
+    "require": {
+        "php": "^7.2",
+        "calderawp/rest-api": "dev-master",
+        "symfony/yaml": "^4.3@dev",
+        "thinkshout/mailchimp-api-php": "dev-master",
+        "guzzlehttp/guzzle": "^6.2",
+        "shelob9/mailchimp-functions" : "dev-master"
+    },
+    "minimum-stability" : "dev",
     "require-dev": {
         "php": "^7.2",
         "mockery/mockery": "^1.2",
