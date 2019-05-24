@@ -65,7 +65,10 @@ You likely will see errors in the console caused by being unable to connect to w
     - `yarn storybook` 
     
 ### Build For Release
-* `yarn zip`
+* Create WordPress plugin:
+    - `yarn zip`
+* Generate client for non-WordPress sites
+    - `yarn client:create`
 
 ## License
 

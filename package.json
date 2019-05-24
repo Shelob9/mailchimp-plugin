@@ -8,7 +8,8 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest --watch",
     "test:ci": "jest -ci",
-    "zip": "node zip.js"
+    "zip": "node zip.js",
+    "client:create" : "node createClient.js"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
