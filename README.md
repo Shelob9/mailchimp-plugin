@@ -14,14 +14,30 @@
 * `cd caldera-mailchimp`
 * `bash install.sh`
 
+## Usage
+### WordPress Plugin
 
-## PHP
+### JavaScript Client
+
+```html
+    <script src="https://cdn.jsdelivr.net/gh/Shelob9/mailchimp-plugin/client.js"></script>
+    <script>
+        window.CALDERA_MAILCHIMP = {
+                'token': '12345', //CSFR token
+                'apiRoot: 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/'
+            }
+    </script>
+    
+```
+
+## Development
+### Code Locations
 PHP code should be in the directory `php` and follow the [PSR-4 Standard](https://www.php-fig.org/psr/psr-4/) for class, filename and directory naming, because we are using the [composer autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading).
 
-## Install
-`composer install`
+JavaScript should go in `src`.
 
-### Testing
+
+### PHP Testing
 Tests uses phpunit as the test runner, as well as for assertions and [Mockery](http://docs.mockery.io/en/latest/) for mocking.
 
 * Run all php tests
@@ -37,14 +53,8 @@ Tests uses phpunit as the test runner, as well as for assertions and [Mockery](h
 * Fix deviations from code style (PSR-1/2 with tabs)
     - `composer fixes`
     
-    
-
-## JavaScript 
-### Install
-
-Install: `yarn install`
-
-## Development
+   
+### JavaScript  Development
 * Start webpack development server
     - `yarn start`
 
@@ -53,7 +63,7 @@ WordPress will automatically detect and load the script from the dev server base
 You likely will see errors in the console caused by being unable to connect to webpack dev server. You need to visit the [dev server](https://localhost:3030/build/) in the browser and instruct it to trust the self-signed certificate.
 
 
-### Tests
+#### JavaScript Tests
 * Start webpack development server
     - `yarn start`
     - WordPress will automatically detect and load the script from the dev server based on the presence of the `asset-manifest.json` the dev server outputs into the build directory. Hot reloading is only provided while the dev server is running.
@@ -64,7 +74,7 @@ You likely will see errors in the console caused by being unable to connect to w
 * Start storybook
     - `yarn storybook` 
     
-### Build For Release
+## Build For Release
 * Create WordPress plugin:
     - `yarn zip`
 * Generate client for non-WordPress sites
