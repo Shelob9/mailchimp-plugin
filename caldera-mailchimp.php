@@ -49,7 +49,6 @@ add_action('plugins_loaded', function () {
 });
 
 add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMailChimp $module) {
-    new \calderawp\P1\Something();
     //Register asssets with WordPress
     \calderawp\CalderaMailChimp\Scripts\setup();
     /**
@@ -82,24 +81,6 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
     }, 10);
 
 
-    add_filter('calderawp/Mailchimp/fieldsToHide', function ($fieldsToHide) {
-        $fields =  [
-            "FNAME" => false,
-            "LNAME" => true,
-            "ADDRESS" => true,
-            "BIRTHDAY" => true,
-            "WEBSITE" => false,
-            "TIER" => true,
-            "a9c6b55e31" => true,
-            "0bba7d9ced" => true,
-            "17d4a7a745" => false,
-            "5891abdae4" => false
-        ];
-
-        return array_filter($fields, function($value){
-            return (bool) $value;
-        });
-    });
     return;
     register_block_type('caldera-mailchimp/signup',
         [
