@@ -55,12 +55,9 @@ archive.pipe(output);
 // Add files
 [
     'caldera-mailchimp.php',
-    'composer.json',
-    'composer.lock',
-    'package.json',
+    'LICENSE',
     'README.md',
     'REST-API.md',
-    '.yarn.lock'
 ].forEach(name => {
     archive.file(name, {name});
 
@@ -68,7 +65,7 @@ archive.pipe(output);
 
 // Add directories
 [
-    'src/',
+    'build/',
     'php/',
     'inc/'
 ].forEach(directory => {
