@@ -68,6 +68,7 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
                 'token' => esc_attr($module->getCurrentUserToken()),
                 'apiRoot' => esc_url_raw(rest_url('/caldera-api/v1/messages/mailchimp/v1')),
                 'wpApiRoot' => esc_url_raw(rest_url()),
+                '_wpnonce' => wp_create_nonce( 'wp_rest' )
             ]);
     }, 25);
 

@@ -19,7 +19,8 @@ function CalderaMailChimpSurveyForm({listId, apiRoot, token, getForm, initialFor
     const {
         isLoaded,
         setIsLoaded,
-        form, setForm
+        form,
+        setForm
     } = useCalderaMailChimpFormConfig(listId, initialForm);
     const Spinner = () => (
         <div><PacmanLoader/></div>
@@ -62,6 +63,7 @@ function CalderaMailChimpSurveyForm({listId, apiRoot, token, getForm, initialFor
             getForm({listId, apiRoot, token})
                 .then(r => r.json())
                 .then(r => {
+                    console.log(r);
                     setForm(r);
                     setIsLoaded(true);
                 });
@@ -92,6 +94,6 @@ CalderaMailChimpSurveyForm.propTypes = {
 CalderaMailChimpSurveyForm.defaultProps = {
     getForm,
     hideOnSubmit: true,
-    apiRoot: 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1/lists'
+    apiRoot: 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/v1'
 };
 export default CalderaMailChimpSurveyForm;

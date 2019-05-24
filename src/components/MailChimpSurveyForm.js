@@ -46,7 +46,6 @@ function MailChimpSurveyForm(
     const submitButtonId = 'submitQuestion';
     const submitButton = {"fieldId": submitButtonId, "fieldType": "submit", "value": "Subscribe"};
     const initialQuestion = questions[currentQuestionIndex];
-
     const questionRowId = 'r1';
 
     function createQuestionFieldRow(questionFieldId, questionRowId) {
@@ -112,14 +111,14 @@ function MailChimpSurveyForm(
         initialEmailField.value = emailAddress;
     }
 
-    const initialForm = {
+    const initialForm = createForm({
         formId,
         currentQuestion: initialQuestion,
         emailField: initialEmailField,
         submitButton,
         questionRowId,
-        submitUrl
-    };
+        submitUrl,
+    });
 
     /**
      * Create initial mailChimpTestForm and track its state

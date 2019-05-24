@@ -11,8 +11,10 @@ use calderawp\CalderaMailChimp\Controllers\CreateSubscriber;
 use calderawp\CalderaMailChimp\Controllers\GetList;
 use calderawp\CalderaMailChimp\Controllers\GetLists;
 use calderawp\CalderaMailChimp\Controllers\UpdateAccount;
+use calderawp\CalderaMailChimp\Endpoints\GenerateToken;
 use calderawp\CalderaMailChimp\Endpoints\GetAccounts;
 use calderawp\CalderaMailChimp\Endpoints\GetForm;
+use calderawp\CalderaMailChimp\Endpoints\VerifyToken;
 use calderawp\interop\Contracts\Rest\Endpoint;
 use Mailchimp\MailchimpLists;
 
@@ -164,6 +166,12 @@ class RestApi
 
         $this->endpoints[ GetForm::class ] = (new GetForm())
             ->setSubmitUrl( rest_url('/caldera-api/v1/messages/mailchimp/v1/lists/subscribe'))
+            ->setModule($module);
+
+        $this->endpoints[ GenerateToken::class ] = (new GenerateToken($this->getJwt()))
+            ->setModule($module);
+
+        $this->endpoints[ VerifyToken::class ] = (new VerifyToken($this->getJwt()))
             ->setModule($module);
 
 
