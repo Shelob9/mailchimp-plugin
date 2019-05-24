@@ -58,6 +58,7 @@ archive.pipe(output);
     'LICENSE',
     'README.md',
     'REST-API.md',
+    'client.js'
 ].forEach(name => {
     archive.file(name, {name});
 
