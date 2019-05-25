@@ -72,7 +72,7 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
     }, 25);
 
 
-    add_action('init', function () {
+    add_action('---init', function () {
         $attributes = (array)json_decode(file_get_contents(__DIR__ . '/src/blocks/attributes.json'));
         foreach ($attributes as &$attribute) {
             $attribute = (array)$attribute;
