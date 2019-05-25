@@ -9,7 +9,7 @@
     "test": "jest --watch",
     "test:ci": "jest -ci",
     "zip": "node zip.js",
-    "client:create" : "node createClient.js"
+    "client:create": "webpack --config=.config/webpack.config.client.js"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
