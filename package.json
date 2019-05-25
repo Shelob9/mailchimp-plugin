@@ -104,5 +104,7 @@
   ],
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "main": "src/client.js"
+}
 }
