@@ -1,6 +1,6 @@
 {
   "name": "@calderajs/caldera-mailchimp",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "scripts": {
     "build": "webpack --config=.config/webpack.config.prod.js",
     "start": "webpack-dev-server --config .config/webpack.config.dev.js",
