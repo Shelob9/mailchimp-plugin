@@ -31,12 +31,13 @@ module.exports = {
 
 	// Specify where the code comes from.
 	entry: {
-		front: join( process.cwd(), 'src', 'client.js' ),
+		client: join( process.cwd(), 'src', 'client.js' ),
+		formClient: join( process.cwd(), 'src', 'formClient.js' ),
 	},
 	output: {
 		pathinfo: false,
 		path: process.cwd() ,
-		filename: 'client.js',
+		filename: '[name].js',
 	},
 	module: {
 		strictExportPresence: true,

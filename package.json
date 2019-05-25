@@ -84,6 +84,11 @@
   },
   "files": [
     "client.js",
+    "client.js.map",
+    "build/front.js.map",
+    "build/editor.js.map",
+    "formClient.js",
+    "formClient.js.map",
     "build/front.js",
     "build/editor.js",
     "README.md"

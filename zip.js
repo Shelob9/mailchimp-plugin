@@ -59,6 +59,7 @@ archive.pipe(output);
     'README.md',
     'REST-API.md',
     'client.js',
+    'formClient.js',
     'src/blocks/attributes.json'
 ].forEach(name => {
     archive.file(name, {name});
