@@ -1,6 +1,6 @@
 {
   "name": "@calderajs/caldera-mailchimp",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "scripts": {
     "build": "webpack --config=.config/webpack.config.prod.js",
     "start": "webpack-dev-server --config .config/webpack.config.dev.js",
@@ -9,7 +9,7 @@
     "test:ci": "jest -ci",
     "zip": "node zip.js",
     "client:create": "webpack --config=.config/webpack.config.client.js",
-    "prepack": "yarn build && yarn client:create"
+    "-prepack": "yarn test:ci && yarn build && yarn client:create"
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
