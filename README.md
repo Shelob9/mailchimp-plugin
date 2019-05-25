@@ -49,10 +49,9 @@ add_filter('calderawp/Mailchimp/fieldsToHide', function ($fieldsToHide) {
 #### Without Import
 
 ```html
-    <script src="https://cdn.jsdelivr.net/gh/Shelob9/mailchimp-plugin/client.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Shelob9/mailchimp-plugin/front.js"></script>
     <script>
         window.CALDERA_MAILCHIMP = {
-                'token': '12345', //CSFR token
                 'apiRoot': 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/'
             }
     </script>

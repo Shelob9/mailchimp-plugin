@@ -105,5 +105,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/client.js"
+  "main": "src/formClient.js",
+  "browser": "src/formClient.js"
 }
