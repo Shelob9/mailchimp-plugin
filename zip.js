@@ -68,7 +68,8 @@ archive.pipe(output);
 [
     'build/',
     'php/',
-    'inc/'
+    'inc/',
+    'vendor'
 ].forEach(directory => {
     archive.directory(directory, directory);
 });
