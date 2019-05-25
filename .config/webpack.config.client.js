@@ -47,6 +47,11 @@ module.exports = {
 				test: /\.js$/,
 				include: [ join( process.cwd(), 'src' ) ],
 				loader: require.resolve( 'babel-loader' ),
+				options: {
+					presets: ['@babel/preset-react'],
+					plugins: ["@babel/plugin-transform-react-jsx"]
+
+				}
 			},
 		],
 	},
