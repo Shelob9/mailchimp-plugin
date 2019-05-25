@@ -35,10 +35,11 @@ add_action('plugins_loaded', function () {
 
     //include autoloader
     include_once __DIR__ . '/vendor/autoload.php';
-    $jwtSecret = apply_filters( 'CalderaMailChimp/jwtSecret', NONCE_SALT );
+
+
     $module = new \calderawp\CalderaMailChimp\CalderaMailChimp(
         site_url(),
-        $jwtSecret,
+        '12345',
         new \calderawp\caldera\restApi\Authentication\WordPressUserFactory()
     );
     /**
@@ -81,6 +82,18 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
     }, 10);
 
 
+    return;
+    register_block_type('caldera-mailchimp/signup',
+        [
+
+            'render_callback' => function ($atts) {
+                if (!isset($atts['listId'])) {
+                    $atts['listId'] = '45907f0c59';
+                    //return;
+                }
+                return sprintf('<div class="%" data-list-id="%s"></div>', 'calderaMailchimp', esc_attr($atts['listId']));
+            }
+        ]);
 }, 10);
 
 
