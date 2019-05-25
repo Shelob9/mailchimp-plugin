@@ -58,7 +58,8 @@ archive.pipe(output);
     'LICENSE',
     'README.md',
     'REST-API.md',
-    'client.js'
+    'client.js',
+    'src/blocks/attributes.json'
 ].forEach(name => {
     archive.file(name, {name});
 
@@ -69,7 +70,6 @@ archive.pipe(output);
     'build/',
     'php/',
     'inc/',
-    'src',
     'vendor'
 ].forEach(directory => {
     archive.directory(directory, directory);
