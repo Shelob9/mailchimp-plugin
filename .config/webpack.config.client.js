@@ -31,7 +31,7 @@ module.exports = {
 
 	// Specify where the code comes from.
 	entry: {
-		front: join( process.cwd(), 'src', 'front.js' ),
+		front: join( process.cwd(), 'src', 'client.js' ),
 	},
 	output: {
 		pathinfo: false,
