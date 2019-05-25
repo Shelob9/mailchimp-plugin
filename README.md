@@ -42,12 +42,18 @@ add_filter('calderawp/Mailchimp/fieldsToHide', function ($fieldsToHide) {
 
 ### JavaScript Client
 
+#### In React App
+* Install
+    - `yarn add @calderajs/caldera-mailchimp`
+
+#### Without Import
+
 ```html
     <script src="https://cdn.jsdelivr.net/gh/Shelob9/mailchimp-plugin/client.js"></script>
     <script>
         window.CALDERA_MAILCHIMP = {
                 'token': '12345', //CSFR token
-                'apiRoot: 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/'
+                'apiRoot': 'https://formcalderas.lndo.site/wp-json/caldera-api/v1/messages/mailchimp/'
             }
     </script>
     
