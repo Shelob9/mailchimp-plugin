@@ -9,9 +9,11 @@
     "test:ci": "jest -ci",
     "zip": "node zip.js",
     "client:create": "webpack --config=.config/webpack.config.client.js",
-    "prepack": "yarn build && yarn client:create"
+    "prepack": "yarn build && yarn client:create && yarn build:module",
+    "build:module": "rm -rf dist && babel src -d dist --ignore \"src/**/*.fixture.js\",\"src/**/*.story.js\",\"src/**/*.test.js\",\"src/**/*.front.js\""
   },
   "dependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@calderajs/forms": "^0.8.4",
@@ -35,7 +37,7 @@
     "zip": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.4.4",
+    "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-async-generator-functions": "^7.2.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
@@ -82,20 +84,6 @@
       "!**/vendor/**"
     ]
   },
-  "files": [
-    "client.js",
-    "client.js.map",
-    "build/front.js.map",
-    "build/editor.js.map",
-    "formClient.js",
-    "formClient.js.map",
-    "build/front.js",
-    "build/editor.js",
-    "README.md",
-    "src/**/*.js",
-    "src/**/*.css",
-    "src/**/*.scss"
-  ],
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -105,6 +93,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/formClient.js",
-  "browser": "src/formClient.js"
+  "main": "dist/client.js"
 }

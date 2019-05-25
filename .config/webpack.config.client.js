@@ -32,7 +32,7 @@ module.exports = {
 	// Specify where the code comes from.
 	entry: {
 		client: join( process.cwd(), 'src', 'client.js' ),
-		formClient: join( process.cwd(), 'src', 'formClient.js' ),
+		front: join( process.cwd(), 'src', 'front.js' ),
 	},
 	output: {
 		pathinfo: false,
