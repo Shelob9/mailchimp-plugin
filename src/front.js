@@ -6,6 +6,7 @@ import CalderaMailChimpForm from './components/CalderaMailChimpForm'
 import {blockClassNameIdentifiers} from "./blocks/blockClassNameIdentifiers";
 import CalderaMailChimpSurveyForm from "./components/CalderaMailChimpSurveyForm";
 
+window.CALDERA_MAILCHIMP = window.CALDERA_MAILCHIMP || {};
 domReady(function () {
     const {signup, survey} = blockClassNameIdentifiers;
     //Find elements to replace with forms
