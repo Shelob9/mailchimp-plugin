@@ -91,7 +91,10 @@
     "formClient.js.map",
     "build/front.js",
     "build/editor.js",
-    "README.md"
+    "README.md",
+    "src/**/*.js",
+    "src/**/*.css",
+    "src/**/*.scss"
   ],
   "browserslist": [
     ">0.2%",
