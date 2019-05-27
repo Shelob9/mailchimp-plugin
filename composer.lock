@@ -414,12 +414,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "a346647434953deb5bd599d92922b2d225e25170"
+                "reference": "dd1ba1de1234e5e8939809bbd9e103e7aeebf0d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/a346647434953deb5bd599d92922b2d225e25170",
-                "reference": "a346647434953deb5bd599d92922b2d225e25170",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/dd1ba1de1234e5e8939809bbd9e103e7aeebf0d5",
+                "reference": "dd1ba1de1234e5e8939809bbd9e103e7aeebf0d5",
                 "shasum": ""
             },
             "require": {
@@ -477,7 +477,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2019-04-01T06:40:32+00:00"
+            "time": "2019-05-26T12:43:51+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -950,7 +950,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Shelob9/mailchimp-functions.git",
-                "reference": "80fb4d416a8ce095787c27d20b5b0d434f02756d"
+                "reference": "461c1ed17e9b56163d7f25bb7b41829b6081174c"
             },
             "require": {
                 "calderawp/caldera-db": "dev-master",
@@ -965,7 +965,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.2",
-                "phpunit/phpunit": "^8.1"
+                "phpunit/phpunit": "^7.3"
             },
             "type": "library",
             "autoload": {
@@ -989,7 +989,7 @@
                     "email": "josh@calderawp.com"
                 }
             ],
-            "time": "2019-05-23T20:44:49+00:00"
+            "time": "2019-05-23T21:57:06+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1878,12 +1878,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1d4dfbf6cd3a50aaceb7af96ba5dbb5b518f7434"
+                "reference": "1426ca6a2d3c5fc2afb77ac043ce34a11288f0b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1d4dfbf6cd3a50aaceb7af96ba5dbb5b518f7434",
-                "reference": "1d4dfbf6cd3a50aaceb7af96ba5dbb5b518f7434",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1426ca6a2d3c5fc2afb77ac043ce34a11288f0b2",
+                "reference": "1426ca6a2d3c5fc2afb77ac043ce34a11288f0b2",
                 "shasum": ""
             },
             "require": {
@@ -1954,7 +1954,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-05-20T18:38:43+00:00"
+            "time": "2019-05-26T13:28:44+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -2528,12 +2528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "99091cada94f6d22aa2ba4e4a986ec7571a2d07c"
+                "reference": "8ff9283ab30cd296293b57039efe573aaf669862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/99091cada94f6d22aa2ba4e4a986ec7571a2d07c",
-                "reference": "99091cada94f6d22aa2ba4e4a986ec7571a2d07c",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/8ff9283ab30cd296293b57039efe573aaf669862",
+                "reference": "8ff9283ab30cd296293b57039efe573aaf669862",
                 "shasum": ""
             },
             "require": {
@@ -2571,7 +2571,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-05-23T21:59:35+00:00"
+            "time": "2019-05-27T05:15:12+00:00"
         },
         {
             "name": "theseer/tokenizer",

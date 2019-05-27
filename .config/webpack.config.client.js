@@ -27,7 +27,6 @@ module.exports = {
 	optimization: {
 		minimize: true,
 		noEmitOnErrors: true,
-		splitChunks: true,
 	},
 
 	// Specify where the code comes from.

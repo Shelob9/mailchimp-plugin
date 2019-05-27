@@ -46,7 +46,7 @@ class GetForm extends \something\Mailchimp\Endpoints\GetForm
 
     protected function filterForm(SingleList $form)
     {
-        $fieldsToHide = apply_filters('calderawp/Mailchimp/fieldsToHide', [], $form);
+        $fieldsToHide = apply_filters('CalderaMailChimp/fieldsToHide', [], $form);
         if (!empty($fieldsToHide) && is_array($fieldsToHide)) {
             foreach (array_keys($fieldsToHide) as $fieldToHide) {
                 if ($form->getGroupFields()->hasGroup($fieldToHide)) {
