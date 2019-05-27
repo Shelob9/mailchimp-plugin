@@ -1,6 +1,9 @@
 import {
+	mailChimpApi
+} from "@calderajs/forms";
+const {
 	AdminClient
-} from "./http/adminClient";
+} = mailChimpApi;
 
 let CALDERA_MAILCHIMP = window.CALDERA_MAILCHIMP || {
 	apiRoot: '',

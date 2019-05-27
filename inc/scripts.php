@@ -17,7 +17,8 @@ function setup()
     add_action('wp_enqueue_scripts', function () {
         $plugin_path = trailingslashit(plugin_dir_path(dirname(__FILE__)));
         $plugin_url = trailingslashit(plugin_dir_url(dirname(__FILE__)));
-        $loaded_dev_assets = false;
+        $loaded_dev_assets  = apply_filters( 'CalderaMailChimp/useDevServer', false );
+
 
         if ($loaded_dev_assets) {
             $src = 'https://localhost:3030/build/front.js';

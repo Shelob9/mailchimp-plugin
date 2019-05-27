@@ -1,5 +1,5 @@
 import {createElement} from '@wordpress/element';
-import CalderaMailChimpSurveyForm from "../../../components/CalderaMailChimpSurveyForm";
+import {CalderaMailChimpSurveyForm} from "@calderajs/forms";
 
 /**
  * Display survey form preview in block

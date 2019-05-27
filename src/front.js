@@ -1,7 +1,7 @@
 /** globals CALDERA_MAILCHIMP */
 import domReady from '@wordpress/dom-ready';
 import React from 'react';
-import {LoadAllCalderaMailChimpForms} from "./components/front";
+import {LoadAllCalderaMailChimpForms} from "./front/";
 
 window.CALDERA_MAILCHIMP = window.CALDERA_MAILCHIMP || {};
 

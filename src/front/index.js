@@ -1,8 +1,10 @@
 import {blockClassNameIdentifiers} from "../blocks/blockClassNameIdentifiers";
 import React from "react";
-import CalderaMailChimpForm from "./CalderaMailChimpForm";
 import ReactDOM from "react-dom";
-import CalderaMailChimpSurveyForm from "./CalderaMailChimpSurveyForm";
+import {
+    CalderaMailChimpForm,
+    CalderaMailChimpSurveyForm
+} from "@calderajs/forms";
 /**
  * Create the ID attribute string
 

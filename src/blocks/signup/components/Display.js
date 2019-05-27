@@ -1,5 +1,5 @@
 import {createElement} from '@wordpress/element';
-import CalderaMailChimpForm from "../../../components/CalderaMailChimpForm";
+import {CalderaMailChimpForm} from "@calderajs/forms";
 import {createFormPreviewWithState} from "../../createFormPreviewWithState";
 
 

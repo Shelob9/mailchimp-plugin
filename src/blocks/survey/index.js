@@ -14,13 +14,6 @@ import {blockClassNameIdentifiers} from "../blockClassNameIdentifiers";
 
 const DisplayWithState = createFormPreviewWithState(Display);
 
-console.log({
-    ...attributes,
-    listId: {
-        ...attributes.listId,
-        selector: `span.${blockClassNameIdentifiers.survey}`
-    }
-});
 const EditWithState = withSelect((select, ownProps) => {
     const {
         accountId,
