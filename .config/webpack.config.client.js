@@ -2,7 +2,7 @@
  * This file defines the configuration that is used for the production build.
  */
 const { join } = require( 'path' );
-
+console.log('client config!');
 
 /**
  * Theme production build configuration.
@@ -27,6 +27,7 @@ module.exports = {
 	optimization: {
 		minimize: true,
 		noEmitOnErrors: true,
+		splitChunks: true,
 	},
 
 	// Specify where the code comes from.

@@ -12,3 +12,5 @@ node_modules/
 /coverage/
 coverage/
 caldera-mailchimp.zip
+caldera-mailchimp
+caldera-mailchimp/

@@ -8,9 +8,8 @@
     "test": "jest --watch",
     "test:ci": "jest -ci",
     "zip": "node zip.js",
-    "client:create": "webpack --config=.config/webpack.config.client.js",
-    "prepack": "yarn build && yarn client:create && yarn build:module",
-    "build:module": "rm -rf dist && babel src -d dist --ignore \"src/**/*.fixture.js\",\"src/**/*.story.js\",\"src/**/*.test.js\",\"src/**/*.front.js\""
+    "build:client": "webpack --config=.config/webpack.config.client.js --no-babelrc --presets=@babel/preset-react --plugins=@babel/plugin-transform-react-jsx",
+    "prepack": "yarn build && yarn client:create && yarn build:module"
   },
   "dependencies": {
     "@babel/cli": "^7.4.4",

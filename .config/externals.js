@@ -53,7 +53,7 @@ externals = {
 	...externals,
 	react: 'window.React',
 	'react-dom': 'window.ReactDOM'
-}
+};
 
 
 module.exports = externals;
