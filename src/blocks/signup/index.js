@@ -7,9 +7,9 @@ import {CALDERA_MAILCHIMP_STORE} from "../../store";
 import {Placeholder} from '@wordpress/components';
 import {Save} from "./components/Save";
 import {attributes} from "../attributes";
+import {createBlockOptions} from "../createBlockOptions";
 
 export const name = 'caldera-mailchimp/signup';
-
 
 
 /**
@@ -93,12 +93,9 @@ const SignupBlockAdminUiWithState = withSelect((select, ownProps) => {
     };
 })(SignupBlockAdminUi));
 
-export const options = {
+export const options = createBlockOptions({
     title: 'Mailchimp Signup Form',
     description: 'Render another sample block.',
-    icon: 'images-alt',
-    category: 'widgets',
-    attributes,
     edit({attributes, setAttributes, instanceId}) {
         const {
             listId,
@@ -123,6 +120,6 @@ export const options = {
         });
     },
     save: Save
-};
+});
 
 

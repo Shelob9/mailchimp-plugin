@@ -35,7 +35,7 @@ add_action('plugins_loaded', function () {
 
     //include autoloader
     include_once __DIR__ . '/vendor/autoload.php';
-    $jwtSecret = apply_filters( 'CalderaMailChimp/jwtSecret', NONCE_SALT );
+    $jwtSecret = apply_filters('CalderaMailChimp/jwtSecret', NONCE_SALT);
     $module = new \calderawp\CalderaMailChimp\CalderaMailChimp(
         site_url(),
         $jwtSecret,
@@ -67,7 +67,7 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
                 'token' => esc_attr($module->getCurrentUserToken()),
                 'apiRoot' => esc_url_raw(rest_url('/caldera-api/v1/messages/mailchimp/v1')),
                 'wpApiRoot' => esc_url_raw(rest_url()),
-                '_wpnonce' => wp_create_nonce( 'wp_rest' )
+                '_wpnonce' => wp_create_nonce('wp_rest')
             ]);
     }, 25);
 
@@ -80,6 +80,24 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
         (new \calderawp\CalderaMailChimp\Blocks\Survey($attributes))->register();
     }, 10);
 
+
+    /**
+     * Add Caldera block category
+     *
+     * @todo Put in Caldera Forms as well?
+     */
+    add_filter('block_categories', function ($categories) {
+        return array_merge(
+            $categories,
+            array(
+                array(
+                    'slug' => 'caldera',
+                    'title' => __('Caldera'),
+                ),
+            )
+        );
+
+    });
 
 
 }, 10);

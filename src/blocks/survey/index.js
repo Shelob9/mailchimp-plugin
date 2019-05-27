@@ -11,6 +11,7 @@ import {createFormPreviewWithState} from "../createFormPreviewWithState";
 import {CALDERA_MAILCHIMP_STORE} from "../../store";
 import {withSelect, withDispatch} from "@wordpress/data";
 import {blockClassNameIdentifiers} from "../blockClassNameIdentifiers";
+import {createBlockOptions} from "../createBlockOptions";
 
 const DisplayWithState = createFormPreviewWithState(Display);
 
@@ -44,11 +45,9 @@ const EditWithState = withSelect((select, ownProps) => {
     };
 })(Edit));
 
-export const options = {
+export const options = createBlockOptions({
     title: 'MailChimp Survey Form',
     description: 'Segment your list with a 1 question at a time survey',
-    icon: 'image-filter',
-    category: 'widgets',
     attributes : {
         ...attributes,
         listId: {
@@ -89,4 +88,4 @@ export const options = {
             </Fragment>)
     },
     save: Save,
-};
+});
