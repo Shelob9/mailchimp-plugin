@@ -16,12 +16,11 @@ class CreateAccount extends \something\Mailchimp\Controllers\CreateAccount
 
 	use HasModule;
 
-	/**
-	 * Find account in remote api via API key and save.
-	 * @param string $apiKey
-	 *
-	 * @return Account
-	 */
+    /**
+     * @param string $apiKey
+     * @return Account
+     * @throws \Exception
+     */
 	public function __invoke(string $apiKey ): Account
 	{
 		$this->setMailchimp( new MailchimpLists($apiKey));

@@ -4,7 +4,9 @@
 namespace calderawp\CalderaMailChimp\Endpoints;
 
 
-use calderawp\CalderaMailChimp\Controllers\HasModule;
+
+use calderawp\interop\Contracts\Rest\RestRequestContract as Request;
+use calderawp\interop\Contracts\Rest\RestResponseContract as Response;
 
 class AddSubscriber extends \something\Mailchimp\Endpoints\AddSubscriber
 {
