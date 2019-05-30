@@ -16,17 +16,7 @@ class Survey extends Block
 
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function render(array $atts, string $content = null): string
-    {
 
-        if( ! empty($atts['fieldsToAdd'])){
-
-        }
-        return $content;
-    }
 
 
 

@@ -41,7 +41,24 @@ abstract class Block
      * @param string|null $content
      * @return string
      */
-    abstract public function render(array $atts, string $content = null): string;
+    /**
+     * @inheritDoc
+     */
+    public function render(array $blockAttributes, string $content = null): string
+    {
+
+        if( ! empty($blockAttributes['fieldsToAdd'])&& is_array($blockAttributes['fieldsToAdd'])){
+            $fieldsToHide = $blockAttributes['fieldsToAdd'];
+            $listId = $blockAttributes['listId'];
+            add_filter( 'CalderaMailChimp/fieldsToHide', function($hides,$form)use($fieldsToHide,$listId){
+                if ($listId === $form->getListId()) {
+                    return $fieldsToHide;
+                }
+                return $hides;
+            },10,2);
+        }
+        return $content;
+    }
 
     /**
      * @return array
