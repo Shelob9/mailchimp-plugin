@@ -78,6 +78,7 @@ add_action('CalderaMailChimp', function (\calderawp\CalderaMailChimp\CalderaMail
             $attribute = (array)$attribute;
         }
         (new \calderawp\CalderaMailChimp\Blocks\Survey($attributes))->register();
+        (new \calderawp\CalderaMailChimp\Blocks\Signup($attributes))->register();
     }, 10);
 
 

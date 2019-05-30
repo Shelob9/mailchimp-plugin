@@ -4,16 +4,13 @@
 namespace calderawp\CalderaMailChimp\Blocks;
 
 
-
-class Survey extends Block
+class Signup extends Block
 {
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function getName(): string
     {
-        return 'caldera-mailchimp/survey';
-
+        return 'caldera-mailchimp/signup';
     }
+
 
 }
