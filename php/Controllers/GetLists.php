@@ -49,8 +49,6 @@ class GetLists extends \something\Mailchimp\Controllers\GetLists
                         }catch (\Exception $e ){
                             throw $e;
                         }
-
-
                     }
                 }
             }
