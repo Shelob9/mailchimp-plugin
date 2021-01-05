@@ -24,7 +24,7 @@
     "@wordpress/editor": "^9.0.9",
     "@wordpress/element": "^2.1.9",
     "archiver": "^3.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "core-js": "^3.1.2",
     "fs-extra": "^8.0.1",
